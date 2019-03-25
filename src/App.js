@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
-import ChatRow from './components/ChatListRow';
+import ChatListRow from './components/ChatListRow';
 import './style.css';
 
 
@@ -17,7 +16,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <ChatRow/>
+                <ChatListRow
+                user={{ fullName: 'Carol Evans', unreadCount: "0" }}
+                lastMessage={{text: "Hey!", time: "10.30"}}
+                onClick={() => alert('pippo')}/>
             </div>
         );
     }
