@@ -16,10 +16,12 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <ChatListRow
-                user={{ fullName: 'Carol Evans', unreadCount: "0" }}
-                lastMessage={{text: "Hey!", time: "10.30"}}
-                onClick={() => alert('pippo')}/>
+
+                <ChatList
+                    silenced={this.state.silenced}
+                    isFavoriteFilterActive={this.state.isFavoriteFilterActive}
+                />
+
             </div>
         );
     }
