@@ -24,10 +24,9 @@ class App extends Component {
                 /> */}
 
                 <ChatList
+                    silenced={this.state.silenced}
+                    isFavoriteFilterActive={this.state.isFavoriteFilterActive}
                 />
-
-
-
 
             </div>
         );
