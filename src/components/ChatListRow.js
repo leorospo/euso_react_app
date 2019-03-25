@@ -7,8 +7,8 @@ export default class ChatListRow extends React.Component {
         super(props)
 
         this.state = {
-            favorited: false,
-            silenced: false,
+            favorited: this.props.chat.favorited,
+            silenced: this.props.chat.silenced,
         }
     }
 
@@ -16,7 +16,7 @@ export default class ChatListRow extends React.Component {
         const { chat, onClick } = this.props
 
         return (
-            <div className={"ChatListRow chat-list-element " + (this.state.favorited || `{c-y1}`)}
+            <div className={"ChatListRow chat-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
                 onClick={onClick}>
 
                 <ProfileImg
@@ -25,28 +25,32 @@ export default class ChatListRow extends React.Component {
                     onClick={() => alert('pippo')}
                 />
 
-                <div className="chat-list-element-content"></div>
+                <div className="chat-list-element-content">
 
-                <div className="chat-list-element-content-text">
-                    <div className="chat-list-element-title sns-sp-620 tg6">{chat.userFullName}</div>
-                    <div className="develop_leo_mute c0"></div>
-                    <div className="chat-list-element-subtitle sns-sp-416 tg3">{chat.chatLastMessage.text}</div>
-                </div>
+                    <div className="chat-list-element-content-text">
+                        <div className="chat-list-element-title sns-sp-620 tg6">{chat.userFullName}</div>
+                        <div className="develop_leo_mute c0"></div>
+                        <div className="chat-list-element-subtitle sns-sp-416 tg3">{chat.chatLastMessage.text}</div>
+                    </div>
 
-                <div className="chat-list-element-content-right">
+                    <div className="chat-list-element-content-right">
 
-                    {chat.unreadCount > 0 &&
-                        <div className="chat-list-element-notification">
-                            <div className="sns-pn-414">{chat.unreadCount}</div>
+                        {chat.unreadCount > 0 &&
+                            <div className="chat-list-element-notification">
+                                <div className="sns-pn-414">{chat.unreadCount > 99 ? "99+" : chat.unreadCount}</div>
+                            </div>
+                        }
+
+                        <div className="chat-list-element-time-container">
+                            <div className="sns-pn-410 tg5">{chat.chatLastMessage.time}</div>
                         </div>
-                    }
 
-                    <div className="chat-list-element-time-container">
-                        <div className="sns-pn-410 tg5">{chat.chatLastMessage.time}</div>
                     </div>
 
                 </div>
 
+                <div class="chat-list-sep"></div>
+                
             </div>
         );
     }
