@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatListRow from 'ChatListRow.js'
+import ChatListRow from '../components/ChatListRow'
 
 export default class ChatList extends React.Component {
     constructor(props) {
@@ -53,13 +53,7 @@ export default class ChatList extends React.Component {
 
         return (
             <div className="cnt-full g1">
-                <ChatListRow
-                    user={{ fullName: 'Carol Evans', unreadCount: "0" }}
-                    lastMessage={{ text: "Hey!", time: "10.30" }}
-                    onClick={() => alert('pippo')}
-                />
-
-                {userChats.map(el => <ChatListRow chat={el} />)}
+                {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
             </div>
         )
 

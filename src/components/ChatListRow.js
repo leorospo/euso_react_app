@@ -13,9 +13,10 @@ export default class ChatListRow extends React.Component {
     }
 
     render() {
-        const { user, lastMessage, onClick } = this.props
+        const { chat, onClick } = this.props
+
         return (
-            <div className= {"ChatListRow chat-list-element " + (this.state.favorited || `{c-y1}`)}
+            <div className={"ChatListRow chat-list-element " + (this.state.favorited || `{c-y1}`)}
                 onClick={onClick}>
 
                 <ProfileImg
@@ -27,21 +28,21 @@ export default class ChatListRow extends React.Component {
                 <div className="chat-list-element-content"></div>
 
                 <div className="chat-list-element-content-text">
-                    <div className="chat-list-element-title sns-sp-620 tg6">{user.fullName}</div>
+                    <div className="chat-list-element-title sns-sp-620 tg6">{chat.userFullName}</div>
                     <div className="develop_leo_mute c0"></div>
-                    <div className="chat-list-element-subtitle sns-sp-416 tg3">{lastMessage.text}</div>
+                    <div className="chat-list-element-subtitle sns-sp-416 tg3">{chat.chatLastMessage.text}</div>
                 </div>
 
                 <div className="chat-list-element-content-right">
 
-                    {user.unreadCount > 0 &&
+                    {chat.unreadCount > 0 &&
                         <div className="chat-list-element-notification">
-                            <div className="sns-pn-414">{user.unreadCount}</div>
+                            <div className="sns-pn-414">{chat.unreadCount}</div>
                         </div>
                     }
 
                     <div className="chat-list-element-time-container">
-                        <div className="sns-pn-410 tg5">{lastMessage.time}</div>
+                        <div className="sns-pn-410 tg5">{chat.chatLastMessage.time}</div>
                     </div>
 
                 </div>
@@ -52,13 +53,17 @@ export default class ChatListRow extends React.Component {
 }
 
 ChatListRow.propTypes = {
-    user: propTypes.shape({
-        fullName: propTypes.string.isRequired,
+    chat: propTypes.shape({
+        userFullName: propTypes.string.isRequired,
+        userProfileImg: propTypes.string.isRequired,
+        chatLastMessage: propTypes.shape({
+            text: propTypes.string,
+            time: propTypes.string
+        }).isRequired,
         unreadCount: propTypes.string.isRequired,
-    }).isRequired,
-    lastMessage: propTypes.shape({
-        text: propTypes.string,
-        time: propTypes.string
+        silenced: propTypes.bool.isRequired,
+        favorited: propTypes.bool.isRequired,
     }).isRequired,
     onClick: propTypes.func,
+
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChatListRow from './components/ChatListRow';
+import ChatList from './components/ChatList';
 import './style.css';
 
 
@@ -15,13 +15,15 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div className="cnt-global">
 
-                <ChatList
-                    silenced={this.state.silenced}
-                    isFavoriteFilterActive={this.state.isFavoriteFilterActive}
-                />
+                <div className="cnt-section-left">
+                    <ChatList
+                        silenced={this.state.silenced}
+                        isFavoriteFilterActive={this.state.isFavoriteFilterActive}
+                    />
 
+                </div>
             </div>
         );
     }
