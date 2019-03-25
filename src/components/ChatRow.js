@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ChatProfile from './ChatProfile';
+import ChatProfileImg from './ProfileImg';
 
 class ChatRow extends Component {
     constructor(props) {
@@ -19,8 +19,8 @@ class ChatRow extends Component {
     render() {
         return (
             <div className="ChatRow" onClick={() => onclick()}>
-                <ChatProfile />
-                
+                <ChatProfileImg />
+
             </div>
         );
     }
