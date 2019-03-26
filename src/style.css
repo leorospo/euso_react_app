@@ -10,6 +10,8 @@
     --black: #000000;
 
     --blu_1: #3E4F70;
+    --light_blu_1: #DBF1FF;
+    --light_green: #E4FFCC;
     --red_1: #FF0000;
     
 }
@@ -55,6 +57,10 @@ a, a:hover, a:focus {
 
 .c-y1 { background-color: #FFEDC8!important;} /*Per sovrascrivere background del chat-list-element*/
 .c-w { background-color: white;}
+
+.ffox-hide-scrollbar {
+    scrollbar-width: none;
+}
 /*#endregion UTILITY*/
 
 
@@ -175,7 +181,7 @@ body,
 .cnt-section-left {
     width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: auto;
 
     background-color: var(--g1);
