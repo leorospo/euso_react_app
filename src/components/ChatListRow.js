@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileImg from './ProfileImg';
-import propTypes from 'prop-types'
+import propTypes from 'prop-types';
+import "./listRow.css";
 
 export default class ChatListRow extends React.Component {
     constructor(props) {
@@ -22,14 +23,22 @@ export default class ChatListRow extends React.Component {
                 <ProfileImg
                     user={{ name: 'Carol Evans', profileImgName: '1_carol.jpg' }}
                     size='medium'
-                    onClick={() => alert('pippo')}
                 />
 
                 <div className="chat-list-element-content">
 
                     <div className="chat-list-element-content-text">
-                        <div className="chat-list-element-title sns-sp-620 tg6">{chat.userFullName}</div>
-                        <div className="develop_leo_mute c0"></div>
+
+                        <div className="chat-list-element-title">
+                            <div className="chat-list-element-title-name sns-sp-620 tg6">{chat.userFullName}</div>
+                        </div>
+
+                        <div class="chat-list-element-content-mute">
+                            <div class="chat-list-element-content-mute-icon">
+                                {this.state.silenced && <i class="material-icons icn-cnt-16 tg3">notifications_off</i>}
+                            </div>
+                        </div>
+
                         <div className="chat-list-element-subtitle sns-sp-416 tg3">{chat.chatLastMessage.text}</div>
                     </div>
 
@@ -50,7 +59,7 @@ export default class ChatListRow extends React.Component {
                 </div>
 
                 <div class="chat-list-sep"></div>
-                
+
             </div>
         );
     }

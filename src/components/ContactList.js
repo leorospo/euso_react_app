@@ -1,7 +1,7 @@
 import React from 'react'
-import ChatListRow from '../components/ChatListRow'
+import ContactListRow from '../components/ContactListRow'
 
-export default class ChatList extends React.Component {
+export default class ContactList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -56,7 +56,7 @@ export default class ChatList extends React.Component {
 
         return (
             <div className="cnt-full g1">
-                {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
+                {this.state.userChats.map((el, index) => <ContactListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
             </div>
         )
 

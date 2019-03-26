@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ChatList from './components/ChatList';
+import ContactList from './components/ContactList';
 import './style.css';
 
 
@@ -19,6 +20,10 @@ class App extends Component {
 
                 <div className="cnt-section-left">
                     <ChatList
+                        silenced={this.state.silenced}
+                        isFavoriteFilterActive={this.state.isFavoriteFilterActive}
+                    />
+                    <ContactList
                         silenced={this.state.silenced}
                         isFavoriteFilterActive={this.state.isFavoriteFilterActive}
                     />
