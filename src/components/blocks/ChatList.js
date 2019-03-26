@@ -1,5 +1,5 @@
 import React from 'react'
-import ChatListRow from '../components/ChatListRow'
+import ChatListRow from './ChatListRow'
 
 export default class ChatList extends React.Component {
     constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ChatList from './components/ChatList';
 import './style.css';
+import WksSelect from './components/pages/WksSelect';
 
 
 class App extends Component {
@@ -15,16 +15,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="cnt-global">
-
-                <div className="cnt-section-left">
-                    <ChatList
-                        silenced={this.state.silenced}
-                        isFavoriteFilterActive={this.state.isFavoriteFilterActive}
-                    />
-
-                </div>
-            </div>
+            <WksSelect />
         );
     }
 }

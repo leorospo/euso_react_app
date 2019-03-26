@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types'
-import defaultImg from '../assets/vector/Prova.png'
+import defaultImg from '../../assets/vector/Prova.png'
 
 const SIZES = {
     small: '40',

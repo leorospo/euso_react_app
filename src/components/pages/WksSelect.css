@@ -1,0 +1,37 @@
+.logo + .sns-sp-718 {
+    margin-top: 24px;
+
+}
+
+.sns-sp-718 + .form-wks-select {
+    margin-top: 40px;
+
+}
+
+.form-wks-select .form-wks-select-button {
+    margin-top: 12px;
+    margin-right: 6px;
+}
+
+.logo {
+    border: 4px solid #3E4F70;
+    border-radius: 30px;
+
+}
+
+.logo img {
+    height: 120px;
+    width: 120px;
+    padding: 5px;
+
+}
+
+.logo_azienda img {
+    width: 303px;
+    height: 120px;
+
+}
+
+.form-wks-select-button {
+    float: right;
+}

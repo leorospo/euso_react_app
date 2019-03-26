@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileImg from './ProfileImg';
+import ProfileImg from '../elements/ProfileImg';
 import propTypes from 'prop-types'
 
 export default class ChatListRow extends React.Component {
@@ -50,7 +50,7 @@ export default class ChatListRow extends React.Component {
                 </div>
 
                 <div class="chat-list-sep"></div>
-                
+
             </div>
         );
     }
