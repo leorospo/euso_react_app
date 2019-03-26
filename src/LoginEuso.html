@@ -6,6 +6,7 @@
     <title>Euso_login</title>
     <meta name="description" content="Lavoro organizzato">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link
@@ -46,7 +47,6 @@
         #emaqil {
             width: 327.469px;
             height: 44px;
-            margin-top: 10px;
 
         }
 
@@ -150,6 +150,52 @@
 
         }
 
+        input[type="email"] {
+            margin-top: 24px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+        }
+
+        input[type="password"] {
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+        }
+
+        .checkbox-cnt {
+            user-select: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--g3);
+            border-radius: 4px;
+            -webkit-appearance: none;
+            background-color: var(--g1);
+            margin-right: 8px;
+        }
+
+        input[type="checkbox"]:hover {
+            background-color: var(--g2);
+        }
+
+        input[type="checkbox"]:checked {
+            border: 1px solid var(--g1);
+            background-color: var(--blu_1);
+            background-image: url("check.svg");
+            background-position: center;
+            background-size: 22px 22px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="checkbox"]:focus {
+            outline: none;
+        }
+
         #email {
             margin-top: 12px;
         }
@@ -161,7 +207,14 @@
 
         .form-wks-select {
             width: 100%;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .form-wks-select-button {
+            float: right;
         }
 
         .cnt-onepage {
@@ -174,6 +227,19 @@
             flex-flow: column;
             align-items: center;
             justify-content: center;
+        }
+
+        .form-footer-wks-select {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 8px;
+            margin-top: 12px;
+        }
+
+        .form-footer-wks-select-cnt {
+            display: flex;
         }
 
         @media only screen and (min-width: 375px) {
@@ -192,19 +258,26 @@
             <div class="cnt-onepage">
 
                 <div class="logo_azienda">
-                    <img src="img/logo.png" class="photo">
+                    <img src="assets/img/logo.svg">
                 </div>
 
 
                 <form class="form-wks-select">
-                    <input type="email" nome="email">
-                    <input type="password" nome="password">
-                    <input type="checkbox" name="checkbox1">Remember Me
-                    <button class="btn-primary" type="submit">LOGIN</button>
+                    <input type="email" nome="email" placeholder="Email">
+                    <input type="password" nome="password" placeholder="Password">
+                    <div class="form-footer-wks-select">
+                        <div class="form-footer-wks-select-cnt">
+                            <label class="checkbox-cnt sns-sp-416 tg6">
+                                <input class="checkbox" type="checkbox" name="checkbox1">
+                                Remember Me
+                            </label>
+                        </div>
+                        <button class="btn-primary form-wks-select-button" type="submit">LOGIN</button>
+                    </div>
                 </form>
 
                 <div class="box_forgot">
-                    <a class="forgot sns-sp-620 tg6" href="#">Forgot your password?</a>
+                    <a class="forgot sns-sp-416 tg6" href="#">Forgot your password?</a>
                 </div>
             </div>
         </div>
