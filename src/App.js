@@ -17,15 +17,9 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-              {/*   <WksSelect />
-                <br></br>
-                <br></br>
-                <ContactList />
-                <br></br>
-                <br></br> */}
-                <ChatList />
-            </div>
+            /*             <WksSelect /> */
+            /*             <ContactList /> */
+            /*             <ChatList /> */
         );
     }
 }
