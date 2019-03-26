@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Euso_login</title>
+    <meta name="description" content="Lavoro organizzato">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+        rel="stylesheet">
+
+    <style>
+        .cont_forgot_login {
+            width: 100%;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 12px;
+
+        }
+
+        .logo {
+            border: 4px solid #3E4F70;
+            border-radius: 30px;
+
+        }
+
+
+        .logo img {
+            height: 120px;
+            width: 120px;
+            padding: 5px;
+
+        }
+
+        .logo_azienda img {
+            width: 303px;
+            height: 120px;
+
+        }
+
+        #emaqil {
+            width: 327.469px;
+            height: 44px;
+            margin-top: 10px;
+
+        }
+
+        #pasqsword {
+            width: 327.469px;
+            height: 44px;
+
+        }
+
+
+
+        #btn {
+            background-color: #3E4F70;
+            border: none;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-right: 12px;
+            height: 44px;
+            width: 104px;
+            font-family: 'Proxima Nova', sans-serif;
+
+        }
+
+        .form_button {
+            height: 44px;
+            width: 104px;
+            margin-right: 24px;
+            margin-top: 12px;
+        }
+
+
+        .remember_pw {
+            width: 100%;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 22px;
+            padding-top: 12px;
+
+        }
+
+        .box_forgot {
+            width: 100%;
+            height: 18px;
+            display: flex;
+            justify-items: center;
+            align-items: center;
+            justify-content: center;
+            margin-top: 40px;
+
+        }
+
+        .forgot {
+            text-decoration: none;
+
+        }
+
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            max-width: 375px;
+
+        }
+
+        .box1 {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 53px;
+        }
+
+        .cnt-section-left {
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: auto;
+
+            background-color: var(--g1);
+            border-right: var(--g2) solid 1px;
+
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            padding-left: 8px;
+            box-shadow: none;
+            border: 1px solid var(--g2);
+            border-radius: 8px;
+            height: 44px;
+            width: 338.469px;
+
+        }
+
+        #email {
+            margin-top: 12px;
+        }
+
+        .cnt-section-full {
+            width: 100%;
+            height: 100%;
+        }
+
+        .form-wks-select {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .cnt-onepage {
+            max-width: calc(100% - 24px);
+            height: 100%;
+            min-width: 296px;
+            max-width: 351px;
+            margin: 0px 6px;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media only screen and (min-width: 375px) {
+
+            .cnt-onepage {
+                margin: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cnt-global center ">
+        <div class="cnt-section-full g1">
+            <div class="cnt-onepage">
+
+                <div class="logo_azienda">
+                    <img src="img/logo.png" class="photo">
+                </div>
+
+
+                <form class="form-wks-select">
+                    <input type="email" nome="email">
+                    <input type="password" nome="password">
+                    <input type="checkbox" name="checkbox1">Remember Me
+                    <button class="btn-primary" type="submit">LOGIN</button>
+                </form>
+
+                <div class="box_forgot">
+                    <a class="forgot sns-sp-620 tg6" href="#">Forgot your password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
-import WksSelect from './components/pages/WksSelect';
+/* import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
-import ChatList from './components/blocks/ChatList';
+import ChatList from './components/blocks/ChatList'; */
 
 
 class App extends Component {
@@ -17,10 +17,13 @@ class App extends Component {
 
     render() {
         return (
+        <div>
+
+        </div>
             /*             <WksSelect /> */
             /*             <ContactList /> */
             /*             <ChatList /> */
-        );
+        )
     }
 }
 
