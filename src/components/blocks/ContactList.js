@@ -1,5 +1,5 @@
 import React from 'react'
-import ContactListRow from '../components/ContactListRow'
+import ContactListRow from './ContactListRow'
 
 export default class ContactList extends React.Component {
     constructor(props) {

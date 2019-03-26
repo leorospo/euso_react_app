@@ -1,12 +1,7 @@
 import React from 'react';
-<<<<<<< HEAD:src/components/blocks/ChatListRow.js
 import ProfileImg from '../elements/ProfileImg';
-import propTypes from 'prop-types'
-=======
-import ProfileImg from './ProfileImg';
 import propTypes from 'prop-types';
-import "./listRow.css";
->>>>>>> ContactChatListRow:src/components/ChatListRow.js
+import "./ListRow.css";
 
 export default class ChatListRow extends React.Component {
     constructor(props) {
@@ -38,9 +33,9 @@ export default class ChatListRow extends React.Component {
                             <div className="chat-list-element-title-name sns-sp-620 tg6">{chat.userFullName}</div>
                         </div>
 
-                        <div class="chat-list-element-content-mute">
-                            <div class="chat-list-element-content-mute-icon">
-                                {this.state.silenced && <i class="material-icons icn-cnt-16 tg3">notifications_off</i>}
+                        <div className="chat-list-element-content-mute">
+                            <div className="chat-list-element-content-mute-icon">
+                                {this.state.silenced && <i className="material-icons icn-cnt-16 tg3">notifications_off</i>}
                             </div>
                         </div>
 
@@ -63,7 +58,7 @@ export default class ChatListRow extends React.Component {
 
                 </div>
 
-                <div class="chat-list-sep"></div>
+                <div className="chat-list-sep"></div>
 
             </div>
         );

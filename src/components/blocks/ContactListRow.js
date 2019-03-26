@@ -1,7 +1,7 @@
 import React from 'react';
-import ProfileImg from './ProfileImg';
+import ProfileImg from '../elements/ProfileImg';
 import propTypes from 'prop-types';
-import "./listRow.css";
+import "./ListRow.css";
 
 export default class ContactListRow extends React.Component {
     constructor(props) {
@@ -33,9 +33,9 @@ export default class ContactListRow extends React.Component {
                             <div className="contact-list-element-title-name sns-sp-620 tg6">{chat.userFullName}</div>
                         </div>
 
-                        <div class="contact-list-element-content-mute">
-                            <div class="contact-list-element-content-mute-icon">
-                                {this.state.silenced && <i class="material-icons icn-cnt-16 tg3">notifications_off</i>}
+                        <div className="contact-list-element-content-mute">
+                            <div className="contact-list-element-content-mute-icon">
+                                {this.state.silenced && <i className="material-icons icn-cnt-16 tg3">notifications_off</i>}
                             </div>
                         </div>
 
@@ -54,7 +54,7 @@ export default class ContactListRow extends React.Component {
 
                 </div>
 
-                <div class="contact-list-sep"></div>
+                <div className="contact-list-sep"></div>
 
             </div>
         );
