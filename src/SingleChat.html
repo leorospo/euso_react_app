@@ -42,7 +42,7 @@
             top: 48px;
             width: 100%;
             height: calc(100% - var(--chat-bar-height) - 48px);
-            padding: 0px 12px 8px 12px;
+            padding: 0px 12px;
 
             /*display: flex;*/
             flex-direction: column-reverse;
@@ -56,7 +56,7 @@
 
         .messages-cnt {
             flex-direction: column-reverse;
-            min-height: min-content;
+            min-height: 100%;
             display: flex;
             padding: 8px 0px;
         }
@@ -147,7 +147,7 @@
         .message-meta {
             display: flex;
             justify-content: flex-end;
-            padding-bottom: 1pz;
+            padding-bottom: 1px;
             position: absolute;
             bottom: 1px;
             right: 6px;
@@ -275,7 +275,7 @@
             
             <div id="single-chat">
 
-                <div class="cnt-single-chat g2">
+                <div id="cnt_single_chat" class="cnt-single-chat g2">
 
                     <div id="chat-area" class="messages-cnt">
 
@@ -308,20 +308,6 @@
                             <div class="message-meta">
                                 <div class="message-time sns-pn-410 tg5">12:00</div>
                                 <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
-                            </div>
-                        </div>
-
-                        <div class="message-received c-w">
-                            <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
-                            <div class="message-meta">
-                                <div class="message-time sns-pn-410 tg5">12:00</div>
-                            </div>
-                        </div>
-
-                        <div class="message-received c-w">
-                            <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
-                            <div class="message-meta">
-                                <div class="message-time sns-pn-410 tg5">12:00</div>
                             </div>
                         </div>
 
@@ -426,6 +412,7 @@
         const chat_input_placeholder = chat_input.innerHTML
         const chat_area = document.getElementById('chat-area')
         const send_btn = document.getElementById('send-btn')
+        const cnt_single_chat = document.getElementById('cnt_single_chat')
 
 
         //Resize the chat area based on chat-bar height
@@ -443,6 +430,17 @@
             if(chat_input.innerHTML == chat_input_placeholder) chat_input.innerHTML = ""
         }
 
+
+        // Automagically scroll the chat-area when new message appear
+        // TODO: Call when you receive messages
+        function scrollChatArea() {
+
+            if (chat_area.clientHeight > cnt_single_chat.clientHeight) {
+                cnt_single_chat.scrollTop = cnt_single_chat.scrollHeight;
+            }
+
+            
+        }
         
         // Send Messages
         send_btn.addEventListener("click", send_message);
@@ -475,6 +473,8 @@
 
             chat_bar_input.innerHTML = ""
             set_varChatBarHeight()
+
+            scrollChatArea()
 
         }
 
