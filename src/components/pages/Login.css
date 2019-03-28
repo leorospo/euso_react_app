@@ -197,6 +197,7 @@ input[type="checkbox"]:focus {
 
 .error-span{
     margin-right: 8px;
+    white-space: nowrap;
 }
 
 

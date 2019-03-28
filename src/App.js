@@ -22,8 +22,9 @@ class App extends Component {
              <Login
                 company={{
                     companyName: "Groupama",
-                    companyImg: "groupama.svg"
+                    companyImg: "groupama.svg",
                 }}
+                wksEmail=""
             /> 
             /*             <WksSelect />  */
             /*             <ContactList /> */
