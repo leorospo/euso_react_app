@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
-/* import WksSelect from './components/pages/WksSelect';
+ import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
-import ChatList from './components/blocks/ChatList'; */
+import ChatList from './components/blocks/ChatList'; 
+import Login from "./components/pages/Login"
 
 
 class App extends Component {
@@ -12,15 +13,19 @@ class App extends Component {
         this.state = {
             silenced: false,
             isFavoriteFilterActive: false,
+
         }
     }
 
     render() {
         return (
-        <div>
-
-        </div>
-            /*             <WksSelect /> */
+             <Login
+                company={{
+                    companyName: "Groupama",
+                    companyImg: "groupama.svg"
+                }}
+            /> 
+            /*             <WksSelect />  */
             /*             <ContactList /> */
             /*             <ChatList /> */
         )
