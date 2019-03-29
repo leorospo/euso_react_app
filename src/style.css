@@ -315,6 +315,7 @@ body,
     border: none;
     border-radius: 4px;
 
+    font-weight: 600;
     font-size: 16px;
     font-family: 'Proxima Nova', sans-serif;
     text-align: center;
@@ -373,6 +374,14 @@ input[type="password"] {
     width: 40px;
     border-radius: 20px;
     object-fit: cover;
+}
+
+.img-profile-170 {
+    height: 170px;
+    width: 170px;
+    border-radius: 85px;
+    object-fit: cover;
+    margin-top: 90px
 }
 
 @media only screen and (min-width: 992px){

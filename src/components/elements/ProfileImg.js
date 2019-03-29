@@ -6,6 +6,7 @@ const SIZES = {
     small: '40',
     medium: '44',
     large: '52',
+    xl: '170',
 }
 
 export default class ProfileImg extends React.Component {
