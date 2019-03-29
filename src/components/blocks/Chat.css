@@ -54,6 +54,8 @@
     border-radius: 4px;
     flex-shrink: 0;
 
+    align-self: flex-start;
+
 }
 
 .message-sent + .message-sent,
@@ -89,7 +91,6 @@
     position: relative;
     bottom: 4px;
     height: 12px;
-    width: 30px;
     display: flex;
     align-self: flex-end;
     
@@ -98,7 +99,7 @@
 .message-status {
     width: 16px;
     height: 16px;
-    
+    margin-left: 4px;
 }
 
 .cnt-chat-bar{

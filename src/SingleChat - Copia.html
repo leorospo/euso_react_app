@@ -106,6 +106,19 @@
         }
 
         .message-received {
+
+            
+
+
+            /*display: flex;
+            flex-direction: row;*/
+            /*display: flex;
+            align-items: flex-end;*/
+
+
+        }
+
+        .message-received-content {
             position: relative; /*per message-meta absolute*/
             max-width: calc(100% / 4 * 3);
             min-height: 36px;
@@ -114,14 +127,7 @@
             border-radius: 4px;
             flex-shrink: 0;
 
-            align-self: flex-start;
-
-
-            /*display: flex;
-            flex-direction: row;*/
-            /*display: flex;
-            align-items: flex-end;*/
-
+            float: left
 
         }
 
@@ -313,10 +319,21 @@
                             </div>
                         </div>
 
-                        <div class="message-received c-w">
-                            <div class="message-text"><span>Hey there!</span></div>
-                            <div class="message-meta">
-                                <div class="message-time sns-pn-410 tg5">12:00</div>
+                        <div class="message-received">
+                            <div class="message-received-content c-w">
+                                <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
+                                <div class="message-meta">
+                                    <div class="message-time sns-pn-410 tg5">12:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="message-received">
+                            <div class="message-received-content c-w">
+                                <div class="message-text"><span>Hey there!</span></div>
+                                <div class="message-meta">
+                                    <div class="message-time sns-pn-410 tg5">12:00</div>
+                                </div>
                             </div>
                         </div>
 
@@ -392,11 +409,6 @@
             } else {
                 console.error('Invalid parameter passed to move_to_cnt()')
             }
-    
-    
-    
-    
-            
     
         }
     

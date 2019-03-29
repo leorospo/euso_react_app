@@ -1,53 +1,110 @@
 import React from 'react';
+import ChatMessage from './ChatMessage'
 import "./Chat.css";
 
 export default class ChatList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userChats: [
+            chatMessages: [
                 {
-                    userFullName: 'Carol Evans',
-                    userProfileImg: '1_carol.jpg',
-                    chatLastMessage: {
-                        text: 'Hello world!',
-                        time: '10:30',
-                    },
-                    unreadCount: '5',
-                    silenced: true,
-                    favorited: true,
-
+                    received: true,
+                    text: 'Hey there!',
+                    time: '10:30',
                 },
                 {
-                    userFullName: 'Bonfiglio Alberto',
-                    userProfileImg: '1_carol.jpg',
-                    chatLastMessage: {
-                        text: 'Hello world!',
-                        time: '21:30',
-                    },
-                    unreadCount: '0',
-                    silenced: true,
-                    favorited: true,
-
+                    received: false,
+                    text: 'Hey!',
+                    time: '10:31',
                 },
                 {
-                    userFullName: 'Bruni Carla',
-                    userProfileImg: '1_carol.jpg',
-                    chatLastMessage: {
-                        text: 'Hello world!',
-                        time: '18:10',
-                    },
-                    unreadCount: '105',
-                    silenced: false,
-                    favorited: false,
-
+                    received: true,
+                    text: 'Here it is a very long message to test the behaviour of ours containres in every condition possible',
+                    time: '11:12',
                 },
             ],
-            silenced: this.props.silenced,
-            isFavoriteFilterActive: this.props.isFavoriteFilterActive,
-
         }
     }
+
+    /* -------------------------------------------------------------------- */
+
+
+    chat_bar = document.getElementById('chat_bar')
+    chat_input = document.getElementById('chat_bar_input')
+    chat_input_placeholder = chat_input.innerHTML
+    chat_area = document.getElementById('chat-area')
+    send_btn = document.getElementById('send-btn')
+    cnt_single_chat = document.getElementById('cnt_single_chat')
+
+
+    //Resize the chat area based on chat-bar height
+    chat_bar.addEventListener("input", set_varChatBarHeight);
+
+    set_varChatBarHeight() {
+        let height = chat_bar.clientHeight
+        document.documentElement.style.setProperty('--chat-bar-height', height + 'px')
+    }
+
+
+    //Clear on focus
+    chat_input.addEventListener("focus", clear_on_focus)
+    clear_on_focus() {
+        if (chat_input.innerHTML == chat_input_placeholder) chat_input.innerHTML = ""
+    }
+
+
+    // Automagically scroll the chat-area when new message appear
+    // TODO: Call when you receive messages
+    scrollChatArea() {
+
+        if (chat_area.clientHeight > cnt_single_chat.clientHeight) {
+            cnt_single_chat.scrollTop = cnt_single_chat.scrollHeight;
+        }
+
+
+    }
+
+    // Send Messages
+    send_btn.addEventListener("click", send_message);
+
+    send_message() {
+
+        let content = chat_bar_input.innerHTML
+        br_remove()
+
+        function br_remove() {
+            if (content.endsWith('<br>')) {
+                content = content.substring(0, content.lastIndexOf('<'))
+                br_remove()
+            }
+
+        }
+
+        if (content != '') {
+            var message = document.createElement('div')
+            message.className = 'message-sent c4'
+            message.innerHTML = `<div class="message-text"><span>` + content + `</span></div>
+                    <div class="message-meta">
+                            <div class="message-time sns-pn-410 tg5">13:00</div>
+                            <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
+                    </div>`
+            chat_area.prepend(message)
+
+
+        }
+
+        chat_bar_input.innerHTML = ""
+        set_varChatBarHeight()
+
+        scrollChatArea()
+
+    }
+
+
+
+
+    /* -------------------------------------------------------------------- */
+
 
     render() {
 
@@ -58,44 +115,13 @@ export default class ChatList extends React.Component {
 
                     <div id="chat-area" className="messages-cnt">
 
-                        <div className="message-sent c4">
-                            <div className="message-text"><span>Hey there!</span></div>
-                            <div className="message-meta">
-                                <div className="message-time sns-pn-410 tg5">13:56</div>
-                                <div className="message-status"><i className="material-icons icn-cnt-16">schedule</i></div>
-                            </div>
-                        </div>
+                        {this.state.chatMessages.map(el =>
 
-                        <div className="message-sent c4">
-                            <div className="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes a a a under ant circumstances</span></div>
-                            <div className="message-meta">
-                                <div className="message-time sns-pn-410 tg5">13:50</div>
-                                <div className="message-status"><i className="material-icons icn-cnt-16">done</i></div>
-                            </div>
-                        </div>
-
-                        <div className="message-sent c4">
-                            <div className="message-text"><span>Hey there!</span></div>
-                            <div className="message-meta">
-                                <div className="message-time sns-pn-410 tg5">13:00</div>
-                                <div className="message-status"><i className="material-icons icn-cnt-16">done</i></div>
-                            </div>
-                        </div>
-
-                        <div className="message-sent c4">
-                            <div className="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
-                            <div className="message-meta">
-                                <div className="message-time sns-pn-410 tg5">12:00</div>
-                                <div className="message-status"><i className="material-icons icn-cnt-16">done</i></div>
-                            </div>
-                        </div>
-
-                        <div className="message-received c-w">
-                            <div className="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
-                            <div className="message-meta">
-                                <div className="message-time sns-pn-410 tg5">12:00</div>
-                            </div>
-                        </div>
+                            <ChatMessage
+                                received={el.received}
+                                text={el.text}
+                                time={el.time}
+                            />)}
 
                     </div>
 
