@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types'
 import defaultImg from '../../assets/vector/Prova.png'
+import './ProfileImg.css';
 
 const SIZES = {
     small: '40',

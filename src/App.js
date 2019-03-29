@@ -24,12 +24,13 @@ class App extends Component {
     render() {
 
         return (
-            /*             <WksSelect /> */
-            /*             <ContactList /> */
+/*                       <WksSelect /> 
+ */            /*             <ContactList /> */
             /*             <ChatList /> */
             /*                  <Login/>*/
-            <Profile
-            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>
+             <Profile
+            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
+
         );
     }
 }

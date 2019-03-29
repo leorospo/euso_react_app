@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
+import Buttons from './../elements/Buttons';
 import propTypes from 'prop-types';
 import './Profile.css';
 
@@ -33,11 +34,18 @@ export default class Profile extends React.Component {
 
                         <div className="chat-list-element-title sns-sp-620 tg6">{user.userName}</div>
                         <div className="cnt-element-subtitle-role">
-                        <div className="profile-element-subtitle-role sns-sp-416 tg3">{user.userRole}</div>
+                            <div className="profile-element-subtitle-role sns-sp-416 tg3">{user.userRole}</div>
                             <i className="material-icons arrow icn-cnt-16 tg3">create</i>
                         </div>
 
-                        <button className="btn-primary profile-select-button" onClick={alert("pippo")}>CHAT</button>
+                        <Buttons
+                            shape="square"
+                            size="medium"
+                            optionalClass="profile-button"
+                            type="button"
+                        >
+                            CHAT
+                            </Buttons>
 
                         <div className="sep-profile"></div>
 
