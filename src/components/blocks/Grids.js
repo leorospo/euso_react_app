@@ -3,7 +3,7 @@ import Grid from './Grid.css';
 import MediaImg from './MediaImg.js'
 
 export default class Grids extends React.Component{
-    constructor(props){
+     constructor(props){
         super(props)
         this.state={
             mediaProfile:[
@@ -19,14 +19,11 @@ export default class Grids extends React.Component{
 
 render(){
     return(
-        
        <div className="cont-media-profile">
-                    <ul className="media-grid-profile">
-                   {this.state.mediaProfile.map((el,index)=> <MediaImg key={index} img={el}/> )}    
-                    </ul>
-                </div>
-
-       
+            <ul className="media-grid-profile">
+                {this.state.mediaProfile.map((el,index)=> <MediaImg key={index} img={el}/>)}    
+            </ul>
+        </div>
     )
 }
 }

@@ -8,9 +8,7 @@ render(){
     return(
         <li>
             <img className="media-profile-element" src={`assets/img/profile/${img.mediaImg}`}/>
-        </li>
-    
-        
+        </li>  
     )
 }
 }
