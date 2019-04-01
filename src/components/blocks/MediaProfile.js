@@ -21,14 +21,14 @@ export default class MediaProfile extends React.Component {
 
         return (
             <div className="menu-profile">
-                <p className={`tab-profile-${this.state.tab === "all" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>all</p>
-                <p className={`tab-profile-${this.state.tab === "documents" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>documents</p>
-                <p className={`tab-profile-${this.state.tab === "images" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>images</p>
-                <p className={`tab-profile-${this.state.tab === "videos" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>videos</p>
+                <button className={`btn tab-profile-${this.state.tab === "all" ? "on" : "off"}`}
+                    onClick={(e) => this.ChangeView(e)}>all</button>
+                <button className={`btn tab-profile-${this.state.tab === "documents" ? "on" : "off"}`}
+                    onClick={(e) => this.ChangeView(e)}>documents</button>
+                <button className={`btn tab-profile-${this.state.tab === "images" ? "on" : "off"}`}
+                    onClick={(e) => this.ChangeView(e)}>images</button>
+                <button className={`btn tab-profile-${this.state.tab === "videos" ? "on" : "off"}`}
+                    onClick={(e) => this.ChangeView(e)}>videos</button>
             </div>
         )
     }
