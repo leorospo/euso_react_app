@@ -39,7 +39,7 @@ export default class WksSelect extends React.Component {
                                 this.state.error ? 'Corporate mail not found!' : 'Enter your corporate mail'}</label>
                             <input
                                 type="email"
-                                nome="email"
+                                name="email"
                                 onChange={e => this.updateEmail(e)} value={this.state.email}
                                 className={this.state.error ? 'input-error' : null}
                             />

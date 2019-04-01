@@ -3,9 +3,9 @@ import './style.css';
 import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
-// import Login from './components/pages/Login';
+import Login from "./components/pages/Login";
 import Profile from './components/pages/Profile';
-import Icons from './components/elements/Icons';
+
 
 
 class App extends Component {
@@ -25,11 +25,11 @@ class App extends Component {
     render() {
 
         return (
-/*                       <WksSelect /> 
- */            /*             <ContactList /> */
-            /*             <ChatList /> */
-            /*                  <Login/>*/
-             <Profile
+            /* <WksSelect /> */
+            /* <ContactList /> */
+            /* <ChatList /> */
+            /* <Login /> */
+            <Profile
             user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
         
         );
