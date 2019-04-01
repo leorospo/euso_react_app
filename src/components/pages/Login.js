@@ -8,13 +8,9 @@ export default class Login extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            email: "",
+            email: this.props.wksEmail || "",
             password: "",
             check: false,
-            rememberMe: {
-                rememberEmail: "",
-                rememberPassword: "",
-            },
             errorEmail: {
                 setErrorEmail: false,
                 showErrorEmail: false,
@@ -27,12 +23,28 @@ export default class Login extends React.Component {
     }
 
     updateEmail(event) {
+        this.state.errorEmail.setErrorEmail &&
+            this.setState({
+                errorEmail: {
+                    ...this.state.errorEmail,
+                    setErrorEmail: false,
+                }
+            })
+
         this.setState({
             email: event.target.value
         })
     }
 
     updatePassword(event) {
+        this.state.errorPassword.setErrorPassword &&
+            this.setState({
+                errorPassword: {
+                    ...this.state.errorPassword,
+                    setErrorPassword: false,
+                }
+            })
+
         this.setState({
             password: event.target.value
         })
@@ -42,21 +54,13 @@ export default class Login extends React.Component {
         this.setState({
             check: !this.state.check
         })
-
-        this.state.check ||
-            this.setState({
-                rememberMe: {
-                    rememberEmail: this.state.email,
-                    rememberPassword: this.state.password,
-                }
-            })
     }
 
     errorEmail() {
         this.setState({
             errorEmail: {
                 ...this.state.errorEmail,
-                showErrorEmail: true,
+                showErrorEmail: !this.state.errorEmail.showErrorEmail
             }
         })
     }
@@ -65,31 +69,13 @@ export default class Login extends React.Component {
         this.setState({
             errorPassword: {
                 ...this.state.errorPassword,
-                showErrorPassword: true,
-            }
-        })
-    }
-
-    deleteErrorEmail() {
-        this.setState({
-            errorEmail: {
-                ...this.state.errorEmail,
-                setErrorEmail: false,
-            }
-        })
-    }
-
-    deleteErrorPassword() {
-        this.setState({
-            errorPassword: {
-                ...this.state.errorPassword,
-                setErrorPassword: false,
+                showErrorPassword: !this.state.errorPassword.showErrorPassword,
             }
         })
     }
 
     render() {
-        const { company, wksEmail } = this.props
+        const { company } = this.props
 
         return (
             <div className="cnt-global center ">
@@ -118,8 +104,8 @@ export default class Login extends React.Component {
                                 <input className={`login-email ${this.state.errorEmail.setErrorEmail && 'input-error'}`}
                                     type="email" nome="email"
                                     placeholder={this.state.errorEmail.setErrorEmail ? undefined : 'Email'}
-                                    value={wksEmail ? wksEmail : this.state.errorEmail.setErrorEmail ? undefined : this.state.email}
-                                    onClick={() => this.deleteErrorEmail()}
+                                    value={this.state.errorEmail.setErrorEmail ? undefined : this.state.email}
+
                                     onChange={e => this.updateEmail(e)}
                                 />
 
@@ -136,7 +122,7 @@ export default class Login extends React.Component {
                                     type="password" nome="password"
                                     placeholder={this.state.errorPassword.setErrorPassword ? undefined : 'Password'}
                                     value={this.state.errorPassword.setErrorPassword ? undefined : this.state.password}
-                                    onClick={() => this.deleteErrorPassword()}
+
                                     onChange={e => this.updatePassword(e)}
                                 />
 
@@ -174,5 +160,4 @@ Login.propTypes = {
         companyName: propTypes.string.isRequired,
         companyImg: propTypes.string.isRequired
     }).isRequired,
-    email: propTypes.string,
 }
