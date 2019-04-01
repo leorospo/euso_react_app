@@ -31,6 +31,6 @@ ProfileImg.propTypes = {
         name: propTypes.string.isRequired,
         profileImgName: propTypes.string.isRequired,
     }).isRequired,
-    size: propTypes.oneOf(['small', 'medium', 'large']),
+    size: propTypes.oneOf(['small', 'medium', 'large', 'xl' ]),
     onClick: propTypes.func,
 }

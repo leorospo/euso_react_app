@@ -304,20 +304,6 @@ input[type="password"] {
     border: 1.5px solid var(--red_1) !important;
 }
 
-.icn-cnt-44 {
-    height: 44px;
-    width: 44px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icn-cnt-16 {
-    height: 16px;
-    width: 16px;
-    font-size: 16px;
-}
 
 
 @media only screen and (min-width: 992px){

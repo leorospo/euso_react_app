@@ -5,6 +5,7 @@ import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
 // import Login from './components/pages/Login';
 import Profile from './components/pages/Profile';
+import Icons from './components/elements/Icons';
 
 
 class App extends Component {
@@ -30,7 +31,7 @@ class App extends Component {
             /*                  <Login/>*/
              <Profile
             user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
-
+        
         );
     }
 }

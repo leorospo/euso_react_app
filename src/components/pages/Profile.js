@@ -1,8 +1,12 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
 import Buttons from './../elements/Buttons';
+import Icons from './../elements/Icons';
+import MediaProfile from './../blocks/MediaProfile';
+
 import propTypes from 'prop-types';
 import './Profile.css';
+
 
 export default class Profile extends React.Component {
     constructor(props) {
@@ -32,10 +36,17 @@ export default class Profile extends React.Component {
                             size='xl'
                         />
 
-                        <div className="chat-list-element-title sns-sp-620 tg6">{user.userName}</div>
+                        <div className="profile-element-title sns-sp-620 tg6">{user.userName}</div>
                         <div className="cnt-element-subtitle-role">
                             <div className="profile-element-subtitle-role sns-sp-416 tg3">{user.userRole}</div>
-                            <i className="material-icons arrow icn-cnt-16 tg3">create</i>
+                            
+                            <Icons
+                                encumbrance="small"
+                                size="small"
+                                color="tg3"
+                                icon="create"
+                            />
+
                         </div>
 
                         <Buttons
@@ -49,12 +60,7 @@ export default class Profile extends React.Component {
 
                         <div className="sep-profile"></div>
 
-                        <div className="menu-profile">
-                            <button className="btn-profile sns-sp-418">MEDIA</button>
-                            <button className="btn-profile sns-sp-418">DOCUMENT</button>
-                            <button className="btn-profile sns-sp-418">IMAGES</button>
-                            <button className="btn-profile sns-sp-418">VIDEOS</button>
-                        </div>
+                        <MediaProfile />
 
                         <div className="media-profile">
                             <img className="media-profile-element" src="##" />

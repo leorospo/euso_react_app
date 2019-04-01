@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 20px;
+
 }
 
 .cnt-full-profile {
@@ -27,9 +27,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-right: 12px;
+    margin-right: 8px;
 }
-.chat-list-element-title{
+.profile-element-title{
     margin-top: 24px;
 }
 
@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 15px;
+    margin: 15px 0px;
    
 }
 
@@ -67,20 +67,40 @@
 /* classi per i "bottoni" della barra */
 
 
-.btn-profile{
+.tab-profile-off{
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+
     background-color: transparent; 
     border:none;
     color: var( --blu_1);
-    height: 32px;
-   
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
 }
 
-.btn-profile:active{
+.tab-profile-on{
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+
     background-color: var( --blu_1); 
-    color: rgba(255, 255, 255, 1);
     border-radius: 16px;
+    border:none;
+    color: var(--white);
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
     
-}
-.btn-profile:focus{
-    outline: none;
 }
