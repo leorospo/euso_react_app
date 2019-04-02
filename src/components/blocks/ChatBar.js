@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes from 'prop-types'
+//import propTypes from 'prop-types'
 
 const chatInputPlaceholder = <div className="">Write something...</div>
 
@@ -12,7 +12,7 @@ export default class ChatBar extends React.Component {
     }
 
     clearInput = () => {
-        if (this.state.content == chatInputPlaceholder) {
+        if (this.state.content === chatInputPlaceholder) {
             this.setState({
                 content: '',
             })
@@ -38,7 +38,7 @@ export default class ChatBar extends React.Component {
         let content = document.getElementById('chat_bar_input').innerHTML   //Contenteditable, handle with care!
         content = this.brRemove(content)
 
-        if (content != '') {
+        if (content !== '') {
             this.props.sendCallback(content)
         }
 
@@ -106,7 +106,7 @@ export default class ChatBar extends React.Component {
     }
 }
 
-ChatBar.propTypes = {
+/* ChatBar.propTypes = {
 
 
-}
+} */

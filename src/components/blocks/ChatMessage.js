@@ -27,7 +27,7 @@ export default class ChatMessage extends React.Component {
                 <div className="message-text"><span>{formattedText}</span></div>
                 <div className="message-meta">
                     <div className="message-time sns-pn-410 tg5">{time}</div>
-                    {received || <div className="message-status"><i className="material-icons icn-cnt-16">{this.state.status == 'sent' ? 'done' : 'scheduled'}</i></div>}
+                    {received || <div className="message-status"><i className="material-icons icn-cnt-16">{this.state.status === 'sent' ? 'done' : 'scheduled'}</i></div>}
                 </div>
             </div>
 
