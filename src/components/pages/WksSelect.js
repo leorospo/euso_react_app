@@ -1,6 +1,8 @@
 import React from 'react';
 import './WksSelect.css';
-import logo from '../../assets/img/euso.png'
+import logo from '../../assets/img/euso.png';
+import Buttons from './../elements/Buttons';
+
 
 
 export default class WksSelect extends React.Component {
@@ -41,10 +43,16 @@ export default class WksSelect extends React.Component {
                                 onChange={e => this.updateEmail(e)} value={this.state.email}
                                 className={this.state.error ? 'input-error' : null}
                             />
-                            <button
-                                className="btn-primary form-wks-select-button"
+
+                            <Buttons
+                                shape="square"
+                                size="medium"
+                                optionalClass="wks-select-button"
                                 type="submit"
-                            >SUBMIT</button>
+                            >
+                                SUBMIT
+                            </Buttons>
+
                         </form>
 
                     </div>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import './style.css';
-//import WksSelect from './components/pages/WksSelect';
-//import ContactList from './components/blocks/ContactList';
-//import ChatList from './components/blocks/ChatList';
-//import Chat from './components/blocks/Chat';
-//import Login from './components/pages/Login'
+
+import WksSelect from './components/pages/WksSelect';
+import ContactList from './components/blocks/ContactList';
+import ChatList from './components/blocks/ChatList';
+import Login from "./components/pages/Login";
 import ChatPage from './components/pages/ChatPage'
+import Profile from './components/pages/Profile';
+import './style.css';
 
 class App extends Component {
     constructor(props) {
@@ -15,25 +16,23 @@ class App extends Component {
             silenced: false,
             isFavoriteFilterActive: false,
 
+            user: {
+                userFullName: 'Carol Evans',
+            },
         }
     }
 
     render() {
+
         return (
-
-            /*             <WksSelect />  */
-            /*             <ContactList /> */
-            /*             <ChatList /> */
-            /* <Login
-                company={{
-                    companyName: "Groupama",
-                    companyImg: "groupama.svg",
-                }}
-                wksEmail=""
-            /> */
-            <ChatPage />
-
-
+            /* <WksSelect /> */
+            /* <ContactList /> */
+            /* <ChatList /> */
+            /* <Login /> */
+             /* <ChatProfile /> */
+            <Profile
+            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
+        
         );
     }
 }
