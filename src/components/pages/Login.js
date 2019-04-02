@@ -2,6 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './Login.css';
 import help from '../../assets/img/help.svg'
+import firebase from '../firebase/firebase'
 
 
 export default class Login extends React.Component {
@@ -74,6 +75,65 @@ export default class Login extends React.Component {
         })
     }
 
+    loginErrorHandling = (code, message) => {
+        switch (code) {
+            case 'auth/invalid-email':
+            case 'auth/user-not-found':
+            case 'auth/user-disabled':
+                this.setState({
+                    errorEmail: {
+                        setErrorEmail: true,
+                        showErrorEmail: false,
+                    },
+                })
+                break;
+            case 'auth/wrong-password':
+                this.setState({
+                    errorPassword: {
+                        setErrorPassword: true,
+                        showErrorPassword: false,
+                    },
+                })
+                break;
+            default:
+                console.error(code, message)
+                break;
+        }
+    }
+
+    signOut = () => {
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            console.info('logout')
+        }).catch((error) => {
+            // An error happened.
+            console.info('logout failed', error)
+        });
+    }
+
+    onSubmit = (email, password, event) => {
+        event.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(
+                //Successful login
+                () => {
+                    alert('succesful login')
+                },
+                //Failed login
+                (error) => {
+                    this.loginErrorHandling(error.code, error.message)
+                }
+            )
+
+        /* 
+                    .catch((error) => {
+                        this.loginErrorHandling(error.code, error.message)
+                    })
+                    .then((error) => {
+                        console.info(error)
+                    }); */
+    }
+
     render() {
         const { company } = this.props
 
@@ -89,7 +149,7 @@ export default class Login extends React.Component {
 
                         <form
                             className="form-wks-select"
-                            onSubmit={() => alert(this.state.email, this.state.password)}>
+                            onSubmit={(e) => this.onSubmit(this.state.email, this.state.password, e)}>
                             <div className="input-container">
 
                                 {this.state.errorEmail.setErrorEmail &&
@@ -104,7 +164,7 @@ export default class Login extends React.Component {
                                 <input className={`login-email ${this.state.errorEmail.setErrorEmail && 'input-error'}`}
                                     type="email" nome="email"
                                     placeholder={this.state.errorEmail.setErrorEmail ? undefined : 'Email'}
-                                    value={this.state.errorEmail.setErrorEmail ? undefined : this.state.email}
+                                    value={this.state.email}
 
                                     onChange={e => this.updateEmail(e)}
                                 />
@@ -150,6 +210,7 @@ export default class Login extends React.Component {
 
                     </div>
                 </div>
+                <button onClick={this.signOut}></button>
             </div>
         );
     }

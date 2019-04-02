@@ -4,8 +4,8 @@ import './style.css';
 //import ContactList from './components/blocks/ContactList';
 //import ChatList from './components/blocks/ChatList';
 //import Chat from './components/blocks/Chat';
-//import Login from './components/pages/Login'
-import ChatPage from './components/pages/ChatPage'
+import Login from './components/pages/Login'
+//import ChatPage from './components/pages/ChatPage'
 
 class App extends Component {
     constructor(props) {
@@ -24,14 +24,14 @@ class App extends Component {
             /*             <WksSelect />  */
             /*             <ContactList /> */
             /*             <ChatList /> */
-            /* <Login
+            <Login
                 company={{
-                    companyName: "Groupama",
+                    companyName: "Google",
                     companyImg: "groupama.svg",
                 }}
                 wksEmail=""
-            /> */
-            <ChatPage />
+            />
+            /* <ChatPage /> */
 
 
         );
