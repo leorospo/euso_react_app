@@ -4,10 +4,9 @@ import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
 import Login from "./components/pages/Login";
+import ChatPage from './components/pages/ChatPage'
 import Profile from './components/pages/Profile';
 import './style.css';
-
-
 
 class App extends Component {
     constructor(props) {
@@ -30,6 +29,7 @@ class App extends Component {
             /* <ContactList /> */
             /* <ChatList /> */
             /* <Login /> */
+             /* <ChatProfile /> */
             <Profile
             user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
         
