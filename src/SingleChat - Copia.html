@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Euso</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="normalize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /*MODIFICHE AL CSS*/
+        :root {
+            --chat-bar-height: 60px;
+        }
+
+        .chat-bar-send-btn {
+            width: 44px;
+            height: 44px;
+
+            border-radius: 22px;
+            background-color: var(--blu_1)
+        }
+
+        .sns-pn-418 {
+            font-family: 'Proxima Nova', sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            letter-spacing: 0px;
+            line-height: 21px;
+            font-style: normal;
+            text-transform: none;
+
+        }
+        /*FINE MODIFICHE AL CSS*/
+
+
+        .cnt-single-chat {
+            position: relative;
+            top: 48px;
+            width: 100%;
+            height: calc(100% - var(--chat-bar-height) - 48px);
+            padding: 0px 12px;
+
+            /*display: flex;*/
+            flex-direction: column-reverse;
+
+            flex: 1;
+            overflow: auto;
+            /*align-items: flex-end;*/
+
+
+        }
+
+        .messages-cnt {
+            flex-direction: column-reverse;
+            min-height: 100%;
+            display: flex;
+            padding: 8px 0px;
+        }
+
+        .sns-pn-410 {
+            font-family: 'Proxima Nova', sans-serif;
+            font-weight: 400;
+            font-size: 10px;
+            letter-spacing: 0px;
+            font-style: normal;
+            text-transform: none;
+
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            cursor: pointer;
+            transition: 0.15s ease-out;
+
+        }
+
+        
+/*-----------WORK IN PROGRESS-----------*/
+
+        #single-chat {
+            height: 100%;
+        }
+
+        .message-sent {
+            position: relative; /*per message-meta absolute*/
+            max-width: calc(100% / 4 * 3);
+            min-height: 36px;
+            padding: 6px 8px 11.6px 8px;
+
+            border-radius: 4px;
+            flex-shrink: 0;
+            background-color: var(--light_blu_1);
+
+            align-self: flex-end;
+
+            /*display: flex;
+            flex-direction: row;*/
+            /*display: flex;
+            align-items: flex-end;*/
+
+
+        }
+
+        .message-received {
+
+            
+
+
+            /*display: flex;
+            flex-direction: row;*/
+            /*display: flex;
+            align-items: flex-end;*/
+
+
+        }
+
+        .message-received-content {
+            position: relative; /*per message-meta absolute*/
+            max-width: calc(100% / 4 * 3);
+            min-height: 36px;
+            padding: 6px 8px 11.6px 8px;
+
+            border-radius: 4px;
+            flex-shrink: 0;
+
+            float: left
+
+        }
+
+        .message-sent + .message-sent,
+        .message-received + .message-received {
+            margin-bottom: 4px;
+        }
+
+        .message-sent + .message-received,
+        .message-received + .message-sent {
+            margin-bottom: 8px;
+        }
+
+        .message-text::after {
+            margin-right: 56px;
+            content: "";
+            display: inline;
+        }
+
+        .message-text {
+            word-break: break-word;
+            /*float: left;*/
+        }
+
+        .message-meta {
+            display: flex;
+            justify-content: flex-end;
+            padding-bottom: 1px;
+            position: absolute;
+            bottom: 1px;
+            right: 6px;
+        }
+
+        .message-time {
+            position: relative;
+            bottom: 4px;
+            height: 12px;
+            width: 30px;
+            display: flex;
+            align-self: flex-end;
+            
+        }
+
+        .message-status {
+            width: 16px;
+            height: 16px;
+            
+        }
+
+        
+
+/*-----------END WORKING-----------*/
+
+
+
+
+
+        .cnt-chat-bar{
+            height: auto;
+            width: 100%;
+            min-height: 60px;
+            position: absolute;
+            bottom: 0px;
+            padding: 8px 0px;
+            
+            display: flex;
+            align-items: flex-end;
+
+        }
+
+        .chat-bar {
+            width: calc(100% - 136px );
+            height: auto;
+            min-height: 44px;
+            max-height: 129px;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding: 12px 12px;           
+
+            background-color: white; 
+            border-radius: 22px;
+            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.2);
+
+            word-break: break-word;
+
+        }
+
+        .chat-bar::-webkit-scrollbar { 
+            display: none; 
+        }
+
+        .send {
+            position: relative;
+            left: 2px;
+        }
+
+        [contenteditable]:focus {
+            outline: 0px solid transparent;
+        }
+
+        /*DO NOT COPY TO style.css*/
+
+        /*.cnt-section-right {
+            visibility: hidden;
+
+        }*/
+
+        @media only screen and (min-width: 992px){
+
+            /*.cnt-section-left {
+                visibility: hidden;
+            }
+
+            /*.cnt-section-right {
+                visibi
+            }*/
+
+
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class="cnt-global">
+
+            
+
+        <!-- Sezione di sinistra -->
+        <div class="cnt-section-left">
+
+            <div class="header content-sb">
+
+                <a href="###">
+                    <div class="icn-cnt-44 tFF">
+                        <i class="material-icons settings">settings</i>
+                    </div>
+                </a>
+                <a href="###">
+                    <div class="icn-cnt-44 tFF">
+                        <i class="material-icons search">search</i>
+                    </div>
+                </a>
+                <a href="###">
+                    <div class="icn-cnt-44 tFF">
+                        <i class="material-icons favorite">star_border</i>
+                    </div>
+                </a>
+            
+            </div>
+            
+            <div id="single-chat">
+
+                <div id="cnt_single_chat" class="cnt-single-chat g2">
+
+                    <div id="chat-area" class="messages-cnt">
+
+                        <div class="message-sent c4">
+                                <div class="message-text"><span>Hey there!</span></div>
+                                <div class="message-meta">
+                                <div class="message-time sns-pn-410 tg5">13:56</div>
+                                <div class="message-status"><i class="material-icons icn-cnt-16">schedule</i></div>
+                            </div>
+                        </div>
+
+                        <div class="message-sent c4">
+                            <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes a a a under ant circumstances</span></div>
+                            <div class="message-meta">
+                                <div class="message-time sns-pn-410 tg5">13:50</div>
+                                <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
+                            </div>
+                        </div>
+
+                        <div class="message-sent c4">
+                            <div class="message-text"><span>Hey there!</span></div>
+                            <div class="message-meta">
+                                    <div class="message-time sns-pn-410 tg5">13:00</div>
+                                    <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
+                            </div>
+                        </div>
+            
+                        <div class="message-sent c4">
+                            <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
+                            <div class="message-meta">
+                                <div class="message-time sns-pn-410 tg5">12:00</div>
+                                <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
+                            </div>
+                        </div>
+
+                        <div class="message-received">
+                            <div class="message-received-content c-w">
+                                <div class="message-text"><span>Hey there! Here it is a very long message to test the behaviour of ours containes</span></div>
+                                <div class="message-meta">
+                                    <div class="message-time sns-pn-410 tg5">12:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="message-received">
+                            <div class="message-received-content c-w">
+                                <div class="message-text"><span>Hey there!</span></div>
+                                <div class="message-meta">
+                                    <div class="message-time sns-pn-410 tg5">12:00</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chat_bar" class="cnt-chat-bar g1">
+
+                    <div class="icn-cnt-44 tg3">
+                        <i class="material-icons mood">mood</i>
+                    </div>
+
+                    <div id="chat_bar_input" class="chat-bar sns-sp-414 tg5 ffox-hide-scrollbarbar" contenteditable="true">
+                        <!--<div class="placeholder">Write something...</div>-->
+                        <div class="">Write something...</div>
+                    </div>
+
+                    <div class="icn-cnt-44 tg3">
+                        <i class="material-icons attach_file">attach_file</i>
+                    </div>
+
+                    <div id="send-btn" class="btn chat-bar-send-btn icn-cnt-44 tFF">
+                        <i class="material-icons send">send</i>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Sezione di destra -->
+        <div class="cnt-section-right">
+            
+        </div>
+
+    </div>
+
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+    </script>
+
+
+<script>
+        /*CNT SWAP*/
+    
+        //make right
+        //move_to_cnt ('right', 'single-chat' )
+        function move_to_cnt(string, id) {
+    
+            if (string === 'left' || string === 'right') {
+                
+                //move content
+                let single_chat = document.getElementById(id)
+                let section_left = document.getElementsByClassName('cnt-section-left')
+                let section_right = document.getElementsByClassName('cnt-section-right')
+                console.log(single_chat)
+                
+                if (string === 'right') {
+                    section_right[0].innerHTML += single_chat.outerHTML
+                    single_chat.parentNode.removeChild(single_chat)
+
+                } else {
+                    section_left[0].innerHTML += single_chat.outerHTML
+                    single_chat.parentNode.removeChild(single_chat)
+                }
+                
+    
+            } else {
+                console.error('Invalid parameter passed to move_to_cnt()')
+            }
+    
+        }
+    
+    
+    
+        </script>
+
+		
+    <script>
+    /*CHAT BAR BEHAVIOUR*/
+
+        //Constants
+        const chat_bar = document.getElementById('chat_bar')
+        const chat_input = document.getElementById('chat_bar_input')
+        const chat_input_placeholder = chat_input.innerHTML
+        const chat_area = document.getElementById('chat-area')
+        const send_btn = document.getElementById('send-btn')
+        const cnt_single_chat = document.getElementById('cnt_single_chat')
+
+
+        //Resize the chat area based on chat-bar height
+        chat_bar.addEventListener("input", set_varChatBarHeight);
+
+        function set_varChatBarHeight() {
+            let height = chat_bar.clientHeight
+            document.documentElement.style.setProperty('--chat-bar-height', height + 'px' )
+        }
+
+
+        //Clear on focus
+        chat_input.addEventListener("focus", clear_on_focus )
+        function clear_on_focus() {
+            if(chat_input.innerHTML == chat_input_placeholder) chat_input.innerHTML = ""
+        }
+
+
+        // Automagically scroll the chat-area when new message appear
+        // TODO: Call when you receive messages
+        function scrollChatArea() {
+
+            if (chat_area.clientHeight > cnt_single_chat.clientHeight) {
+                cnt_single_chat.scrollTop = cnt_single_chat.scrollHeight;
+            }
+
+            
+        }
+        
+        // Send Messages
+        send_btn.addEventListener("click", send_message);
+
+        function send_message() {
+            
+            let content = chat_bar_input.innerHTML
+            br_remove()
+
+            function br_remove () {
+                if(content.endsWith('<br>')) {
+                    content = content.substring(0, content.lastIndexOf('<'))
+                    br_remove()
+                }
+                
+            }
+
+            if (content != '') {
+                var message = document.createElement('div')
+                message.className = 'message-sent c4'
+                message.innerHTML = `<div class="message-text"><span>` + content + `</span></div>
+                        <div class="message-meta">
+                                <div class="message-time sns-pn-410 tg5">13:00</div>
+                                <div class="message-status"><i class="material-icons icn-cnt-16">done</i></div>
+                        </div>`
+                chat_area.prepend(message)
+
+
+            }
+
+            chat_bar_input.innerHTML = ""
+            set_varChatBarHeight()
+
+            scrollChatArea()
+
+        }
+
+
+        /*//Prevent div adding in contenteditable
+        chat_input.addEventListener('keydown', function(e) {
+            if (e.keyCode === 13) {
+                if(e.shiftKey) {
+                    document.execCommand('insertHTML', false, '<br><br>');
+                    return false
+
+                } else {
+                    send_message()
+                    return false
+                }
+
+            }
+        })    */
+        
+        //Prevent div adding in contenteditable
+        $('div[contenteditable]').keydown(function(e) {
+            if (e.keyCode === 13) {
+                if(e.shiftKey) {
+                    document.execCommand('insertHTML', false, '<br><br>');
+                    return false
+
+                } else {
+                    send_message()
+                    return false
+                }
+
+            }
+        });  
+
+        
+
+
+
+
+    </script>
+
+    <script>
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+    <script>/*
+        try {
+            var test = 5 / 0;
+           
+
+            throw newError ("che bordello");
+
+        } catch (e) {
+            console.info(e.name);
+            //alert(e.name + e.message);
+        } finally {
+
+        }
+       
+       /*var numeri [12, 2, 2, .3];*/
+
+
+    
+    </script>
+
+</body>
+
+</html>
