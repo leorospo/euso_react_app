@@ -12,17 +12,11 @@
 
 .cnt-full-profile {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.media-profile-element {
-    height: 79px;
-    width: 79px;
-  
-}
 .profile-element-subtitle-role {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -39,7 +33,12 @@
     white-space: nowrap;
 }
 
-.menu-profile{
+.profile-media-cnt{
+    width: 100%;
+    max-width: 600px;
+}
+
+.profile-media-menu{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -62,10 +61,6 @@
     border-bottom: 0.5px solid var(--g2);
     margin-top: 44px; 
 }
-
-
-/* classi per i "bottoni" della barra */
-
 
 .tab-profile-off{
     height: 32px;

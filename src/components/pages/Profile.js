@@ -2,17 +2,25 @@ import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
 import Buttons from './../elements/Buttons';
 import Icons from './../elements/Icons';
-import MediaProfile from './../blocks/MediaProfile';
+import ProfileMediaGrid from './../blocks/ProfileMediaGrid';
 
 import propTypes from 'prop-types';
 import './Profile.css';
 
+const label = ["documents", "images", "videos"]
 
 export default class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            tab: "documents",
         }
+    }
+
+    ChangeView(value) {
+        this.setState({
+            tab: value
+        })
     }
 
     render() {
@@ -20,17 +28,9 @@ export default class Profile extends React.Component {
 
         return (
             <div className="cnt-global">
-                <div class="cnt-section-left">
+                <div className="cnt-section-left">
 
-                    <div class="header content-sb">
-                        <a href="###">
-                            <div class="icn-cnt-44 tFF">
-                                <i class="material-icons arrow">arrow_back_ios</i>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="cnt-full-profile g1">
+                    <div className="cnt-full-profile g1">
                         <ProfileImg
                             user={{ name: 'Carol Evans', profileImgName: '1_carol.jpg' }}
                             size='xl'
@@ -39,12 +39,13 @@ export default class Profile extends React.Component {
                         <div className="profile-element-title sns-sp-620 tg6">{user.userName}</div>
                         <div className="cnt-element-subtitle-role">
                             <div className="profile-element-subtitle-role sns-sp-416 tg3">{user.userRole}</div>
-                            
+
                             <Icons
                                 encumbrance="small"
                                 size="small"
                                 color="tg3"
                                 icon="create"
+                                onClick={() => alert("pippo")}
                             />
 
                         </div>
@@ -56,17 +57,20 @@ export default class Profile extends React.Component {
                             type="button"
                         >
                             CHAT
-                            </Buttons>
+                        </Buttons>
 
                         <div className="sep-profile"></div>
 
-                        <MediaProfile />
-
-                        <div className="media-profile">
-                            <img className="media-profile-element" src="##" />
-                            <img className="media-profile-element" src="##" />
-                            <img className="media-profile-element" src="##" />
-                            <img className="media-profile-element" src="##" />
+                        <div className="profile-media-cnt">
+                            <div className="profile-media-menu">
+                                {label.map((el, index) => <button className={`btn tab-profile-${this.state.tab === el ? "on" : "off"}`}
+                                    key={index}
+                                    onClick={() => this.ChangeView(el)}>{el}</button>)
+                                }
+                            </div>
+                            <ProfileMediaGrid
+                                view={this.state.tab}
+                            />
                         </div>
 
                     </div>
@@ -78,5 +82,8 @@ export default class Profile extends React.Component {
 }
 
 Profile.propTypes = {
-
+    user: propTypes.shape({
+        userName: propTypes.string.isRequired,
+        userRole: propTypes.string.isRequired,
+    }).isRequired,
 }

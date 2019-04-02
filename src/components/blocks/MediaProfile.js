@@ -1,18 +1,22 @@
 import React from 'react';
+import Grids from './ProfileMediaGrid';
 
 import propTypes from 'prop-types';
+
+
+const label = ["documents", "images", "videos"]
 
 export default class MediaProfile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            tab: "all",
+            tab: "image",
         }
     }
 
-    ChangeView(e) {
+    ChangeView(value) {
         this.setState({
-            tab: `${e.currentTarget.innerHTML}`
+            tab: value
         })
     }
 
@@ -20,15 +24,16 @@ export default class MediaProfile extends React.Component {
         const { } = this.props
 
         return (
-            <div className="menu-profile">
-                <button className={`btn tab-profile-${this.state.tab === "all" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>all</button>
-                <button className={`btn tab-profile-${this.state.tab === "documents" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>documents</button>
-                <button className={`btn tab-profile-${this.state.tab === "images" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>images</button>
-                <button className={`btn tab-profile-${this.state.tab === "videos" ? "on" : "off"}`}
-                    onClick={(e) => this.ChangeView(e)}>videos</button>
+            <div className="profile-media-cnt">
+                <div className="menu-profile">
+                    {label.map((el, index) => <button className={`btn tab-profile-${this.state.tab === el ? "on" : "off"}`}
+                        key={index}
+                        onClick={() => this.ChangeView(el)}>{el}</button>)
+                    }
+                </div>
+                <Grids
+                    view={this.state.tab}
+                />
             </div>
         )
     }
