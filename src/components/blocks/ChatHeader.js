@@ -26,7 +26,7 @@ export default class ChatHeader extends React.Component {
         const { } = this.props
 
         return (
-            <div class="header content-sb">
+            <div className="header content-sb">
 
                 <div className="header-cnt">
                     <Icon
@@ -51,7 +51,7 @@ export default class ChatHeader extends React.Component {
                 </div>
 
 
-                {!this.state.searchingActive || <input class="input-search sns-sp-320 b1" />}
+                {!this.state.searchingActive || <input className="input-search sns-sp-320 b1" />}
 
                 {this.state.selectedMessages > 0 ?
                     < div className="header-cnt">

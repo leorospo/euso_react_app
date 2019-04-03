@@ -17,6 +17,7 @@
 .input-search{
     width:100%;
     max-width: 400px;
+    min-width: 145px;
     margin-left: 43.5px;
     margin-right: 43.5px;
     color: var(--g1);

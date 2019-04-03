@@ -17,7 +17,7 @@ export default class ListHeader extends React.Component {
         const {  } = this.props
 
         return (
-            <div class="header content-sb">
+            <div className="header content-sb">
 
                     <Icon
                         encumbrance="large"

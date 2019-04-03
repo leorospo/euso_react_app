@@ -6,7 +6,10 @@ import ChatList from './components/blocks/ChatList';
 import Login from "./components/pages/Login";
 import ChatPage from './components/pages/ChatPage'
 import Profile from './components/pages/Profile';
+
+
 import './style.css';
+import ResetPassword from './components/pages/ResetPassword';
 
 class App extends Component {
     constructor(props) {
@@ -25,14 +28,14 @@ class App extends Component {
     render() {
 
         return (
-            /* <WksSelect /> */
+            /*   <WksSelect />  */
             /* <ContactList /> */
             /* <ChatList /> */
-            /* <Login /> */
-             /* <ChatProfile /> */
-            <Profile
-            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> 
-        
+            /* <Login/>  */
+            /* <ChatProfile /> */
+            /* <Profile
+            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>  */
+            <ChatPage />
         );
     }
 }

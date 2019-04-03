@@ -1,7 +1,7 @@
 import React from 'react';
 import './WksSelect.css';
 import logo from '../../assets/img/euso.png';
-import Buttons from './../elements/Buttons';
+import Button from '../elements/Button';
 
 
 
@@ -44,14 +44,14 @@ export default class WksSelect extends React.Component {
                                 className={this.state.error ? 'input-error' : null}
                             />
 
-                            <Buttons
+                            <Button
                                 shape="square"
                                 size="medium"
                                 optionalClass="wks-select-button"
                                 type="submit"
                             >
                                 SUBMIT
-                            </Buttons>
+                            </Button>
 
                         </form>
 

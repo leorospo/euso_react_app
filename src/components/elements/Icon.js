@@ -16,10 +16,10 @@ const SIZES = {
 export default class Icon extends React.Component {
 
     render() {
-        const { encumbrance, size, color, onClick, icon } = this.props
+        const { encumbrance, size, optionalClass, color, onClick, icon } = this.props
         return (
             <div
-                className={`icn-cnt-${ENCUMBRANCE[encumbrance]}`}
+                className={`icn-cnt-${ENCUMBRANCE[encumbrance]} ${optionalClass || ""}`}
                 onClick={onClick}>
 
                 <i className={`material-icons icn-${SIZES[size]} ${color}`}>{icon}</i>

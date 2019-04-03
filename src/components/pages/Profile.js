@@ -1,9 +1,9 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
-import Buttons from './../elements/Buttons';
+import Button from '../elements/Button';
 import Icon from '../elements/Icon';
 import ProfileMediaGrid from './../blocks/ProfileMediaGrid';
-import ListHeader from './../blocks/ListHeader';
+import Header from './../blocks/Header';
 
 
 import propTypes from 'prop-types';
@@ -32,7 +32,7 @@ export default class Profile extends React.Component {
             <div className="cnt-global">
                 <div className="cnt-section-left">
 
-               
+               <Header />
 
                     <div className="cnt-full-profile g1">
                         <ProfileImg
@@ -54,14 +54,14 @@ export default class Profile extends React.Component {
 
                         </div>
 
-                        <Buttons
+                        <Button
                             shape="square"
                             size="medium"
                             optionalClass="profile-button"
                             type="button"
                         >
                             CHAT
-                        </Buttons>
+                        </Button>
 
                         <div className="sep-profile"></div>
 

@@ -30,7 +30,7 @@ export default class ListHeader extends React.Component {
         const { page } = this.props
 
         return (
-            <div class="header content-sb">
+            <div className="header content-sb">
                
                     <Icon
                         encumbrance="large"
@@ -48,7 +48,7 @@ export default class ListHeader extends React.Component {
                             icon="search"
                             onClick={() => this.setSearch()}
                         /> :
-                        <input class="input-search sns-sp-320 b1" />
+                        <input className="input-search sns-sp-320 b1" />
                     }
                
                     <Icon
