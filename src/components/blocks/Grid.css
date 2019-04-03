@@ -1,8 +1,4 @@
 
-.media-profile-element {
-    width: 100%;
-  
-}
 
 .media-grid-profile {
     padding: 0;
@@ -31,21 +27,11 @@
     height: auto;
     }   
 }
-
 @media (min-width: 500px) {
     .media-grid-profile li {
     display: inline-block;
     margin:8px;
     width: calc((100% - 80px)/4);
-    height: auto;
-    }   
-}
-
-@media (min-width:  600px) {
-    .media-grid-profile li {
-    display: inline-block;
-    margin:18px;
-    width: calc((100% - 180px)/4);
     height: auto;
     }   
 }

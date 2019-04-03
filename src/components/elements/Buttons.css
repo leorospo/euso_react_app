@@ -19,6 +19,19 @@
 
 }
 
+.btn-outlined-l{
+    width: 52px;
+    height: 52px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 26px;
+    border:solid;
+    border: 2px;
+    border-color: var(--blu_1);
+
+}
+
 .chat-round-m {
     width: 44px;
     height: 44px;

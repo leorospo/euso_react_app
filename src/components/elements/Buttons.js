@@ -10,6 +10,7 @@ const SIZES = {
 const SHAPES = {
     square: "primary",
     round: "round",
+    outlined: "outlined",
 }
 
 export default class Buttons extends React.Component {
@@ -27,7 +28,7 @@ export default class Buttons extends React.Component {
 }
 
 Buttons.propTypes = {
-    shape: propTypes.oneOf(['square', 'round']),
+    shape: propTypes.oneOf(['square', 'round','outlined']),
     size: propTypes.oneOf(['small', 'medium', 'large']),
     optionalClass: propTypes.string,
     type: propTypes.string,
