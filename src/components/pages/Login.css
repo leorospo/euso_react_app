@@ -210,7 +210,7 @@ input[type="checkbox"]:focus {
     height: 100%;
 }
 
-.form-wks-select {
+.form-login-select {
     width: 100%;
     margin-top: 24px;
     display: flex;
@@ -220,7 +220,7 @@ input[type="checkbox"]:focus {
 
 }
 
-.form-wks-select-button {
+.form-login-select-button {
     float: right;
     margin-right: 6px;
 }
@@ -237,7 +237,7 @@ input[type="checkbox"]:focus {
     justify-content: center;
 }
 
-.form-footer-wks-select {
+.form-footer-login-select {
     width: 100%;
     display: flex;
     align-items: center;
@@ -246,7 +246,7 @@ input[type="checkbox"]:focus {
     margin-top: 12px;
 }
 
-.form-footer-wks-select-cnt {
+.form-footer-login-select-cnt {
     display: flex;
 }
 
