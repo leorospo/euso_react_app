@@ -1,8 +1,9 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './Login.css';
-import help from '../../assets/img/help.svg'
-import firebase from '../firebase/firebase'
+import help from '../../assets/img/help.svg';
+import firebase from '../firebase/firebase';
+import { Redirect } from "react-router-dom";
 
 
 export default class Login extends React.Component {
@@ -19,7 +20,8 @@ export default class Login extends React.Component {
             errorPassword: {
                 setErrorPassword: false,
                 showErrorPassword: false,
-            }
+            },
+            successfulLogin: false,
         }
     }
 
@@ -107,7 +109,7 @@ export default class Login extends React.Component {
             console.info('logout')
         }).catch((error) => {
             // An error happened.
-            console.info('logout failed', error)
+            console.error('Logout failed', error)
         });
     }
 
@@ -117,38 +119,39 @@ export default class Login extends React.Component {
             .then(
                 //Successful login
                 () => {
-                    alert('succesful login')
+                    this.setState({ successfulLogin: true })
                 },
                 //Failed login
-                (error) => {
-                    this.loginErrorHandling(error.code, error.message)
-                }
+                (error) => { this.loginErrorHandling(error.code, error.message) }
             )
-
-        /* 
-                    .catch((error) => {
-                        this.loginErrorHandling(error.code, error.message)
-                    })
-                    .then((error) => {
-                        console.info(error)
-                    }); */
     }
 
     render() {
-        const { company } = this.props
 
-        return (
+        if (this.state.successfulLogin) {
+            return (
+                <Redirect to="/" />
+            )
+        }
+
+        const { workspace } = this.props
+
+        if (!workspace) {
+            return <Redirect to="/wks-select" />
+
+        }
+        else return (
             <div className="cnt-global center ">
                 <div className="cnt-section-full g1">
                     <div className="cnt-onepage">
 
                         <div className="logo_azienda">
-                            <img src={`assets/img/svg/${company.companyImg}`} alt={`${company.companyName} logo`} />
+                            <img src={`assets/img/svg/${workspace.companyImg}`} alt={`${workspace.companyName} logo`} />
                         </div>
 
 
                         <form
-                            className="form-wks-select"
+                            className="form-login-select"
                             onSubmit={(e) => this.onSubmit(this.state.email, this.state.password, e)}>
                             <div className="input-container">
 
@@ -187,9 +190,9 @@ export default class Login extends React.Component {
                                 />
 
                             </div>
-                            <div className="form-footer-wks-select">
+                            <div className="form-footer-login-select">
 
-                                <div className="form-footer-wks-select-cnt">
+                                <div className="form-footer-login-select-cnt">
                                     <label className="checkbox-cnt sns-sp-416 tg6">
                                         <input className="checkbox" type="checkbox" name="checkbox1"
                                             onChange={() => this.checked()}
@@ -198,7 +201,7 @@ export default class Login extends React.Component {
                                     </label>
                                 </div>
 
-                                <button className="btn-primary form-wks-select-button" type="submit">LOGIN</button>
+                                <button className="btn-primary form-login-select-button" type="submit">LOGIN</button>
 
                             </div>
 
@@ -217,7 +220,7 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
-    company: propTypes.shape({
+    workspace: propTypes.shape({
         companyName: propTypes.string.isRequired,
         companyImg: propTypes.string.isRequired
     }).isRequired,
