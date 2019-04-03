@@ -1,0 +1,101 @@
+.media-grid-profile {
+    padding: 0;
+    margin: 6px;
+    
+}
+
+.media-grid-profile li {
+    display: inline-block;
+    margin: 6px;
+    width: calc((100% - 48px)/4);
+    height: auto;
+
+}
+
+.media-profile-element {
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 400px) {
+    .media-grid-profile li {
+    display: inline-block;
+    margin:7px;
+    width: calc((100% - 58px)/4);
+    height: auto;
+    }   
+}
+
+@media (min-width: 500px) {
+    .media-grid-profile li {
+    display: inline-block;
+    margin:8px;
+    width: calc((100% - 68px)/4);
+    height: auto;
+    }   
+}
+
+
+.document-list-element {
+    position: relative;
+    height: 80px;
+    width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.document-list-element-content {
+    height: 100%;
+    width: 100%;
+    margin-left: 12px;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.document-list-element-text  {
+    position: relative;
+    min-width: 148px;
+    width: 100%;
+    line-height: normal;
+}
+
+.document-list-element-title{
+    display: inline-block;
+    margin-bottom: 3px;
+    max-width: calc(100% - 20px);
+}
+
+.document-list-element-subtitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.document-img{
+    height: 44px;
+    width: 44px;
+}
+
+.document-list-element-title-name{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.document-list-sep{
+    position: absolute;
+    width: calc(100% - 100px);
+    margin-left: 50px;
+    bottom: 0px;
+    left: 0px;
+    border-bottom: 0.5px solid var(--g2);
+
+}
+
+ 

@@ -1,0 +1,258 @@
+.cont_forgot_login {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+
+}
+
+.logo_azienda img {
+    width: 303px;
+    height: 120px;
+
+}
+
+#emaqil {
+    width: 327.469px;
+    height: 44px;
+
+}
+
+#pasqsword {
+    width: 327.469px;
+    height: 44px;
+
+}
+
+
+
+#btn {
+    background-color: #3E4F70;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 12px;
+    height: 44px;
+    width: 104px;
+    font-family: 'Proxima Nova', sans-serif;
+
+}
+
+.form_button {
+    height: 44px;
+    width: 104px;
+    margin-right: 24px;
+    margin-top: 12px;
+}
+
+
+.remember_pw {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 22px;
+    padding-top: 12px;
+
+}
+
+.box_forgot {
+    width: 100%;
+    height: 18px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+
+}
+
+.forgot {
+    text-decoration: none;
+
+}
+
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    max-width: 375px;
+
+}
+
+.box1 {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 53px;
+}
+
+.cnt-section-left {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: auto;
+
+    background-color: var(--g1);
+    border-right: var(--g2) solid 1px;
+
+}
+
+input[type="email"],
+input[type="password"] {
+    padding: 0px;
+    box-shadow: none;
+    border: 1px solid var(--g2);
+    border-radius: 8px;
+    height: 44px;
+    width: 100%;
+    max-width: 327px;
+    padding: 0px 8px;
+}
+
+input[type="email"].login-email {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+input[type="password"].login-password{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.input-container{
+ position: relative;
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ padding: 0px 8px;
+}
+
+.input-error-overlay{
+    position: absolute;
+    height: 44px;
+    width: auto;
+    color: var(--red_1);
+    display: flex;
+    align-items: center;
+    align-self: flex-end;
+    padding-right: 16px;
+}
+
+.input-error-overlay-email{
+    top: 0px;
+}
+
+.input-error-overlay-password{
+    margin-top: 44px;
+}
+
+.checkbox-cnt {
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--g3);
+    border-radius: 4px;
+    -webkit-appearance: none;
+    background-color: var(--g1);
+    margin-right: 8px;
+}
+
+input[type="checkbox"]:hover {
+    background-color: var(--g2);
+}
+
+input[type="checkbox"]:checked {
+    border: 1px solid var(--g1);
+    background-color: var(--blu_1);
+    background-image: url("/assets/img/svg/check.svg");
+    background-position: center;
+    background-size: 22px 22px;
+    background-repeat: no-repeat;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.error-span{
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+
+#email {
+    margin-top: 12px;
+}
+
+.cnt-section-full {
+    width: 100%;
+    height: 100%;
+}
+
+.form-wks-select {
+    width: 100%;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 6px;
+
+}
+
+.form-wks-select-button {
+    float: right;
+    margin-right: 6px;
+}
+
+.cnt-onepage {
+    max-width: calc(100% - 24px);
+    height: 100%;
+    min-width: 296px;
+    max-width: 351px;
+    margin: 0px 6px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-footer-wks-select {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 8px;
+    margin-top: 12px;
+}
+
+.form-footer-wks-select-cnt {
+    display: flex;
+}
+
+@media only screen and (min-width: 375px) {
+
+    .cnt-onepage {
+        margin: auto;
+    }
+}
