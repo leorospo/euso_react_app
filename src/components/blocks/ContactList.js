@@ -1,5 +1,6 @@
 import React from 'react'
 import ContactListRow from './ContactListRow'
+import Search from './Search'
 
 export default class ContactList extends React.Component {
     constructor(props) {

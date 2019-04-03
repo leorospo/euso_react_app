@@ -11,7 +11,7 @@ export default class Grids extends React.Component{
                 {mediaImg:'6_jhon.jpg'},
                 {mediaImg:'6_jhon.jpg'},
                 {mediaImg:'6_jhon.jpg'},
-                {mediaImg:'6_jhon.jpg'},
+                
             ]
         }
     }

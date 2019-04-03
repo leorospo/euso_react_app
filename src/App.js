@@ -3,6 +3,9 @@ import './style.css';
 import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
+import Grids from './components/blocks/Grids';
+import ResetPassword from './components/pages/ResetPassword';
+import Search from './components/blocks/Search';
 
 
 class App extends Component {
@@ -18,10 +21,14 @@ class App extends Component {
     render() {
         return (
             /*             <WksSelect /> */
-            /*             <ContactList /> */
+               /*<ContactList /> */
             /*             <ChatList /> */
-        );
-    }
+            /*<Grids />*/
+            /*< ResetPassword  />*/
+           <Search/>
+      
+
+         ) }
 }
 
 export default App;
