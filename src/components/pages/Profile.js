@@ -1,8 +1,10 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
 import Buttons from './../elements/Buttons';
-import Icons from './../elements/Icons';
+import Icon from '../elements/Icon';
 import ProfileMediaGrid from './../blocks/ProfileMediaGrid';
+import ListHeader from './../blocks/ListHeader';
+
 
 import propTypes from 'prop-types';
 import './Profile.css';
@@ -30,6 +32,8 @@ export default class Profile extends React.Component {
             <div className="cnt-global">
                 <div className="cnt-section-left">
 
+               
+
                     <div className="cnt-full-profile g1">
                         <ProfileImg
                             user={{ name: 'Carol Evans', profileImgName: '1_carol.jpg' }}
@@ -40,7 +44,7 @@ export default class Profile extends React.Component {
                         <div className="cnt-element-subtitle-role">
                             <div className="profile-element-subtitle-role sns-sp-416 tg3">{user.userRole}</div>
 
-                            <Icons
+                            <Icon
                                 encumbrance="small"
                                 size="small"
                                 color="tg3"

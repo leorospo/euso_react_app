@@ -1,5 +1,6 @@
 import React from 'react';
 //import propTypes from 'prop-types';
+import ChatHeader from './../blocks/ChatHeader'
 import Chat from '../../components/blocks/Chat';
 
 
@@ -20,21 +21,7 @@ export default class ChatPage extends React.Component {
 
                     <div className="header content-sb">
 
-                        <a href="###">
-                            <div className="icn-cnt-44 tFF">
-                                <i className="material-icons settings">settings</i>
-                            </div>
-                        </a>
-                        <a href="###">
-                            <div className="icn-cnt-44 tFF">
-                                <i className="material-icons search">search</i>
-                            </div>
-                        </a>
-                        <a href="###">
-                            <div className="icn-cnt-44 tFF">
-                                <i className="material-icons favorite">star_border</i>
-                            </div>
-                        </a>
+                        <ChatHeader/>
 
                     </div>
                     <Chat />
