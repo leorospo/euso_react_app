@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
-import WksSelect from './components/pages/WksSelect';
+/* import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
-import Login from "./components/pages/Login";
-import ChatPage from './components/pages/ChatPage'
-import Profile from './components/pages/Profile';
+import Grids from './components/blocks/Grids';
+import ResetPassword from './components/pages/ResetPassword';
+import Search from './components/blocks/Search';
+import Buttons from './components/elements/Buttons';
+import Login from "./components/pages/Login"; */
+import ChatPage from './components/pages/ChatPage';
+/* import Profile from './components/pages/Profile'; */
 
 
 import './style.css';
-import ResetPassword from './components/pages/ResetPassword';
 
 class App extends Component {
     constructor(props) {
