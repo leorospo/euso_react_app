@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 
-import WksSelect from './components/pages/WksSelect';
+/* import WksSelect from './components/pages/WksSelect';
 import ContactList from './components/blocks/ContactList';
 import ChatList from './components/blocks/ChatList';
 import Grids from './components/blocks/Grids';
 import ResetPassword from './components/pages/ResetPassword';
 import Search from './components/blocks/Search';
 import Buttons from './components/elements/Buttons';
-import Login from "./components/pages/Login";
-import ChatPage from './components/pages/ChatPage'
-import Profile from './components/pages/Profile';
+import Login from "./components/pages/Login"; */
+import ChatPage from './components/pages/ChatPage';
+/* import Profile from './components/pages/Profile'; */
+
+
 import './style.css';
 
 class App extends Component {
@@ -29,17 +31,14 @@ class App extends Component {
     render() {
 
         return (
-            /* <WksSelect /> */
+            /*   <WksSelect />  */
             /* <ContactList /> */
             /* <ChatList /> */
-            /* <Login /> */
-             /* <ChatProfile /> */
-            /*<Profile
-            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> */
-         /*<Grids />*/
-            /*< ResetPassword  />*/
-            /*<Search/>*/
-           <Buttons/>
+            /* <Login/>  */
+            /* <ChatProfile /> */
+            /* <Profile
+            user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>  */
+            <ChatPage />
         );
     }
 }
