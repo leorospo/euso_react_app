@@ -1,8 +1,14 @@
 import React from 'react';
 import './WksSelect.css';
+<<<<<<< HEAD
 import logo from '../../assets/img/euso.png'
 import firebase from '../firebase/firebase'
 import Redirect from 'react-router-dom/Redirect'
+=======
+import logo from '../../assets/img/euso.png';
+import Button from '../elements/Button';
+
+>>>>>>> b5c07d730838ab43086056c94204128743fb579b
 
 
 export default class WksSelect extends React.Component {
@@ -77,10 +83,16 @@ export default class WksSelect extends React.Component {
                                 onChange={e => this.updateEmail(e)} value={this.state.email}
                                 className={this.state.error ? 'input-error' : null}
                             />
-                            <button
-                                className="btn btn-primary form-wks-select-button"
+
+                            <Button
+                                shape="square"
+                                size="medium"
+                                optionalClass="wks-select-button"
                                 type="submit"
-                            >SUBMIT</button>
+                            >
+                                SUBMIT
+                            </Button>
+
                         </form>
 
                     </div>

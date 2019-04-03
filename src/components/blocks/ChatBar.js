@@ -1,4 +1,8 @@
 import React from 'react';
+import Icon from '../elements/Icon';
+import Button from '../elements/Button';
+
+
 //import propTypes from 'prop-types'
 
 const chatInputPlaceholder = <div className="">Write something...</div>
@@ -78,9 +82,13 @@ export default class ChatBar extends React.Component {
 
             <div id="chat_bar" className="cnt-chat-bar g1">
 
-                <div className="icn-cnt-44 tg3">
-                    <i className="material-icons mood">mood</i>
-                </div>
+                <Icon
+                    encumbrance="large"
+                    size="large"
+                    color="tg3"
+                    icon="mood"
+                    onClick={() => alert("pippo")}
+                />
 
                 <div
                     id="chat_bar_input"
@@ -93,13 +101,29 @@ export default class ChatBar extends React.Component {
                     {this.state.content}
                 </div>
 
-                <div className="icn-cnt-44 tg3">
-                    <i className="material-icons attach_file">attach_file</i>
-                </div>
+                <Icon
+                    encumbrance="large"
+                    size="large"
+                    color="tg3"
+                    icon="attach_file"
+                    onClick={() => alert("pippo")}
+                />
 
-                <div id="send-btn" onClick={e => this.send(e.currentTarget)} className="btn chat-bar-send-btn icn-cnt-44 tFF">
-                    <i className="material-icons send">send</i>
-                </div>
+                <Button
+                    shape="round"
+                    size="medium"
+                    type="button"
+                    id="send-btn"
+                    onClick={e => this.send(e.currentTarget)}
+                >
+                    <Icon
+                        encumbrance="medium"
+                        size="large"
+                        optionalClass="send"
+                        color="tFF"
+                        icon="send"
+                    />
+                </Button>
 
             </div>
         )

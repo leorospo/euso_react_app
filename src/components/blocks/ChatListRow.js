@@ -1,5 +1,6 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
+import Icon from '../elements/Icon';
 import propTypes from 'prop-types';
 import "./ListRow.css";
 
@@ -35,7 +36,14 @@ export default class ChatListRow extends React.Component {
 
                         <div className="chat-list-element-content-mute">
                             <div className="chat-list-element-content-mute-icon">
-                                {this.state.silenced && <i className="material-icons icn-cnt-16 tg3">notifications_off</i>}
+                                {this.state.silenced &&
+                                    <Icon
+                                        encumbrance="small"
+                                        size="small"
+                                        color="tg3"
+                                        icon="notifications_off"
+                                    />
+                                }
                             </div>
                         </div>
 

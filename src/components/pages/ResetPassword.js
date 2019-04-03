@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../elements/Button';
 import './ResetPassword.css';
 
 
@@ -28,16 +29,24 @@ export default class ResetPassword extends React.Component {
                         <div className="reset-sns-sp-416 tC"> You will recieve an e-mail with a link to reset your password. </div>
                         <form className="form-wks-select"
                             onSubmit={() => alert(this.state.email)}>
-                        <label className={`sns-sp-616 ${this.state.error ? 'tr1' : 'tg6'}`}>{
-                            this.state.error ? 'Corporate mail not found!' : 'Enter your corporate mail'}
-                        </label>
-                        <input
-                            type="email"
-                            nome="email"
-                            onChange={e => this.updateEmail(e)} value={this.state.email}
-                            className={this.state.error ? 'input-error' : null}
-                        />
-                        <button className="btn-primary form-wks-select-button" type="submit">SUBMIT</button>
+                            <label className={`sns-sp-616 ${this.state.error ? 'tr1' : 'tg6'}`}>{
+                                this.state.error ? 'Corporate mail not found!' : 'Enter your corporate mail'}
+                            </label>
+                            <input
+                                type="email"
+                                nome="email"
+                                onChange={e => this.updateEmail(e)} value={this.state.email}
+                                className={this.state.error ? 'input-error' : null}
+                            />
+                            
+                            <Button
+                                shape="square"
+                                size="medium"
+                                optionalClass="wks-select-button"
+                                type="submit"
+                            >
+                                SUBMIT
+                            </Button>
                         </form>
                     </div>
                 </div>

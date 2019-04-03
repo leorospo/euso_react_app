@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+
 import './style.css';
 import { Route, Switch } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
 import ChatList from './components/blocks/ChatList';
-import Login from './components/pages/Login'
+import Login from './components/pages/Login';
+
+// Da inserire nello switch del ROUTER
+//import Profile from './components/pages/Profile';
+//import ChatPage from './components/pages/ChatPage';
+//import ResetPassword from './components/pages/ResetPassword';
+
 
 class App extends Component {
     constructor(props) {
@@ -16,18 +23,17 @@ class App extends Component {
                 id: 'x9vqKsWGxFfCbl7J',
                 companyName: 'born2code',
                 companyImg: 'groupama.svg',
-            },
+            }
         }
     }
 
     setWorkspace = (wksObj) => {
         this.setState({
-            workspace: wksObj
-        })
+            workspace: wksObj,
+        });
     }
 
     render() {
-
         return (
 
             <Switch>
@@ -47,8 +53,8 @@ class App extends Component {
             </Switch>
 
             //<ContactList />
-
-            /*  */
+            /*<Profile
+                user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
             /* <ChatPage /> */
 
 

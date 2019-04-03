@@ -1,0 +1,74 @@
+.btn-primary-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    width: 104px;
+
+    color: white;
+    background-color: #3E4F70;
+    border: none;
+    border-radius: 4px;
+
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Proxima Nova', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+
+.btn-outlined-l{
+    width: 52px;
+    height: 52px;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 26px;
+    border:solid;
+    border: 2px;
+    border-color: var(--blu_1);
+
+}
+
+.btn-round-m {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 22px;
+    background-color: var(--blu_1)
+}
+
+.btn-round-l {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 26px;
+    background-color: var(--blu_1);
+
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+}
+
+.wks-select-button {
+    margin-top: 12px;
+    margin-right: 1px;
+    float: right;
+}
+
+.profile-button{
+    margin-top: 44px;
+}
+
+.send {
+    position: relative;
+    left: 2px;
+}
+

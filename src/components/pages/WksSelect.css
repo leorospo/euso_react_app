@@ -8,7 +8,7 @@
 
 }
 
-.form-wks-select .form-wks-select-button {
+.form-wks-select {
     margin-top: 12px;
     margin-right: 6px;
 }
@@ -30,8 +30,4 @@
     width: 303px;
     height: 120px;
 
-}
-
-.form-wks-select-button {
-    float: right;
 }

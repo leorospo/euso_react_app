@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Button from '../elements/Button';
 import './Login.css';
 import help from '../../assets/img/help.svg';
 import firebase from '../firebase/firebase';
@@ -201,7 +202,14 @@ export default class Login extends React.Component {
                                     </label>
                                 </div>
 
-                                <button className="btn-primary form-login-select-button" type="submit">LOGIN</button>
+                                <Button
+                                    shape="square"
+                                    size="medium"
+                                    optionalClass="wks-select-button"
+                                    type="submit"
+                                >
+                                    LOGIN
+                                </Button>
 
                             </div>
 
