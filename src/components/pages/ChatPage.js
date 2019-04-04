@@ -19,12 +19,10 @@ export default class ChatPage extends React.Component {
 
                 <div className="cnt-section-left">
 
-                    <div className="header content-sb">
+                    <ChatHeader />
 
-                        <ChatHeader/>
-
-                    </div>
                     <Chat />
+                    
                 </div>
             </div>
 
