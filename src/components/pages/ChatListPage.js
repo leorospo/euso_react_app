@@ -20,10 +20,8 @@ export default class ChatListPage extends React.Component {
                     <ListHeader
                         page={"chat"}
                     />
-                    <div className="cnt-full g1">
 
-                        <ChatList />
-                    </div>
+                    <ChatList />
 
                     <Button
                         shape="round"

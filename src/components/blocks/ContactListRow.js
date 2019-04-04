@@ -1,8 +1,11 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
-import Icon from '../elements/Icon';
+import ReactSwipe from "react-swipe";
+import ContactListRowMain from './ContactListRowMain';
+import ContactListRowSwipe from './ContactListRowSwipe';
 import propTypes from 'prop-types';
 import "./ListRow.css";
+
 
 export default class ContactListRow extends React.Component {
     constructor(props) {
@@ -16,6 +19,7 @@ export default class ContactListRow extends React.Component {
 
     render() {
         const { chat, onClick } = this.props
+        let reactSwipeEl;
 
         return (
             <div className={"ContactListRow contact-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
@@ -26,45 +30,26 @@ export default class ContactListRow extends React.Component {
                     size='medium'
                 />
 
-                <div className="contact-list-element-content">
-
-                    <div className="contact-list-element-content-text">
-
-                        <div className="contact-list-element-title">
-                            <div className="contact-list-element-title-name sns-sp-620 tg6">{chat.userFullName}</div>
-                        </div>
-
-                        <div className="contact-list-element-content-mute">
-                            <div className="contact-list-element-content-mute-icon">
-                                {this.state.silenced &&
-                                    <Icon
-                                        encumbrance="small"
-                                        size="small"
-                                        color="tg3"
-                                        icon="notifications_off"
-                                    />
-                                }
-                            </div>
-                        </div>
-
-                        <div className="contact-list-element-subtitle-role sns-sp-416 tg3">{chat.userRole}</div>
+                <ReactSwipe
+                    className="swipe"
+                    swipeOptions={{ continuous: false }}
+                    ref={el => (reactSwipeEl = el)}
+                >
+                    <div>
+                        <ContactListRowMain chat={chat} silenced={this.state.silenced} />
                     </div>
 
-                    <div className="contact-list-element-content-right">
-
-                        {chat.unreadCount > 0 &&
-                            <div className="contact-list-element-notification">
-                                <div className="sns-pn-414">{chat.unreadCount > 99 ? "99+" : chat.unreadCount}</div>
-                            </div>
-                        }
-
+                    <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
+                        <ContactListRowSwipe />
                     </div>
 
-                </div>
+                </ReactSwipe>
 
                 <div className="contact-list-sep"></div>
 
             </div>
+
+         
         );
     }
 }

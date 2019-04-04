@@ -5,7 +5,8 @@ import WksSelect from './components/pages/WksSelect';
 import ChatList from './components/blocks/ChatList';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
-import ChatListPage from './components/pages/ChatListPage';
+import ContactList from './components/blocks/ContactList';
+import ContactListPage from './components/pages/ContactListPage';
 
 import './style.css';
 
@@ -60,7 +61,7 @@ class App extends Component {
             //<ContactList />
             /*<Profile
                 user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-            <ChatListPage/>
+            <ContactListPage/>
         );
     }
 }
