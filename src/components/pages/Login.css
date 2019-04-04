@@ -225,18 +225,6 @@ input[type="checkbox"]:focus {
     margin-right: 6px;
 }
 
-.cnt-onepage {
-    max-width: calc(100% - 24px);
-    height: 100%;
-    min-width: 296px;
-    max-width: 351px;
-    margin: 0px 6px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .form-footer-login-select {
     width: 100%;
     display: flex;

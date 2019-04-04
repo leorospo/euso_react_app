@@ -4,7 +4,7 @@ import ProfileImg from '../elements/ProfileImg';
 
 import './Header.css';
 
-import propTypes from 'prop-types';
+//import propTypes from 'prop-types';
 
 
 export default class ChatHeader extends React.Component {
@@ -117,5 +117,5 @@ export default class ChatHeader extends React.Component {
 }
 
 ChatHeader.propTypes = {
-    
+
 }

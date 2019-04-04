@@ -5,10 +5,11 @@ import { Route, Switch } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
 import ChatList from './components/blocks/ChatList';
 import Login from './components/pages/Login';
+import ChatPage from './components/pages/ChatPage';
+
 
 // Da inserire nello switch del ROUTER
 //import Profile from './components/pages/Profile';
-//import ChatPage from './components/pages/ChatPage';
 //import ResetPassword from './components/pages/ResetPassword';
 
 
@@ -43,11 +44,13 @@ class App extends Component {
                 <Route path='/wks-select' exact render={() =>
                     <WksSelect setWorkspace={this.setWorkspace} />
                 } />
-                <Route path='/login' exact render={() =>
-                    <Login
-                        workspace={this.state.workspace}
-                        wksEmail=""
-                    />
+                <Route path='/login' exact render={() => <Login
+                    workspace={this.state.workspace}
+                    wksEmail=""
+                />
+                } />
+                <Route path='/chat' exact render={() =>
+                    <ChatPage />
                 } />
 
             </Switch>
@@ -55,8 +58,6 @@ class App extends Component {
             //<ContactList />
             /*<Profile
                 user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-            /* <ChatPage /> */
-
 
         );
     }

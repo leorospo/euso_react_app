@@ -1,10 +1,8 @@
 import React from 'react';
 import './WksSelect.css';
 import logo from '../../assets/img/euso.png';
-import firebase from '../firebase/firebase';
-import Redirect from 'react-router-dom/Redirect';
+import { Redirect } from 'react-router-dom';
 import Button from '../elements/Button';
-
 
 
 export default class WksSelect extends React.Component {
@@ -77,7 +75,7 @@ export default class WksSelect extends React.Component {
                                 type="email"
                                 name="email"
                                 onChange={e => this.updateEmail(e)} value={this.state.email}
-                                className={this.state.error ? 'input-error' : null}
+                                className={`wks-input${this.state.error ? ' input-error' : ''}`}
                             />
 
                             <Button

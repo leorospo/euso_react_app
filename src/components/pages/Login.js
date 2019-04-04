@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import Button from '../elements/Button';
 import './Login.css';
 import help from '../../assets/img/help.svg';
-import firebase from '../firebase/firebase';
 import { Redirect } from "react-router-dom";
+import { login } from '../../api'
 
 
 export default class Login extends React.Component {
@@ -104,25 +104,11 @@ export default class Login extends React.Component {
         }
     }
 
-    signOut = () => {
-        firebase.auth().signOut().then(() => {
-            // Sign-out successful.
-            console.info('logout')
-        }).catch((error) => {
-            // An error happened.
-            console.error('Logout failed', error)
-        });
-    }
-
     onSubmit = (email, password, event) => {
         event.preventDefault()
-        firebase.auth().signInWithEmailAndPassword(email, password)
+        login(email, password)
             .then(
-                //Successful login
-                () => {
-                    this.setState({ successfulLogin: true })
-                },
-                //Failed login
+                () => { this.setState({ successfulLogin: true }) },
                 (error) => { this.loginErrorHandling(error.code, error.message) }
             )
     }
@@ -221,7 +207,6 @@ export default class Login extends React.Component {
 
                     </div>
                 </div>
-                <button onClick={this.signOut}></button>
             </div>
         );
     }
