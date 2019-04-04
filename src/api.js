@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import Firebase from 'firebase';
 
 // Initialize Firebase
 var config = {
@@ -11,4 +11,13 @@ var config = {
 
 };
 
-export default firebase.initializeApp(config);
+Firebase.initializeApp(config);
+
+
+export const logout = () => {
+    return Firebase.auth().signOut()
+}
+
+export const login = (email, password) => {
+    return Firebase.auth().signInWithEmailAndPassword(email, password)
+}

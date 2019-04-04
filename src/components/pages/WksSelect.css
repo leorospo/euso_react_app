@@ -10,7 +10,6 @@
 
 .form-wks-select {
     margin-top: 12px;
-    margin-right: 6px;
 }
 
 .logo {
@@ -30,4 +29,8 @@
     width: 303px;
     height: 120px;
 
+}
+
+.wks-input {
+    margin-top: 10px;
 }
