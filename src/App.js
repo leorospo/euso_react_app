@@ -24,7 +24,8 @@ class App extends Component {
                 id: 'x9vqKsWGxFfCbl7J',
                 companyName: 'born2code',
                 companyImg: 'groupama.svg',
-            }
+            },
+            userId: undefined,
         }
     }
 
@@ -34,12 +35,21 @@ class App extends Component {
         });
     }
 
+    setUserId = (id) => {
+        this.setState({
+            userId: id
+        })
+    }
+
     render() {
         return (
 
             <Switch>
                 <Route path='/' exact render={() =>
-                    <ChatList workspace={this.state.workspace} />
+                    <ChatList
+                        workspace={this.state.workspace}
+                        userId={this.state.userId}
+                    />
                 } />
                 <Route path='/wks-select' exact render={() =>
                     <WksSelect setWorkspace={this.setWorkspace} />
@@ -47,6 +57,7 @@ class App extends Component {
                 <Route path='/login' exact render={() => <Login
                     workspace={this.state.workspace}
                     wksEmail=""
+                    setUserId={this.setUserId}
                 />
                 } />
                 <Route path='/chat' exact render={() =>
