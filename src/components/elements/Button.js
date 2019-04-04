@@ -29,11 +29,11 @@ export default class Button extends React.Component {
 }
 
 Button.propTypes = {
-    shape: propTypes.oneOf(['square', 'round','outlined']),
+    shape: propTypes.oneOf(['square', 'round', 'outlined']),
     size: propTypes.oneOf(['small', 'medium', 'large']),
     optionalClass: propTypes.string,
     type: propTypes.string,
     id: propTypes.string,
     children: propTypes.oneOfType([propTypes.element, propTypes.string]),
-    onClick: propTypes.func.isRequired,
+    onClick: propTypes.func,
 }

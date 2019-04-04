@@ -2,7 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import Button from '../elements/Button';
 import './Login.css';
-import help from '../../assets/img/help.svg'
+import help from '../../assets/img/help.svg';
+import { Redirect } from "react-router-dom";
+import { login } from '../../api'
 
 
 export default class Login extends React.Component {
@@ -19,7 +21,8 @@ export default class Login extends React.Component {
             errorPassword: {
                 setErrorPassword: false,
                 showErrorPassword: false,
-            }
+            },
+            successfulLogin: false,
         }
     }
 
@@ -75,22 +78,68 @@ export default class Login extends React.Component {
         })
     }
 
-    render() {
-        const { company } = this.props
+    loginErrorHandling = (code, message) => {
+        switch (code) {
+            case 'auth/invalid-email':
+            case 'auth/user-not-found':
+            case 'auth/user-disabled':
+                this.setState({
+                    errorEmail: {
+                        setErrorEmail: true,
+                        showErrorEmail: false,
+                    },
+                })
+                break;
+            case 'auth/wrong-password':
+                this.setState({
+                    errorPassword: {
+                        setErrorPassword: true,
+                        showErrorPassword: false,
+                    },
+                })
+                break;
+            default:
+                console.error(code, message)
+                break;
+        }
+    }
 
-        return (
+    onSubmit = (email, password, event) => {
+        event.preventDefault()
+        login(email, password)
+            .then(
+                () => { this.setState({ successfulLogin: true }) },
+                (error) => { this.loginErrorHandling(error.code, error.message) }
+            )
+    }
+
+    render() {
+
+        if (this.state.successfulLogin) {
+            return (
+                <Redirect to="/" />
+            )
+        }
+
+        const { workspace } = this.props
+
+        if (!workspace) {
+            return <Redirect to="/wks-select" />
+
+        }
+        else return (
             <div className="cnt-global center ">
                 <div className="cnt-section-full g1">
                     <div className="cnt-onepage">
 
                         <div className="logo_azienda">
-                            <img src={`assets/img/svg/${company.companyImg}`} alt={`${company.companyName} logo`} />
+                            <img src={`assets/img/svg/${workspace.companyImg}`} alt={`${workspace.companyName} logo`} />
                         </div>
 
 
                         <form
-                            className="form-wks-select"
-                            onSubmit={() => alert(this.state.email, this.state.password)}>
+                            className="form-login-select"
+                            onSubmit={(e) => this.onSubmit(this.state.email, this.state.password, e)}>
                             <div className="input-container">
 
                                 {this.state.errorEmail.setErrorEmail &&
@@ -105,7 +154,7 @@ export default class Login extends React.Component {
                                 <input className={`login-email ${this.state.errorEmail.setErrorEmail && 'input-error'}`}
                                     type="email" nome="email"
                                     placeholder={this.state.errorEmail.setErrorEmail ? undefined : 'Email'}
-                                    value={this.state.errorEmail.setErrorEmail ? undefined : this.state.email}
+                                    value={this.state.email}
 
                                     onChange={e => this.updateEmail(e)}
                                 />
@@ -128,9 +177,9 @@ export default class Login extends React.Component {
                                 />
 
                             </div>
-                            <div className="form-footer-wks-select">
+                            <div className="form-footer-login-select">
 
-                                <div className="form-footer-wks-select-cnt">
+                                <div className="form-footer-login-select-cnt">
                                     <label className="checkbox-cnt sns-sp-416 tg6">
                                         <input className="checkbox" type="checkbox" name="checkbox1"
                                             onChange={() => this.checked()}
@@ -164,7 +213,7 @@ export default class Login extends React.Component {
 }
 
 Login.propTypes = {
-    company: propTypes.shape({
+    workspace: propTypes.shape({
         companyName: propTypes.string.isRequired,
         companyImg: propTypes.string.isRequired
     }).isRequired,

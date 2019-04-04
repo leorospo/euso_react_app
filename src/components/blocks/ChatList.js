@@ -1,5 +1,6 @@
 import React from 'react'
 import ChatListRow from './ChatListRow'
+import { logout } from '../../api';
 
 export default class ChatList extends React.Component {
     constructor(props) {
@@ -49,11 +50,26 @@ export default class ChatList extends React.Component {
         }
     }
 
+    // TODO: MOVE TO SETTINGS
+    /* handleLogout = () => {
+        logout().then(() => {
+            console.info('logout')
+        }).catch((error) => {
+            console.error('Logout failed', error)
+        });
+    } */
+    // TILL HERE
+
     render() {
 
         return (
             <div className="cnt-full g1">
                 {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
+
+                {/* @TODO: MOVE TO SETTINGS */}
+                {/* <button onClick={this.handleLogout}>logout</button>*/}
+                {/* TILL HERE */}
+
             </div>
         )
 
