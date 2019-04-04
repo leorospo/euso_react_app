@@ -30,7 +30,7 @@ export default class ChatListPage extends React.Component {
                         size="large"
                         optionalClass="btn-new-chat"
                         type="button"
-                        onClick={() => alert("pippos")}
+                        onClick={() => alert("pippo")}
                     >
                         <Icon
                             encumbrance="medium"

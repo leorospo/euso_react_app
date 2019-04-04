@@ -29,7 +29,8 @@
     flex-shrink: 0;
     border: none;
     border-radius: 22px;
-    background-color: var(--blu_1)
+    background-color: var(--blu_1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .btn-round-l {
@@ -42,10 +43,12 @@
     border: none;
     border-radius: 26px;
     background-color: var(--blu_1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 
     position: fixed;
     bottom: 12px;
     right: 12px;
+    
 }
 
 .btn-outlined-m{
