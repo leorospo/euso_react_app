@@ -32,10 +32,13 @@
 
 }
 
-.chat-round-m {
+.btn-round-m {
     width: 44px;
     height: 44px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
     border-radius: 22px;
     background-color: var(--blu_1)
 }
@@ -56,11 +59,15 @@
 
 .wks-select-button {
     margin-top: 12px;
-    margin-right: 1px;
     float: right;
 }
 
 .profile-button{
     margin-top: 44px;
+}
+
+.send {
+    position: relative;
+    left: 2px;
 }
 

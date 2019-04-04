@@ -1,6 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types'
-import './Buttons.css';
+import './Button.css';
 
 const SIZES = {
     medium: 'm',
@@ -13,25 +13,27 @@ const SHAPES = {
     outlined: "outlined",
 }
 
-export default class Buttons extends React.Component {
+export default class Button extends React.Component {
 
     render() {
-        const { shape, size, optionalClass, type, onClick } = this.props
+        const { shape, size, optionalClass, type, id, onClick } = this.props
         return (
             <button
-                className={`btn btn-${SHAPES[shape]}-${SIZES[size] || 'm'} ${optionalClass}`}
+                className={`btn btn-${SHAPES[shape]}-${SIZES[size] || 'm'} ${optionalClass || ""}`}
                 type={type || 'button'}
+                id={id || ""}
                 onClick={onClick}
             >{this.props.children}</button>
         )
     }
 }
 
-Buttons.propTypes = {
-    shape: propTypes.oneOf(['square', 'round','outlined']),
+Button.propTypes = {
+    shape: propTypes.oneOf(['square', 'round', 'outlined']),
     size: propTypes.oneOf(['small', 'medium', 'large']),
     optionalClass: propTypes.string,
     type: propTypes.string,
+    id: propTypes.string,
     children: propTypes.oneOfType([propTypes.element, propTypes.string]),
-    onClick: propTypes.func.isRequired,
+    onClick: propTypes.func,
 }

@@ -67,7 +67,7 @@ a, a:hover, a:focus {
 
 
 /*#region TYPOGRAPHY*/
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
 @import url('/assets/fonts/Proxima Nova Regular.woff');
 
 
@@ -88,6 +88,17 @@ a, a:hover, a:focus {
     -moz-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
+}
+
+.sns-sp-320 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    letter-spacing: 0px;
+    line-height: 21px;
+    font-style: normal;
+    text-transform: none;
+
 }
 
 .sns-pn-410 {
@@ -160,10 +171,10 @@ a, a:hover, a:focus {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 700;
     font-size: 18px;
-    letter-spacing: 0px;
+    /* letter-spacing: 0px;
     line-height: 21px;
     font-style: normal;
-    text-transform: none;
+    text-transform: none; */
 }
 /*#endregion TYPOGRAPHY*/
 
