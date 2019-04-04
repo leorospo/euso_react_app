@@ -31,15 +31,15 @@ class App extends Component {
         return (
             /* <WksSelect /> */
             /* <ContactList /> */
-            /* <ChatList /> */
+            <ChatList />
             /* <Login /> */
              /* <ChatProfile /> */
             /*<Profile
             user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/> */
          /*<Grids />*/
-            /*< ResetPassword  />*/
-            /*<Search/>*/
-           <Buttons/>
+           /* < ResetPassword  />*/
+           /* <Search/>*/
+          
         );
     }
 }

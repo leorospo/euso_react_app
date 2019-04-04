@@ -2,6 +2,7 @@ import React from 'react';
 import './ResetPassword.css';
 
 
+
 export default class ResetPassword extends React.Component {
     constructor(props) {
         super(props)
@@ -26,7 +27,7 @@ export default class ResetPassword extends React.Component {
                             <div>RESET PASSWORD</div>
                         </div>
                         <div className="reset-sns-sp-416 tC"> You will recieve an e-mail with a link to reset your password. </div>
-                        <form className="form-wks-select"
+                        <form className="form-rst-select"
                             onSubmit={() => alert(this.state.email)}>
                         <label className={`sns-sp-616 ${this.state.error ? 'tr1' : 'tg6'}`}>{
                             this.state.error ? 'Corporate mail not found!' : 'Enter your corporate mail'}
