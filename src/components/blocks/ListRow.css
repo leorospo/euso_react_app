@@ -133,7 +133,7 @@ white-space: nowrap;
 
 }
 
-.icn-box-swipe {
+.chat-icn-box-swipe {
     width: 164px;
     height: 80px;
     display: flex;
@@ -144,4 +144,25 @@ white-space: nowrap;
 
 .react-swipe-container.swipe > div {
     display: flex
+}
+
+.contact-list-element-content-swipe {
+    height: 80px;
+    width: 100%;
+    margin-left: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl
+
+}
+
+.contact-icn-box-swipe {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px
 }

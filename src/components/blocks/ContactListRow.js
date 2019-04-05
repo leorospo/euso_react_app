@@ -49,7 +49,7 @@ export default class ContactListRow extends React.Component {
 
             </div>
 
-         
+
         );
     }
 }

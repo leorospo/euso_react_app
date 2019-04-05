@@ -34,7 +34,7 @@ export default class ChatListRowSwipe extends React.Component {
   render() {
     return (
       <div className="chat-list-element-content-swipe">
-        <div className="icn-box-swipe">
+        <div className="chat-icn-box-swipe">
           <Button
             shape={this.state.silenced ? `round` : `outlined`}
             size="medium"

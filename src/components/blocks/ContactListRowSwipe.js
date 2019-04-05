@@ -19,8 +19,8 @@ export default class ChatListRowSwipe extends React.Component {
 
     render() {
         return (
-            <div className="chat-list-element-content-swipe">
-                <div className="icn-box-swipe">
+            <div className="contact-list-element-content-swipe">
+                <div className="contact-icn-box-swipe">
 
                     <Button
                         shape={this.state.favorited ? `round` : `outlined`}
