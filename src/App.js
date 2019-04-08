@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 
-import './style.css';
 import { Route, Switch } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
 import ChatList from './components/blocks/ChatList';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
+import ContactList from './components/blocks/ContactList';
+import ChatListPage from './components/pages/ChatListPage';
+
+import './style.css';
 
 
 // Da inserire nello switch del ROUTER
@@ -44,7 +47,7 @@ class App extends Component {
     render() {
         return (
 
-            <Switch>
+  /*           <Switch>
                 <Route path='/' exact render={() =>
                     <ChatList
                         workspace={this.state.workspace}
@@ -70,7 +73,7 @@ class App extends Component {
             //<ContactList />
             /*<Profile
                 user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-
+            <ChatListPage/>
         );
     }
 }

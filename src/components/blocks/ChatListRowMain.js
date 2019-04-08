@@ -1,8 +1,9 @@
 import React from "react";
+import Icon from '../elements/Icon';
 
 export default class ChatListRowMain extends React.Component {
   render() {
-    let {chat, silenced} = this.props
+    let { chat, silenced } = this.props
     return (
       <div className="chat-list-element-content">
         <div className="chat-list-element-content-text">
@@ -15,14 +16,17 @@ export default class ChatListRowMain extends React.Component {
           <div className="chat-list-element-content-mute">
             <div className="chat-list-element-content-mute-icon">
               {silenced && (
-                <i className="material-icons icn-cnt-16 tg3">
-                  notifications_off
-                </i>
+                <Icon
+                  encumbrance="small"
+                  size="small"
+                  color="tg3"
+                  icon="notifications_off"
+                />
               )}
             </div>
           </div>
 
-          <div className="chat-list-element-subtitle sns-sp-416 tg3">
+          <div className="contact-list-element-subtitle sns-sp-416 tg3">
             {chat.chatLastMessage.text}
           </div>
         </div>
@@ -36,7 +40,7 @@ export default class ChatListRowMain extends React.Component {
             </div>
           )}
 
-          <div className="chat-list-element-time-container">
+          <div className="chat-list-element-content-right-container">
             <div className="sns-pn-410 tg5">{chat.chatLastMessage.time}</div>
           </div>
         </div>

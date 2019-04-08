@@ -13,6 +13,7 @@
 .contact-list-element-content {
     height: 100%;
     width: 100%;
+    min-width: 250px;
     margin-left: 12px;
     
     display: flex;
@@ -21,16 +22,10 @@
     
 }
 
-.chat-list-element-content-right{
+.chat-list-element-content-right,
+.contact-list-element-content-right{
     display: flex;
     align-items: center;
-
-}
-
-.contact-list-element-content-right {
-    display: flex;
-    align-items: center;
-    margin-right: 52px;
 
 }
 
@@ -92,7 +87,8 @@ white-space: nowrap;
     background: #FFC319;
 }
 
-.chat-list-element-time-container {
+.chat-list-element-content-right-container,
+.contact-list-element-content-right-container{
     width: 52px;
     height: 52px;
 
@@ -120,4 +116,49 @@ white-space: nowrap;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.chat-list-element-content-swipe {
+    height: 80px;
+    width: 100%;
+    margin-left: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.chat-icn-box-swipe {
+    width: 164px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 28px;
+}
+
+.react-swipe-container.swipe > div {
+    display: flex
+}
+
+.contact-list-element-content-swipe {
+    height: 80px;
+    width: 100%;
+    margin-left: 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: rtl
+
+}
+
+.contact-icn-box-swipe {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px
 }

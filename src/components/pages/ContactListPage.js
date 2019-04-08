@@ -1,33 +1,29 @@
 import React from 'react';
-//import propTypes from 'prop-types';
-import ChatHeader from './../blocks/ChatHeader'
-import Chat from '../../components/blocks/Chat';
+import ListHeader from '../blocks/ListHeader';
+import ContactList from '../blocks/ContactList';
 
-
-export default class ChatPage extends React.Component {
+export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
         }
     }
-
     render() {
+        const { } = this.props;
 
         return (
-
             <div className="cnt-global">
 
                 <div className="cnt-section-left">
+                    <ListHeader
+                        page={"contact"}
+                    />
 
-                    <ChatHeader />
+                    <ContactList />
 
-                    <Chat />
-                    
                 </div>
-
                 <div className="cnt-section-right"></div>
             </div>
-
-        );
+        )
     }
 }

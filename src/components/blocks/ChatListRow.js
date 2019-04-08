@@ -1,12 +1,10 @@
 import React from "react";
 import ProfileImg from "../elements/ProfileImg";
 import ReactSwipe from "react-swipe";
-import Icon from '../elements/Icon';
 import propTypes from 'prop-types';
-import "./ListRow.css";
 import ChatListRowMain from "./ChatListRowMain";
 import ChatListRowSwipe from "./ChatListRowSwipe";
-import "./ChatListRowSwipe.css";
+import "./ListRow.css";
 
 export default class ChatListRow extends React.Component {
   constructor(props) {
@@ -14,7 +12,7 @@ export default class ChatListRow extends React.Component {
 
     this.state = {
       favorited: this.props.chat.favorited,
-      silenced: this.props.chat.silenced
+      silenced: this.props.chat.silenced,
     };
   }
 
@@ -41,7 +39,7 @@ export default class ChatListRow extends React.Component {
           <div>
             <ChatListRowMain chat={chat} silenced={this.state.silenced} />
           </div>
-          <div>
+          <div onClick= {e => {e.stopPropagation(); e.preventDefault()}}>
             <ChatListRowSwipe />
           </div>
         </ReactSwipe>

@@ -48,7 +48,7 @@ export default class ListHeader extends React.Component {
                             icon="search"
                             onClick={() => this.setSearch()}
                         /> :
-                        <input className="input-search sns-sp-320 b1" />
+                        <input className="input-search sns-sp-320 bFF" />
                     }
                
                     <Icon
