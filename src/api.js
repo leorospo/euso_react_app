@@ -74,4 +74,18 @@ export const getUserChats = (wksId, userId, callback) => {
 
 }
 
+export const sendMessages = (chatId, senderId, text, time) => {
+    chatId = '4ywqiNqkbiqvhdLvqhqG'
+    senderId = '12345'
+    db.collection('messages').add({
+        chatId, senderId, text, time,
+    })
 
+        .then(function () {
+            console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
+
+}

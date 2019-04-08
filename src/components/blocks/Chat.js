@@ -2,6 +2,7 @@ import React from 'react';
 import ChatMessage from './ChatMessage';
 import ChatBar from './ChatBar'
 import "./Chat.css";
+import { sendMessages } from '../../api';
 
 export default class Chat extends React.Component {
     constructor(props) {
@@ -66,6 +67,8 @@ export default class Chat extends React.Component {
 
         })
 
+        sendMessages(this.props.senderId, this.props.chatId,content,new Date())
+
 
 
         //this.chatBar_input.innerHTML = ""
@@ -98,6 +101,7 @@ export default class Chat extends React.Component {
                                 received={el.received}
                                 text={el.text}
                                 time={el.time}
+                                chatId={el.chatId}
                             />)}
 
                     </div>

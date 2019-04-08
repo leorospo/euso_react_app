@@ -7,6 +7,7 @@ import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ContactList from './components/blocks/ContactList';
 import ChatListPage from './components/pages/ChatListPage';
+import Chat from './components/blocks/Chat';
 
 import './style.css';
 
@@ -29,7 +30,14 @@ class App extends Component {
                 companyImg: 'groupama.svg',
             },
             userId: undefined,
+            openChatId: undefined,
         }
+    }
+    
+        setChatId(id) {
+        this.setState({
+            chatId: id
+        })
     }
 
     setWorkspace = (wksObj) => {
@@ -47,9 +55,9 @@ class App extends Component {
     render() {
         return (
 
-  /*           <Switch>
+           <Switch>
                 <Route path='/' exact render={() =>
-                    <ChatList
+                    <ChatListPage
                         workspace={this.state.workspace}
                         userId={this.state.userId}
                     />
@@ -73,7 +81,8 @@ class App extends Component {
             //<ContactList />
             /*<Profile
                 user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-            <ChatListPage/>
+            /*<ChatListPage/>*/
+          /*  <Chat userId={this.state.userId}/>*/
         );
     }
 }
