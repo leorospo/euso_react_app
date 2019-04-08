@@ -75,3 +75,43 @@ export const getUserChats = (wksId, userId, callback) => {
 }
 
 
+/* export const getMessages = (userId, chatId) => {
+
+    return db.collection("messages").where("chatId", "==", chatId).orderBy("time", "desc")
+        .get()
+        .then(function (querySnapshot) {
+            let messages = [];
+            querySnapshot.forEach(function (doc) {
+                messages.push(
+                    {
+                        received: doc.data().senderId === userId ? false : true,
+                        text: doc.data().text,
+                        time: doc.data().time.toDate().toLocaleTimeString().slice(0, 4),
+                    }
+                )
+
+            })
+
+            return messages;
+        })
+} */
+
+
+export const getMessages = (userId, chatId,callback) => {
+
+    db.collection("messages").where("chatId", "==", chatId).orderBy("time", "desc")
+        .onSnapshot((snapshot) => {
+            let messages = [];
+            snapshot.forEach((doc)=> {
+                messages.push(
+                    {
+                        received: doc.data().senderId === userId ? false : true,
+                        text: doc.data().text,
+                        time: doc.data().time.toDate().toLocaleTimeString().slice(0, 4),
+                    }
+                )
+                callback(messages)
+            })
+
+        })
+}

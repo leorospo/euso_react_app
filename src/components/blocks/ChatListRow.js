@@ -13,6 +13,7 @@ export default class ChatListRow extends React.Component {
     this.state = {
       favorited: this.props.chat.favorited,
       silenced: this.props.chat.silenced,
+      
     };
   }
 

@@ -7,7 +7,7 @@ import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ContactList from './components/blocks/ContactList';
 import ChatListPage from './components/pages/ChatListPage';
-
+import api from './api'
 import './style.css';
 
 
@@ -28,7 +28,7 @@ class App extends Component {
                 companyName: 'born2code',
                 companyImg: 'groupama.svg',
             },
-            userId: undefined,
+            userId: "12345",
         }
     }
 
@@ -47,9 +47,9 @@ class App extends Component {
     render() {
         return (
 
-  /*           <Switch>
+            <Switch>
                 <Route path='/' exact render={() =>
-                    <ChatList
+                    <ChatListPage
                         workspace={this.state.workspace}
                         userId={this.state.userId}
                     />
@@ -57,23 +57,27 @@ class App extends Component {
                 <Route path='/wks-select' exact render={() =>
                     <WksSelect setWorkspace={this.setWorkspace} />
                 } />
-                <Route path='/login' exact render={() => <Login
-                    workspace={this.state.workspace}
-                    wksEmail=""
-                    setUserId={this.setUserId}
-                />
+                <Route path='/login' exact render={() =>
+                    <Login
+                        workspace={this.state.workspace}
+                        wksEmail=""
+                        setUserId={this.setUserId}
+                    />
                 } />
-                <Route path='/chat' exact render={() =>
-                    <ChatPage />
+                <Route path='/chat/:id' exact render={props =>
+                    <ChatPage
+                        chatId={props.match.params.id}
+                        userId={this.state.userId}
+                    />
                 } />
 
 
             </Switch>
 
             //<ContactList />
-            /*<Profile
-                user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-            <ChatListPage/>
+            /* <Profile
+                user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>
+            <ChatListPage/> */
         );
     }
 }

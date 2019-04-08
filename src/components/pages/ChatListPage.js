@@ -4,6 +4,7 @@ import ChatList from '../blocks/ChatList';
 import Button from '../elements/Button';
 import Icon from '../elements/Icon';
 
+
 export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
