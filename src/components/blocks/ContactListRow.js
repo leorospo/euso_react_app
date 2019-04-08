@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileImg from '../elements/ProfileImg';
-import ReactSwipe from "react-swipe";
+import ReactSwipe from 'react-swipe';
 import ContactListRowMain from './ContactListRowMain';
 import ContactListRowSwipe from './ContactListRowSwipe';
 import propTypes from 'prop-types';
