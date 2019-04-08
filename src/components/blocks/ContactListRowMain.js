@@ -1,11 +1,24 @@
 import React from "react";
 import Icon from '../elements/Icon';
+import Checkbox from '../elements/Checkbox';
 
 export default class ChatListRowMain extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectChat: true,
+            list: []
+        }
+    }
+
+    updateContact() {
+        this.setState({
+            list: this.props.chat
+        })
+    }
 
     render() {
         const { chat, silenced } = this.props
-        
         return (
             <div className="contact-list-element-content">
 
@@ -31,13 +44,16 @@ export default class ChatListRowMain extends React.Component {
                     <div className="contact-list-element-subtitle-role sns-sp-416 tg3">{chat.userRole}</div>
                 </div>
 
-                <div className="contact-list-element-content-right">
+                <div className="chat-list-element-content-right">
 
                     {chat.unreadCount > 0 &&
                         <div className="contact-list-element-notification">
                             <div className="sns-pn-414">{chat.unreadCount > 99 ? "99+" : chat.unreadCount}</div>
                         </div>
                     }
+                    <div className="contact-list-element-content-right-container">
+                        {!this.state.selectChat || <Checkbox onChange={() => this.updateContact()} />}
+                    </div>
 
                 </div>
 

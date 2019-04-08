@@ -26,7 +26,7 @@ export default class ChatListRowMain extends React.Component {
             </div>
           </div>
 
-          <div className="chat-list-element-subtitle sns-sp-416 tg3">
+          <div className="contact-list-element-subtitle sns-sp-416 tg3">
             {chat.chatLastMessage.text}
           </div>
         </div>
@@ -40,7 +40,7 @@ export default class ChatListRowMain extends React.Component {
             </div>
           )}
 
-          <div className="chat-list-element-time-container">
+          <div className="chat-list-element-content-right-container">
             <div className="sns-pn-410 tg5">{chat.chatLastMessage.time}</div>
           </div>
         </div>

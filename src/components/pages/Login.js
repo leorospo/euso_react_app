@@ -5,6 +5,7 @@ import './Login.css';
 import help from '../../assets/img/help.svg';
 import { Redirect } from "react-router-dom";
 import { login } from '../../api'
+import Checkbox from '../elements/Checkbox';
 
 
 export default class Login extends React.Component {
@@ -180,12 +181,9 @@ export default class Login extends React.Component {
                             <div className="form-footer-login-select">
 
                                 <div className="form-footer-login-select-cnt">
-                                    <label className="checkbox-cnt sns-sp-416 tg6">
-                                        <input className="checkbox" type="checkbox" name="checkbox1"
-                                            onChange={() => this.checked()}
-                                        />
-                                        Remember Me
-                                    </label>
+                                    <Checkbox optionalClass="checkbox-login" onChange={() => this.checked()}>
+                                        Remember
+                                    </Checkbox>
                                 </div>
 
                                 <Button

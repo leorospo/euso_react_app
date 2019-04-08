@@ -14,11 +14,12 @@ export default class ContactListRow extends React.Component {
         this.state = {
             favorited: this.props.chat.favorited,
             silenced: this.props.chat.silenced,
+            selectChat: true
         }
     }
 
     render() {
-        const { chat, onClick } = this.props
+        const { chat, onClick} = this.props
         let reactSwipeEl;
 
         return (
@@ -30,20 +31,24 @@ export default class ContactListRow extends React.Component {
                     size='medium'
                 />
 
-                <ReactSwipe
-                    className="swipe"
-                    swipeOptions={{ continuous: false }}
-                    ref={el => (reactSwipeEl = el)}
-                >
-                    <div>
-                        <ContactListRowMain chat={chat} silenced={this.state.silenced} />
-                    </div>
+                {!this.state.selectChat ?
+                    <ReactSwipe
+                        className="swipe"
+                        swipeOptions={{ continuous: false }}
+                        ref={el => (reactSwipeEl = el)}
+                    >
+                        <div>
+                            <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                        </div>
+                        <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
+                            <ContactListRowSwipe />
+                        </div>
 
-                    <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
-                        <ContactListRowSwipe />
-                    </div>
+                    </ReactSwipe> :
 
-                </ReactSwipe>
+                    <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+
+                }
 
                 <div className="contact-list-sep"></div>
 
