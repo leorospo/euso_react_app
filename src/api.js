@@ -23,7 +23,18 @@ export const login = (email, password) => {
     return Firebase.auth().signInWithEmailAndPassword(email, password)
 }
 
-export const getUser = (id, callback) => {
+export const getUsers = () => {
+    return db.collection("users").get().then((users) => {
+        var output = {}
+        users.forEach(
+            (doc) => output[doc.id] = doc.data()
+        )
+        return output
+    })
+}
+
+// YOU CAN PROBABLY FIND WHAT YOU NEED IN THE APP STATE (users)
+export const getUser = (id) => {
     return db.collection("users").doc(id).get()
         .then(function (doc) {
             if (doc.exists) {
@@ -36,8 +47,21 @@ export const getUser = (id, callback) => {
         })
 }
 
+export const getChat = (id) => {
+    return db.collection("chats").doc(id).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                console.log("No such chat!", id);
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        })
+}
+
 // NOT COMPLETED
-export const getUserChats = (wksId, userId, callback) => {
+export const getUserChats = (wksId, userId, callback, users) => {
     db.collection("chats").where("participants", "array-contains", userId)
         .onSnapshot(function (coll) {
             var output = []
@@ -45,7 +69,14 @@ export const getUserChats = (wksId, userId, callback) => {
             coll.forEach(el => {
                 const otherUserId = el.data().participants.filter((el) => el != userId)[0]
                 requests.push(
-                    getUser(otherUserId).then((user) => {
+                    getChat(el.id).then((chat) => {
+
+                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
+                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
+                        const user = users[otherUserId]
+
+                        //PRENDERE I DATI DELL'ULTIMO MESSAGGIO E SPARARLI DENTRO
+
                         output.push(
                             {
                                 userFullName: user.userFullName,
@@ -55,13 +86,13 @@ export const getUserChats = (wksId, userId, callback) => {
                                     time: '21:30',
                                 },
                                 unreadCount: '0',
-                                silenced: true,
-                                favorited: true,
+                                silenced: isSilenced,
+                                favorited: isFavorited,
 
                             }
-                        );
+                        )
                     })
-                );
+                )
             })
 
             Promise.all(requests).then(

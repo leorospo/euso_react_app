@@ -17,7 +17,8 @@ export default class ChatList extends React.Component {
         getUserChats(
             'wks',
             this.props.userId,
-            (data) => { this.setState({ userChats: data }) }
+            (data) => { this.setState({ userChats: data }) },
+            this.props.users
         )
     }
 

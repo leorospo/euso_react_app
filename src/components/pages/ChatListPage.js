@@ -10,6 +10,11 @@ export default class ChatListPage extends React.Component {
         this.state = {
         }
     }
+
+    componentWillUpdate = () => {
+        this.props.setUsers()
+    }
+
     render() {
         const { workspace, userId } = this.props;
 
@@ -21,7 +26,7 @@ export default class ChatListPage extends React.Component {
                         page={"chat"}
                     />
 
-                    <ChatList userId={userId} />
+                    <ChatList userId={userId} users={this.props.users} />
 
                     <Button
                         shape="round"

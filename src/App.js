@@ -5,6 +5,7 @@ import WksSelect from './components/pages/WksSelect';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ChatListPage from './components/pages/ChatListPage';
+import { getUsers } from './api'
 
 import './style.css';
 
@@ -27,7 +28,20 @@ class App extends Component {
                 companyImg: 'groupama.svg',
             },
             userId: undefined,
+            users: undefined,
         }
+    }
+
+    componentDidMount = () => {
+        this.setUsers()
+    }
+
+    setUsers = () => {
+        getUsers().then((users) =>
+            this.setState({
+                users: users
+            })
+        )
     }
 
     setWorkspace = (wksObj) => {
@@ -77,6 +91,8 @@ class App extends Component {
                     <ChatListPage
                         workspace={this.state.workspace}
                         userId={this.state.userId}
+                        users={this.state.users}
+                        setUsers={this.setUsers}
                     />
                 } />
                 <Route path='/wks-select' exact render={() =>
