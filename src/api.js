@@ -27,9 +27,9 @@ export const getUser = (id, callback) => {
     return db.collection("users").doc(id).get()
         .then(function (doc) {
             if (doc.exists) {
-                callback(doc.data());
+                return doc.data();
             } else {
-                console.log("No such document!", id);
+                console.log("No such user!", id);
             }
         }).catch(function (error) {
             console.log("Error getting document:", error);
@@ -38,40 +38,38 @@ export const getUser = (id, callback) => {
 
 // NOT COMPLETED
 export const getUserChats = (wksId, userId, callback) => {
-    db.collection("chats")
+    db.collection("chats").where("participants", "array-contains", userId)
         .onSnapshot(function (coll) {
             var output = []
+            var requests = []
             coll.forEach(el => {
-                console.log("Current data: ", el.data())
-                const otherUser = getUser('WuZtHZoZlTGWIpgWauPw', (a) => console.log(a))
+                const otherUserId = el.data().participants.filter((el) => el != userId)[0]
+                requests.push(
+                    getUser(otherUserId).then((user) => {
+                        output.push(
+                            {
+                                userFullName: user.userFullName,
+                                userProfileImg: user.profileImg,
+                                chatLastMessage: {
+                                    text: 'Hello world!',
+                                    time: '21:30',
+                                },
+                                unreadCount: '0',
+                                silenced: true,
+                                favorited: true,
 
+                            }
+                        );
+                    })
+                );
+            })
 
-                output.push(
-                    {
-                        userFullName: otherUser.userFullName,
-                        userProfileImg: otherUser.profileImg,
-                        chatLastMessage: {
-                            text: 'Hello world!',
-                            time: '21:30',
-                        },
-                        unreadCount: '0',
-                        silenced: true,
-                        favorited: true,
-
-                    }
-                )
-
-            });
-
-
-
-
-
-
-
-            callback(output)
+            Promise.all(requests).then(
+                () => callback(output)
+            )
         });
-
 }
+
+
 
 

@@ -14,7 +14,6 @@ export default class ChatList extends React.Component {
     }
 
     componentDidMount = () => {
-
         getUserChats(
             'wks',
             this.props.userId,
@@ -23,13 +22,13 @@ export default class ChatList extends React.Component {
     }
 
     // TODO: MOVE TO SETTINGS
-    /* handleLogout = () => {
+    handleLogout = () => {
         logout().then(() => {
             console.info('logout')
         }).catch((error) => {
             console.error('Logout failed', error)
         });
-    } */
+    }
     // TILL HERE
 
     render() {
@@ -39,7 +38,7 @@ export default class ChatList extends React.Component {
                 {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
 
                 {/* @TODO: MOVE TO SETTINGS */}
-                {/* <button onClick={this.handleLogout}>logout</button>*/}
+                {<button onClick={this.handleLogout}>logout</button>}
                 {/* TILL HERE */}
 
             </div>

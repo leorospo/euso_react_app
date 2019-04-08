@@ -11,7 +11,7 @@ export default class ChatListPage extends React.Component {
         }
     }
     render() {
-        const { } = this.props;
+        const { workspace, userId } = this.props;
 
         return (
             <div className="cnt-global">
@@ -21,7 +21,7 @@ export default class ChatListPage extends React.Component {
                         page={"chat"}
                     />
 
-                    <ChatList />
+                    <ChatList userId={userId} />
 
                     <Button
                         shape="round"
