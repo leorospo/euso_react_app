@@ -12,6 +12,7 @@ var config = {
 };
 
 Firebase.initializeApp(config);
+var db = Firebase.firestore();
 
 
 export const logout = () => {
@@ -21,3 +22,56 @@ export const logout = () => {
 export const login = (email, password) => {
     return Firebase.auth().signInWithEmailAndPassword(email, password)
 }
+
+export const getUser = (id, callback) => {
+    return db.collection("users").doc(id).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                callback(doc.data());
+            } else {
+                console.log("No such document!", id);
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        })
+}
+
+// NOT COMPLETED
+export const getUserChats = (wksId, userId, callback) => {
+    db.collection("chats")
+        .onSnapshot(function (coll) {
+            var output = []
+            coll.forEach(el => {
+                console.log("Current data: ", el.data())
+                const otherUser = getUser('WuZtHZoZlTGWIpgWauPw', (a) => console.log(a))
+
+
+                output.push(
+                    {
+                        userFullName: otherUser.userFullName,
+                        userProfileImg: otherUser.profileImg,
+                        chatLastMessage: {
+                            text: 'Hello world!',
+                            time: '21:30',
+                        },
+                        unreadCount: '0',
+                        silenced: true,
+                        favorited: true,
+
+                    }
+                )
+
+            });
+
+
+
+
+
+
+
+            callback(output)
+        });
+
+}
+
+
