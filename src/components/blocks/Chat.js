@@ -2,7 +2,7 @@ import React from 'react';
 import ChatMessage from './ChatMessage';
 import ChatBar from './ChatBar'
 import "./Chat.css";
-import { sendMessages, getMessages } from '../../api';
+import { getMessages } from '../../api';
 
 
 export default class Chat extends React.Component {

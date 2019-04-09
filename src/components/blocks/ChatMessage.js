@@ -1,7 +1,6 @@
 import React from 'react';
 import Icon from '../elements/Icon';
 import propTypes from 'prop-types'
-import { sendMessages } from '../../api';
 
 export default class ChatMessage extends React.Component {
     constructor(props) {
@@ -19,8 +18,7 @@ export default class ChatMessage extends React.Component {
 
     render() {
 
-        const { received,text,time } = this.props
-    
+        const { received, text, time } = this.props
 
         // Blame: @leorospo
         let formattedText = text.split('<br>').map((el, index) => <span>{index ? <br></br> : null}{el}</span>)
@@ -42,11 +40,12 @@ export default class ChatMessage extends React.Component {
             </div>
 
         )
-    } 
+    }
 }
 
 ChatMessage.propTypes = {
     received: propTypes.bool.isRequired,
     text: propTypes.string.isRequired,
     time: propTypes.string.isRequired,
+
 }
