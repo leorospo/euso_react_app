@@ -35,7 +35,7 @@ export default class ChatMessage extends React.Component {
                             color="tg3"
                             icon={this.state.status === 'sent' ? 'done' : 'scheduled'}
                         />
-                      </div>}
+                    </div>}
                 </div>
             </div>
 
