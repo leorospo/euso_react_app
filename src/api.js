@@ -71,14 +71,15 @@ export const getUserChats = (wksId, userId, callback, users) => {
                 requests.push(
                     getChat(el.id).then((chat) => {
 
-                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
-                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
+                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el == userId)[0] || false) : false //non leggibile
+                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile
                         const user = users[otherUserId]
 
                         //PRENDERE I DATI DELL'ULTIMO MESSAGGIO E SPARARLI DENTRO
 
                         output.push(
                             {
+                                id: el.id,
                                 userFullName: user.userFullName,
                                 userProfileImg: user.profileImg,
                                 chatLastMessage: {
