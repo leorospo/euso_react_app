@@ -1,4 +1,5 @@
 import Firebase from 'firebase';
+import { eusoConvertTimeHHmm, eusoConvertTime } from './utility'
 
 // Initialize Firebase
 var config = {
@@ -73,21 +74,12 @@ export const getMessage = (id) => {
         })
 }
 
-// WIP ramo leo
+//Perchè chatId è undefined???
+//Forse non lo è ma è sotto che è undefined
 export const getChatLastMessage = (chatId) => {
-    return db.collection("messages").where('chatId', '==', chatId).orderBy('time', 'desc')
-
-
-    /*         .doc(id).get()
-            .then(function (doc) {
-                if (doc.exists) {
-                    return doc.data();
-                } else {
-                    console.log("No such message!", id);
-                }
-            }).catch(function (error) {
-                console.log("Error getting document:", error);
-            }) */
+    return db.collection("messages").where('chatId', '==', chatId).orderBy('time', 'desc').get()
+        .then((coll) => coll.docs[0].data()
+        )
 }
 
 // NOT COMPLETED
@@ -95,26 +87,86 @@ export const getUserChats = (wksId, userId, callback, users) => {
     db.collection("chats").where("participants", "array-contains", userId)
         .onSnapshot(function (coll) {
             var output = []
-            var requests = []
+            var requestedMessages = []
+
             coll.forEach(el => {
-                const otherUserId = el.data().participants.filter((el) => el != userId)[0]
-                requests.push(
-                    getChat(el.id).then((chat) => {
+                var reqMessage = [
+                    el.id,
+                    getChat(el.id),
+                    getChatLastMessage(el.id),
+                    el.data().participants.filter((el) => el !== userId)[0],
+                ]
 
-                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el == userId)[0] || false) : false //non leggibile
-                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile
-                        const user = users[otherUserId]
+                requestedMessages.push(
+                    Promise.all(reqMessage)
+                )
 
-                        // WIP ramo leo
-                        //getChatLastMessage(chat.id).then((data) => console.log(data))
+            })
+
+            Promise.all(requestedMessages).then(
+                messages => {
+                    messages.forEach((msg) => {
+
+                        let id = msg[0]
+                        let chat = msg[1]
+                        let lastMessage = msg[2]
+                        let otherUserId = msg[3]
+                        const otherUser = users[otherUserId]
+
+                        eusoConvertTime(lastMessage.time)
 
                         output.push(
                             {
-                                id: el.id,
+                                id: id,
+                                userFullName: otherUser.userFullName,
+                                userProfileImg: otherUser.profileImg,
+                                chatLastMessage: {
+                                    text: lastMessage.text,
+                                    time: eusoConvertTimeHHmm(lastMessage.time),
+                                },
+                                unreadCount: '0',
+                                silenced: chat.silenced ? (chat.silenced.filter(el => el === userId)[0] || false) : false, //non leggibile
+                                favorited: chat.favorited ? (chat.favorited.filter(el => el === userId)[0] || false) : false,
+
+                            }
+                        )
+                    })
+                    callback(output)
+                }
+            )
+
+
+            /*-----------------------------------
+            var requests = []
+            coll.forEach(el => {
+                requests.push({
+                    chat: getChat(el.id),
+                    message: getChatLastMessage(el.id),
+                    otherUserId: el.data().participants.filter((el) => el !== userId)[0],
+                    id: el.id
+                })
+            })
+
+            Promise.all(requests).then(
+                (req) => {
+                    req.forEach((messageData) => {
+                        console.log(messageData)
+                        const chat = messageData.chat
+                        const lastMessage = messageData.message
+                        const otherUserId = messageData.otherUserId
+                        const id = messageData.id
+
+                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el === userId)[0] || false) : false //non leggibile
+                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el === userId)[0] || false) : false //non leggibile
+                        const user = users[otherUserId]
+
+                        output.push(
+                            {
+                                id: id,
                                 userFullName: user.userFullName,
                                 userProfileImg: user.profileImg,
                                 chatLastMessage: {
-                                    text: 'Hello world!',
+                                    text: lastMessage.text,
                                     time: '21:30',
                                 },
                                 unreadCount: '0',
@@ -123,13 +175,10 @@ export const getUserChats = (wksId, userId, callback, users) => {
 
                             }
                         )
+                        callback(output)
                     })
-                )
-            })
-
-            Promise.all(requests).then(
-                () => callback(output)
-            )
+                }
+            )*/
         });
 }
 

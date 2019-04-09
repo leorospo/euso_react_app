@@ -1,6 +1,6 @@
 import React from 'react'
 import ChatListRow from './ChatListRow'
-import { logout, getUserChats, getUser } from '../../api';
+import { logout, getUserChats } from '../../api';
 
 export default class ChatList extends React.Component {
     constructor(props) {

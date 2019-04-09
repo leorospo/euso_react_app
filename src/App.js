@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ChatListPage from './components/pages/ChatListPage';
+import _404 from './components/pages/_404'
+
 import { getUsers } from './api'
 import './style.css';
 
@@ -79,6 +81,7 @@ class App extends Component {
                     )
 
                     } />
+                    <Route render={() => (<_404 />)} />
                 </Switch>
             )
         }
