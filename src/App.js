@@ -6,7 +6,6 @@ import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ChatListPage from './components/pages/ChatListPage';
 import { getUsers } from './api'
-
 import './style.css';
 
 

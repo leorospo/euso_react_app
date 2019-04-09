@@ -53,18 +53,13 @@ export default class Chat extends React.Component {
 
         })
 
-        //this.chatBar_input.innerHTML = ""
-        //this.set_varChatBarHeight()
-
-        //this.scrollChatArea()
+        sendMessages(this.props.userId, this.props.chatId, content, new Date())
 
     }
 
     componentDidMount() {
         getMessages(this.props.userId, this.props.chatId, x => this.setState({ chatMessages: x }))
     }
-
-    /* -------------------------------------------------------------------- */
 
     render() {
 
