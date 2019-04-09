@@ -30,12 +30,6 @@ class App extends Component {
             users: undefined,
         }
     }
-    
-        setChatId(id) {
-        this.setState({
-            chatId: id
-        })
-    }
 
     componentDidMount = () => {
         this.setUsers()
