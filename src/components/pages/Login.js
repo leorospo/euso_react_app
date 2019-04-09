@@ -109,7 +109,11 @@ export default class Login extends React.Component {
         event.preventDefault()
         login(email, password)
             .then(
-                (obj) => { this.props.setUserId(obj.user.uid); this.setState({ successfulLogin: true }) },
+                (obj) => {
+                    this.props.setUserId(obj.user.uid,
+                        () => this.setState({ successfulLogin: true })
+                    );
+                },
                 (error) => { this.loginErrorHandling(error.code, error.message) }
             )
     }
