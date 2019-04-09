@@ -19,7 +19,7 @@ export default class ChatListPage extends React.Component {
                         page={"contact"}
                     />
 
-                    <ContactList />
+                    <ContactList users={this.props.users} userId={this.state.userId} />
 
                 </div>
                 <div className="cnt-section-right"></div>

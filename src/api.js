@@ -24,8 +24,8 @@ export const login = (email, password) => {
 }
 
 export const getUsers = () => {
-    return db.collection("users").get().then((users) => {
-        var output = {}
+    return db.collection("users").orderBy("userFullName", "asc").get().then((users) => {
+        var output = []
         users.forEach(
             (doc) => output[doc.id] = doc.data()
         )

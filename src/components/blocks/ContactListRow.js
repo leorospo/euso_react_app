@@ -10,59 +10,62 @@ import "./ListRow.css";
 export default class ContactListRow extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            favorited: this.props.chat.favorited,
-            silenced: this.props.chat.silenced,
-            selectChat: true
+            favorited: props.chat.favorited,
+            silenced: props.chat.silenced,
+            selectChat: false
         }
     }
 
     render() {
-        const { chat, onClick} = this.props
-        let reactSwipeEl;
 
+        const { chat, onClick, chatId } = this.props
+        let reactSwipeEl;
         return (
-            <div className={"ContactListRow contact-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
-                onClick={onClick}>
+
+
+            < div className={"ContactListRow contact-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
+                onClick={onClick} >
 
                 <ProfileImg
                     user={{ name: 'Carol Evans', profileImgName: '1_carol.jpg' }}
                     size='medium'
                 />
 
-                {!this.state.selectChat ?
-                    <ReactSwipe
-                        className="swipe"
-                        swipeOptions={{ continuous: false }}
-                        ref={el => (reactSwipeEl = el)}
-                    >
-                        <div>
-                            <ContactListRowMain chat={chat} silenced={this.state.silenced} />
-                        </div>
-                        <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
-                            <ContactListRowSwipe />
-                        </div>
+                {
+                    !this.state.selectChat ?
+                        <ReactSwipe
+                            className="swipe"
+                            swipeOptions={{ continuous: false }}
+                            ref={el => (reactSwipeEl = el)}
+                        >
+                            <div>
+                                <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                            </div>
+                            <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
+                                <ContactListRowSwipe />
+                            </div>
 
-                    </ReactSwipe> :
+                        </ReactSwipe> :
 
-                    <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                        <ContactListRowMain chat={chat} silenced={this.state.silenced} />
 
                 }
 
                 <div className="contact-list-sep"></div>
 
-            </div>
+            </div >
 
 
         );
     }
 }
 
+
 ContactListRow.propTypes = {
     chat: propTypes.shape({
         userFullName: propTypes.string.isRequired,
-        userProfileImg: propTypes.string.isRequired,
+        userProfileImg: propTypes.string,
         userRole: propTypes.string.isRequired,
 
         unreadCount: propTypes.string.isRequired,

@@ -6,7 +6,9 @@ export default class ContactList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userChats: [
+            userChats: this.props.users,
+
+            /*userChats: [
                 {
                     userFullName: 'Carol Evans',
                     userRole: 'Risk Management',
@@ -46,24 +48,23 @@ export default class ContactList extends React.Component {
                     favorited: false,
 
                 },
-            ],
+            ],*/
             silenced: this.props.silenced,
             isFavoriteFilterActive: this.props.isFavoriteFilterActive,
-            selectChat: true,
-
+            selectChat: false
         }
     }
 
     render() {
-
         return (
-            
-            <div className="cnt-full g1">
+
+            < div className="cnt-full g1" >
                 {!this.state.selectChat ?
-                    this.state.userChats.map((el, index) => <ContactListRow key={index} chat={el} onClick={() => alert('pippo')} />) :
-                    this.state.userChats.map((el, index) => <ContactListRow key={index} chat={el} />)
+                    Object.entries(this.state.userChats).map(([id, obj]) => <ContactListRow key={id} chat={obj} chatId={id} onClick={() => alert('pippo')} />) :
+                    Object.entries(this.state.userChats).map(([id, obj]) => <ContactListRow key={id} chat={obj} chatId={id} />)
                 }
             </div>
+
         )
 
     }
