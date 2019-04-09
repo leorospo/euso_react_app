@@ -133,6 +133,19 @@ export const getUserChats = (wksId, userId, callback, users) => {
         });
 }
 
+export const sendMessages = (senderId, chatId, text, time) => {
+    db.collection('messages').add({
+        chatId, senderId, text, time,
+    })
+
+        .then(function () {
+            console.log("Document successfully written!");
+        })
+        .catch(function (error) {
+            console.error("Error writing document: ", error);
+        });
+}
+
 export const getMessages = (userId, chatId, callback) => {
 
     db.collection("messages").where("chatId", "==", chatId).orderBy("time", "desc")
