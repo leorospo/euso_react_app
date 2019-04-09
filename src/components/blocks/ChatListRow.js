@@ -21,7 +21,7 @@ export default class ChatListRow extends React.Component {
         const { chat, onClick } = this.props;
         let reactSwipeEl;
         return (
-            <Link to={`/chat?=${chat.id}`}>
+            <Link to={`/chat/${chat.id}`}>
                 <div
                     className={
                         "ChatListRow chat-list-element " +
