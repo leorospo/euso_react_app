@@ -49,7 +49,7 @@ class App extends Component {
     setUserId = (id) => {
         this.setState({
             userId: id
-        })
+        },)
     }
 
     render() {
@@ -72,7 +72,8 @@ class App extends Component {
                 />
                 } />
                 <Route path='/chat' exact render={() =>
-                    <ChatPage />
+                    <ChatPage
+                    userId={this.state.userId} />
                 } />
 
 

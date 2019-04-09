@@ -74,9 +74,9 @@ export const getUserChats = (wksId, userId, callback) => {
 
 }
 
-export const sendMessages = (chatId, senderId, text, time) => {
+export const sendMessages = (senderId, chatId,text, time) => {
     chatId = '4ywqiNqkbiqvhdLvqhqG'
-    senderId = '12345'
+   alert(senderId)
     db.collection('messages').add({
         chatId, senderId, text, time,
     })

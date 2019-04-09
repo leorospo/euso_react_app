@@ -21,7 +21,9 @@ export default class ChatPage extends React.Component {
 
                     <ChatHeader />
 
-                    <Chat />
+                    <Chat 
+                     userId={this.props.userId}
+                    />
                     
                 </div>
 

@@ -67,7 +67,7 @@ export default class Chat extends React.Component {
 
         })
 
-        sendMessages(this.props.senderId, this.props.chatId,content,new Date())
+        sendMessages(this.props.userId, this.props.chatId,content,new Date())
 
 
 
