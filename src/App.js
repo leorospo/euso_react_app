@@ -110,9 +110,11 @@ class App extends Component {
                         setUserId={this.setUserId}
                     />
                 } />
-                <Route path='/chat' exact render={() =>
+                <Route path='/chat/:id' exact render={props =>
                     <ChatPage
-                    userId={this.state.userId} />
+                        chatId={props.match.params.id}
+                        userId={this.state.userId}
+                    />
                 } />
 
             </Switch>

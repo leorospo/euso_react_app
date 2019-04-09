@@ -36,7 +36,7 @@ export default class ChatList extends React.Component {
 
         return (
             <div className="cnt-full g1">
-                {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} onClick={() => alert('pippo')} />)}
+                {this.state.userChats.map((el, index) => <ChatListRow key={index} chat={el} />)}
 
                 {/* @TODO: MOVE TO SETTINGS */}
                 {<button onClick={this.handleLogout}>logout</button>}

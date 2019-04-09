@@ -19,7 +19,7 @@ export default class ChatMessage extends React.Component {
 
     render() {
 
-        const { received,chatId, senderId,text,time,  } = this.props
+        const { received,text,time } = this.props
     
 
         // Blame: @leorospo
@@ -37,7 +37,7 @@ export default class ChatMessage extends React.Component {
                             color="tg3"
                             icon={this.state.status === 'sent' ? 'done' : 'scheduled'}
                         />
-                      </div>}
+                    </div>}
                 </div>
             </div>
 
