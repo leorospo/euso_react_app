@@ -60,6 +60,36 @@ export const getChat = (id) => {
         })
 }
 
+export const getMessage = (id) => {
+    return db.collection("messages").doc(id).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                console.log("No such message!", id);
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        })
+}
+
+// WIP ramo leo
+export const getChatLastMessage = (chatId) => {
+    return db.collection("messages").where('chatId', '==', chatId).orderBy('time', 'desc')
+
+
+    /*         .doc(id).get()
+            .then(function (doc) {
+                if (doc.exists) {
+                    return doc.data();
+                } else {
+                    console.log("No such message!", id);
+                }
+            }).catch(function (error) {
+                console.log("Error getting document:", error);
+            }) */
+}
+
 // NOT COMPLETED
 export const getUserChats = (wksId, userId, callback, users) => {
     db.collection("chats").where("participants", "array-contains", userId)
@@ -75,7 +105,8 @@ export const getUserChats = (wksId, userId, callback, users) => {
                         const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile
                         const user = users[otherUserId]
 
-                        //PRENDERE I DATI DELL'ULTIMO MESSAGGIO E SPARARLI DENTRO
+                        // WIP ramo leo
+                        //getChatLastMessage(chat.id).then((data) => console.log(data))
 
                         output.push(
                             {
@@ -101,7 +132,3 @@ export const getUserChats = (wksId, userId, callback, users) => {
             )
         });
 }
-
-
-
-
