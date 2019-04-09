@@ -6,6 +6,7 @@ export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            page: "contact",
         }
     }
     render() {
@@ -16,10 +17,12 @@ export default class ChatListPage extends React.Component {
 
                 <div className="cnt-section-left">
                     <ListHeader
-                        page={"contact"}
+                        page={this.state.page}
                     />
 
-                    <ContactList />
+                    <ContactList
+                        selectChat={false}
+                    />
 
                 </div>
                 <div className="cnt-section-right"></div>

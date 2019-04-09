@@ -3,6 +3,7 @@ import ProfileImg from '../elements/ProfileImg';
 import ReactSwipe from 'react-swipe';
 import ContactListRowMain from './ContactListRowMain';
 import ContactListRowSwipe from './ContactListRowSwipe';
+import { Link } from 'react-router-dom'
 import propTypes from 'prop-types';
 import "./ListRow.css";
 
@@ -14,12 +15,11 @@ export default class ContactListRow extends React.Component {
         this.state = {
             favorited: this.props.chat.favorited,
             silenced: this.props.chat.silenced,
-            selectChat: true
         }
     }
 
     render() {
-        const { chat, onClick} = this.props
+        const { chat, onClick, selectChat } = this.props
         let reactSwipeEl;
 
         return (
@@ -31,14 +31,14 @@ export default class ContactListRow extends React.Component {
                     size='medium'
                 />
 
-                {!this.state.selectChat ?
+                {selectChat ?
                     <ReactSwipe
                         className="swipe"
                         swipeOptions={{ continuous: false }}
                         ref={el => (reactSwipeEl = el)}
                     >
                         <div>
-                            <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                            <ContactListRowMain selectChat={this.props.selectChat} chat={chat} silenced={this.state.silenced} />
                         </div>
                         <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
                             <ContactListRowSwipe />
@@ -46,14 +46,13 @@ export default class ContactListRow extends React.Component {
 
                     </ReactSwipe> :
 
-                    <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                    <ContactListRowMain selectChat={this.props.selectChat} chat={chat} silenced={this.state.silenced} />
 
                 }
 
                 <div className="contact-list-sep"></div>
 
             </div>
-
 
         );
     }

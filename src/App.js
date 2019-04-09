@@ -5,6 +5,9 @@ import WksSelect from './components/pages/WksSelect';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ChatListPage from './components/pages/ChatListPage';
+import ContactListPage from './components/pages/ContactListPage';
+import ResetPassword from './components/pages/ResetPassword';
+import Profile from './components/pages/Profile';
 import { getUsers } from './api'
 import './style.css';
 
@@ -70,6 +73,12 @@ class App extends Component {
                             setUserId={this.setUserId}
                         />
                     } />
+                    <Route path='/resetpwd' exact render={() =>
+                        <ResetPassword
+                            workspace={this.state.workspace}
+                            wksEmail=""
+                        />
+                    } />
                     <Route path='/' exact render={() => (
                         !this.state.workspace ? (
                             <Redirect to="/wks-select" />
@@ -77,7 +86,6 @@ class App extends Component {
                                 <Redirect to="/login" />
                             )
                     )
-
                     } />
                 </Switch>
             )
@@ -104,12 +112,16 @@ class App extends Component {
                         setUserId={this.setUserId}
                     />
                 } />
+                <Route path='/contacts' exact render={() =>
+                    <ContactListPage />
+                } />
                 <Route path='/chat/:id' exact render={props =>
                     <ChatPage
                         chatId={props.match.params.id}
                         userId={this.state.userId}
                     />
                 } />
+
 
             </Switch>
 

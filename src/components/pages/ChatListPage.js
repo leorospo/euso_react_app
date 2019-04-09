@@ -3,12 +3,15 @@ import ListHeader from '../blocks/ListHeader';
 import ChatList from '../blocks/ChatList';
 import Button from '../elements/Button';
 import Icon from '../elements/Icon';
+import { Link } from 'react-router-dom';
+
 
 
 export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            page: "chat",
         }
     }
 
@@ -24,29 +27,30 @@ export default class ChatListPage extends React.Component {
 
                 <div className="cnt-section-left">
                     <ListHeader
-                        page={"chat"}
+                        page={this.state.page}
                     />
 
                     <ChatList userId={userId} users={this.props.users} />
 
-                    <Button
-                        shape="round"
-                        size="large"
-                        optionalClass="btn-new-chat"
-                        type="button"
-                        onClick={() => alert("pippo")}
-                    >
-                        <Icon
-                            encumbrance="medium"
+                    <Link to="/contacts">
+                        <Button
+                            shape="round"
                             size="large"
-                            color="tFF"
-                            icon="add"
-                        />
-                    </Button>
+                            optionalClass="btn-new-chat"
+                            type="button"
+                        >
+                            <Icon
+                                encumbrance="medium"
+                                size="large"
+                                color="tFF"
+                                icon="add"
+                            />
+                        </Button>
+                    </Link>
 
                 </div>
                 <div className="cnt-section-right"></div>
-            </div>
+            </div >
         )
     }
 }
