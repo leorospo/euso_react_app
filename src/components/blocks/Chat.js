@@ -2,27 +2,14 @@ import React from 'react';
 import ChatMessage from './ChatMessage';
 import ChatBar from './ChatBar'
 import "./Chat.css";
+import { getMessages } from '../../api';
+
 
 export default class Chat extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             chatMessages: [
-                {
-                    received: true,
-                    text: 'Hey there!',
-                    time: '10:30',
-                },
-                {
-                    received: false,
-                    text: 'Hey!',
-                    time: '10:31',
-                },
-                {
-                    received: true,
-                    text: 'Here it is a very long message to test the behaviour of ours containres in every condition possible<br>A capo',
-                    time: '11:12',
-                },
             ],
         }
     }
@@ -66,8 +53,6 @@ export default class Chat extends React.Component {
 
         })
 
-
-
         //this.chatBar_input.innerHTML = ""
         //this.set_varChatBarHeight()
 
@@ -75,11 +60,11 @@ export default class Chat extends React.Component {
 
     }
 
-
-
+    componentDidMount() {
+        getMessages(this.props.userId, this.props.chatId, x => this.setState({ chatMessages: x }))
+    }
 
     /* -------------------------------------------------------------------- */
-
 
     render() {
 
@@ -98,7 +83,8 @@ export default class Chat extends React.Component {
                                 received={el.received}
                                 text={el.text}
                                 time={el.time}
-                            />)}
+                            />
+                        )}
 
                     </div>
 

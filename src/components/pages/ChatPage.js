@@ -21,8 +21,11 @@ export default class ChatPage extends React.Component {
 
                     <ChatHeader />
 
-                    <Chat />
-                    
+                    <Chat
+                        userId={this.props.userId}
+                        chatId={this.props.chatId}
+                    />
+
                 </div>
 
                 <div className="cnt-section-right"></div>

@@ -101,6 +101,21 @@ export const getUserChats = (wksId, userId, callback, users) => {
         });
 }
 
+export const getMessages = (userId, chatId,callback) => {
 
+    db.collection("messages").where("chatId", "==", chatId).orderBy("time", "desc")
+        .onSnapshot((snapshot) => {
+            let messages = [];
+            snapshot.forEach((doc)=> {
+                messages.push(
+                    {
+                        received: doc.data().senderId === userId ? false : true,
+                        text: doc.data().text,
+                        time: doc.data().time.toDate().toLocaleTimeString().slice(0, 4),
+                    }
+                )
+                callback(messages)
+            })
 
-
+        })
+}
