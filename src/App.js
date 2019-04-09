@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
-import ChatList from './components/blocks/ChatList';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
-import ContactList from './components/blocks/ContactList';
 import ChatListPage from './components/pages/ChatListPage';
-import Chat from './components/blocks/Chat';
-
+import { getUsers } from './api'
 import './style.css';
 
 
@@ -30,7 +27,7 @@ class App extends Component {
                 companyImg: 'groupama.svg',
             },
             userId: undefined,
-            openChatId: undefined,
+            users: undefined,
         }
     }
     
@@ -40,50 +37,86 @@ class App extends Component {
         })
     }
 
+    componentDidMount = () => {
+        this.setUsers()
+    }
+
+    setUsers = () => {
+        getUsers().then((users) =>
+            this.setState({
+                users: users
+            })
+        )
+    }
+
     setWorkspace = (wksObj) => {
         this.setState({
             workspace: wksObj,
         });
     }
 
-    setUserId = (id) => {
+    setUserId = (id, cb) => {
         this.setState({
             userId: id
-        },)
+        }, cb)
     }
 
     render() {
+
+        if (!this.state.userId) {
+            return (
+                <Switch>
+                    <Route path='/wks-select' exact render={() =>
+                        <WksSelect setWorkspace={this.setWorkspace} />
+                    } />
+                    <Route path='/login' exact render={() =>
+                        <Login
+                            workspace={this.state.workspace}
+                            wksEmail=""
+                            setUserId={this.setUserId}
+                        />
+                    } />
+                    <Route path='/' exact render={() => (
+                        !this.state.workspace ? (
+                            <Redirect to="/wks-select" />
+                        ) : (
+                                <Redirect to="/login" />
+                            )
+                    )
+
+                    } />
+                </Switch>
+            )
+        }
+
         return (
 
-           <Switch>
+            <Switch>
                 <Route path='/' exact render={() =>
                     <ChatListPage
                         workspace={this.state.workspace}
                         userId={this.state.userId}
+                        users={this.state.users}
+                        setUsers={this.setUsers}
                     />
                 } />
                 <Route path='/wks-select' exact render={() =>
                     <WksSelect setWorkspace={this.setWorkspace} />
                 } />
-                <Route path='/login' exact render={() => <Login
-                    workspace={this.state.workspace}
-                    wksEmail=""
-                    setUserId={this.setUserId}
-                />
+                <Route path='/login' exact render={() =>
+                    <Login
+                        workspace={this.state.workspace}
+                        wksEmail=""
+                        setUserId={this.setUserId}
+                    />
                 } />
                 <Route path='/chat' exact render={() =>
                     <ChatPage
                     userId={this.state.userId} />
                 } />
 
-
             </Switch>
 
-            //<ContactList />
-            /*<Profile
-                user={ {userName: 'Carol Evans', userRole: 'Risk Management' }}/>*/
-            /*<ChatListPage/>*/
-          /*  <Chat userId={this.state.userId}/>*/
         );
     }
 }
