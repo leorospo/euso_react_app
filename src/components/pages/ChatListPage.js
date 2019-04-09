@@ -11,8 +11,13 @@ export default class ChatListPage extends React.Component {
         this.state = {
         }
     }
+
+    componentWillUpdate = () => {
+        this.props.setUsers()
+    }
+
     render() {
-        const { } = this.props;
+        const { workspace, userId } = this.props;
 
         return (
             <div className="cnt-global">
@@ -22,7 +27,7 @@ export default class ChatListPage extends React.Component {
                         page={"chat"}
                     />
 
-                    <ChatList />
+                    <ChatList userId={userId} users={this.props.users} />
 
                     <Button
                         shape="round"

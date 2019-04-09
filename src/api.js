@@ -23,13 +23,37 @@ export const login = (email, password) => {
     return Firebase.auth().signInWithEmailAndPassword(email, password)
 }
 
-export const getUser = (id, callback) => {
+export const getUsers = () => {
+    return db.collection("users").get().then((users) => {
+        var output = {}
+        users.forEach(
+            (doc) => output[doc.id] = doc.data()
+        )
+        return output
+    })
+}
+
+// YOU CAN PROBABLY FIND WHAT YOU NEED IN THE APP STATE (users)
+export const getUser = (id) => {
     return db.collection("users").doc(id).get()
         .then(function (doc) {
             if (doc.exists) {
-                callback(doc.data());
+                return doc.data();
             } else {
-                console.log("No such document!", id);
+                console.log("No such user!", id);
+            }
+        }).catch(function (error) {
+            console.log("Error getting document:", error);
+        })
+}
+
+export const getChat = (id) => {
+    return db.collection("chats").doc(id).get()
+        .then(function (doc) {
+            if (doc.exists) {
+                return doc.data();
+            } else {
+                console.log("No such chat!", id);
             }
         }).catch(function (error) {
             console.log("Error getting document:", error);
@@ -37,65 +61,45 @@ export const getUser = (id, callback) => {
 }
 
 // NOT COMPLETED
-export const getUserChats = (wksId, userId, callback) => {
-    db.collection("chats")
+export const getUserChats = (wksId, userId, callback, users) => {
+    db.collection("chats").where("participants", "array-contains", userId)
         .onSnapshot(function (coll) {
             var output = []
+            var requests = []
             coll.forEach(el => {
-                console.log("Current data: ", el.data())
-                const otherUser = getUser('WuZtHZoZlTGWIpgWauPw', (a) => console.log(a))
+                const otherUserId = el.data().participants.filter((el) => el != userId)[0]
+                requests.push(
+                    getChat(el.id).then((chat) => {
 
+                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
+                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el == userId)[0] || false) : false //non leggibile - sorry
+                        const user = users[otherUserId]
 
-                output.push(
-                    {
-                        userFullName: otherUser.userFullName,
-                        userProfileImg: otherUser.profileImg,
-                        chatLastMessage: {
-                            text: 'Hello world!',
-                            time: '21:30',
-                        },
-                        unreadCount: '0',
-                        silenced: true,
-                        favorited: true,
+                        //PRENDERE I DATI DELL'ULTIMO MESSAGGIO E SPARARLI DENTRO
 
-                    }
+                        output.push(
+                            {
+                                userFullName: user.userFullName,
+                                userProfileImg: user.profileImg,
+                                chatLastMessage: {
+                                    text: 'Hello world!',
+                                    time: '21:30',
+                                },
+                                unreadCount: '0',
+                                silenced: isSilenced,
+                                favorited: isFavorited,
+
+                            }
+                        )
+                    })
                 )
-
-            });
-
-
-
-
-
-
-
-            callback(output)
-        });
-
-}
-
-
-/* export const getMessages = (userId, chatId) => {
-
-    return db.collection("messages").where("chatId", "==", chatId).orderBy("time", "desc")
-        .get()
-        .then(function (querySnapshot) {
-            let messages = [];
-            querySnapshot.forEach(function (doc) {
-                messages.push(
-                    {
-                        received: doc.data().senderId === userId ? false : true,
-                        text: doc.data().text,
-                        time: doc.data().time.toDate().toLocaleTimeString().slice(0, 4),
-                    }
-                )
-
             })
 
-            return messages;
-        })
-} */
-
+            Promise.all(requests).then(
+                () => callback(output)
+            )
+        });
+}
 
 export const getMessages = (userId, chatId,callback) => {
 
