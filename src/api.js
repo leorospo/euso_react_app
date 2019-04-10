@@ -74,8 +74,6 @@ export const getMessage = (id) => {
         })
 }
 
-//Perchè chatId è undefined???
-//Forse non lo è ma è sotto che è undefined
 export const getChatLastMessage = (chatId) => {
     return db.collection("messages").where('chatId', '==', chatId).orderBy('time', 'desc').get()
         .then((coll) => coll.docs[0].data()
@@ -134,51 +132,6 @@ export const getUserChats = (wksId, userId, callback, users) => {
                     callback(output)
                 }
             )
-
-
-            /*-----------------------------------
-            var requests = []
-            coll.forEach(el => {
-                requests.push({
-                    chat: getChat(el.id),
-                    message: getChatLastMessage(el.id),
-                    otherUserId: el.data().participants.filter((el) => el !== userId)[0],
-                    id: el.id
-                })
-            })
-
-            Promise.all(requests).then(
-                (req) => {
-                    req.forEach((messageData) => {
-                        console.log(messageData)
-                        const chat = messageData.chat
-                        const lastMessage = messageData.message
-                        const otherUserId = messageData.otherUserId
-                        const id = messageData.id
-
-                        const isSilenced = chat.silenced ? (chat.silenced.filter(el => el === userId)[0] || false) : false //non leggibile
-                        const isFavorited = chat.favorited ? (chat.favorited.filter(el => el === userId)[0] || false) : false //non leggibile
-                        const user = users[otherUserId]
-
-                        output.push(
-                            {
-                                id: id,
-                                userFullName: user.userFullName,
-                                userProfileImg: user.profileImg,
-                                chatLastMessage: {
-                                    text: lastMessage.text,
-                                    time: '21:30',
-                                },
-                                unreadCount: '0',
-                                silenced: isSilenced,
-                                favorited: isFavorited,
-
-                            }
-                        )
-                        callback(output)
-                    })
-                }
-            )*/
         });
 }
 
