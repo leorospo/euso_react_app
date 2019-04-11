@@ -26,7 +26,7 @@ export default class ChatListRowMain extends React.Component {
             </div>
           </div>
 
-          <div className="contact-list-element-subtitle sns-sp-416 tg3">
+          <div className="chat-list-element-subtitle sns-sp-416 tg3">
             {chat.chatLastMessage.text}
           </div>
         </div>

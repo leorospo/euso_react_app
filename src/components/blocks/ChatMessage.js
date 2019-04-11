@@ -6,7 +6,7 @@ export default class ChatMessage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            status: '',
+            status: 'sent', //impostato su sent per visualizzazione rimettere stringa vuota
         }
     }
 
