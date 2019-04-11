@@ -6,7 +6,6 @@ import Icon from '../elements/Icon';
 import { Link } from 'react-router-dom';
 
 
-
 export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
@@ -86,8 +85,6 @@ export default class ChatListPage extends React.Component {
                             </Button>
                         </Link>
                     }
-
-
 
                 </div>
                 <div className="cnt-section-right"></div>

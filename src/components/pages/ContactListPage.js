@@ -22,7 +22,8 @@ export default class ChatListPage extends React.Component {
 
                     <ContactList
                         group={this.props.group}
-                        selectChat={false}
+                        users={this.props.users}
+                        userId={this.state.userId}
                     />
 
                 </div>

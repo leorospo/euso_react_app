@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
 
-import { Route, Switch, Redirect } from 'react-router-dom';
 import WksSelect from './components/pages/WksSelect';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
@@ -9,8 +9,10 @@ import ContactListPage from './components/pages/ContactListPage';
 import ResetPassword from './components/pages/ResetPassword';
 import Profile from './components/pages/Profile';
 import { getUsers } from './api'
-import './style.css';
 import Settings from './components/pages/Settings';
+import _404 from './components/pages/_404'
+import './style.css';
+
 
 
 // Da inserire nello switch del ROUTER
@@ -32,7 +34,7 @@ class App extends Component {
             },
             userId: undefined,
             users: undefined,
-            group: true,
+            group: false,
         }
     }
 
@@ -40,12 +42,11 @@ class App extends Component {
         this.setUsers()
     }
 
-    setUsers = () => {
-        getUsers().then((users) =>
-            this.setState({
-                users: users
-            })
-        )
+    setUsers = async () => {
+        const users = await getUsers()
+        this.setState({
+            users: users
+        })
     }
 
     setWorkspace = (wksObj) => {
@@ -71,7 +72,7 @@ class App extends Component {
             group: false,
         })
     }
-    
+
     render() {
 
         if (!this.state.userId) {
@@ -101,6 +102,7 @@ class App extends Component {
                             )
                     )
                     } />
+                    <Route render={() => (<_404 />)} />
                 </Switch>
             )
         }
@@ -118,6 +120,12 @@ class App extends Component {
                         selectContact={this.selectContact}
                     />
                 } />
+                <Route path='/contacts' exact render={() =>
+                    <ContactListPage
+                        users={this.state.users}
+                        group={this.state.group}
+                    />
+                } />
                 <Route path='/wks-select' exact render={() =>
                     <WksSelect setWorkspace={this.setWorkspace} />
                 } />
@@ -126,11 +134,6 @@ class App extends Component {
                         workspace={this.state.workspace}
                         wksEmail=""
                         setUserId={this.setUserId}
-                    />
-                } />
-                <Route path='/contacts' exact render={() =>
-                    <ContactListPage
-                        group={this.state.group}
                     />
                 } />
                 <Route path='/settings' exact render={() =>

@@ -3,7 +3,6 @@ import ProfileImg from '../elements/ProfileImg';
 import ReactSwipe from 'react-swipe';
 import ContactListRowMain from './ContactListRowMain';
 import ContactListRowSwipe from './ContactListRowSwipe';
-import { Link } from 'react-router-dom'
 import propTypes from 'prop-types';
 import "./ListRow.css";
 
@@ -11,27 +10,28 @@ import "./ListRow.css";
 export default class ContactListRow extends React.Component {
     constructor(props) {
         super(props)
-
         this.state = {
-            favorited: this.props.chat.favorited,
-            silenced: this.props.chat.silenced,
+            favorited: props.chat.favorited,
+            silenced: props.chat.silenced,
         }
     }
 
     render() {
-        const { chat, onClick, group } = this.props
+        const { chat, onClick, chatId } = this.props
         let reactSwipeEl;
 
         return (
-            <div className={"ContactListRow contact-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
-                onClick={onClick}>
+
+
+            < div className={"ContactListRow contact-list-element " + (this.state.favorited ? `c-y1` : `c-w`)}
+                onClick={onClick} >
 
                 <ProfileImg
                     user={{ name: 'Carol Evans', profileImgName: '1_carol.jpg' }}
                     size='medium'
                 />
 
-                {!group ?
+                {!this.props.group ?
                     <ReactSwipe
                         className="swipe"
                         swipeOptions={{ continuous: false }}
@@ -52,16 +52,17 @@ export default class ContactListRow extends React.Component {
 
                 <div className="contact-list-sep"></div>
 
-            </div>
+            </div >
 
         );
     }
 }
 
+
 ContactListRow.propTypes = {
     chat: propTypes.shape({
         userFullName: propTypes.string.isRequired,
-        userProfileImg: propTypes.string.isRequired,
+        userProfileImg: propTypes.string,
         userRole: propTypes.string.isRequired,
 
         unreadCount: propTypes.string.isRequired,
