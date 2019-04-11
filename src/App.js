@@ -9,6 +9,7 @@ import _404 from './components/pages/_404'
 
 import { getUsers } from './api'
 import './style.css';
+import ContactListPage from './components/pages/ContactListPage';
 
 
 // Da inserire nello switch del ROUTER
@@ -37,12 +38,11 @@ class App extends Component {
         this.setUsers()
     }
 
-    setUsers = () => {
-        getUsers().then((users) =>
-            this.setState({
-                users: users
-            })
-        )
+    setUsers = async () => {
+        const users = await getUsers()
+        this.setState({
+            users: users
+        })
     }
 
     setWorkspace = (wksObj) => {
@@ -95,6 +95,10 @@ class App extends Component {
                         userId={this.state.userId}
                         users={this.state.users}
                         setUsers={this.setUsers}
+                    />
+                } />
+                <Route path='/contacts' exact render={() =>
+                    <ContactListPage users={this.state.users}
                     />
                 } />
                 <Route path='/wks-select' exact render={() =>
