@@ -49,7 +49,6 @@ export default class ContactList extends React.Component {
             ],
             silenced: this.props.silenced,
             isFavoriteFilterActive: this.props.isFavoriteFilterActive,
-            selectChat: false,
         }
     }
 
@@ -58,7 +57,7 @@ export default class ContactList extends React.Component {
         return (
 
             <div className="cnt-full g1">
-                {this.state.userChats.map((el, index) => <ContactListRow selectChat={this.state.selectChat} key={index} chat={el} />)}
+                {this.state.userChats.map((el, index) => <ContactListRow group={this.props.group} key={index} chat={el} />)}
             </div>
         )
 

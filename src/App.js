@@ -10,6 +10,7 @@ import ResetPassword from './components/pages/ResetPassword';
 import Profile from './components/pages/Profile';
 import { getUsers } from './api'
 import './style.css';
+import Settings from './components/pages/Settings';
 
 
 // Da inserire nello switch del ROUTER
@@ -31,6 +32,7 @@ class App extends Component {
             },
             userId: undefined,
             users: undefined,
+            group: true,
         }
     }
 
@@ -58,6 +60,18 @@ class App extends Component {
         }, cb)
     }
 
+    selectGroup = () => {
+        this.setState({
+            group: true,
+        })
+    }
+
+    selectContact = () => {
+        this.setState({
+            group: false,
+        })
+    }
+    
     render() {
 
         if (!this.state.userId) {
@@ -100,6 +114,8 @@ class App extends Component {
                         userId={this.state.userId}
                         users={this.state.users}
                         setUsers={this.setUsers}
+                        selectGroup={this.selectGroup}
+                        selectContact={this.selectContact}
                     />
                 } />
                 <Route path='/wks-select' exact render={() =>
@@ -113,7 +129,12 @@ class App extends Component {
                     />
                 } />
                 <Route path='/contacts' exact render={() =>
-                    <ContactListPage />
+                    <ContactListPage
+                        group={this.state.group}
+                    />
+                } />
+                <Route path='/settings' exact render={() =>
+                    <Settings />
                 } />
                 <Route path='/chat/:id' exact render={props =>
                     <ChatPage

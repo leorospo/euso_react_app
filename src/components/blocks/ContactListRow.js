@@ -19,7 +19,7 @@ export default class ContactListRow extends React.Component {
     }
 
     render() {
-        const { chat, onClick, selectChat } = this.props
+        const { chat, onClick, group } = this.props
         let reactSwipeEl;
 
         return (
@@ -31,14 +31,14 @@ export default class ContactListRow extends React.Component {
                     size='medium'
                 />
 
-                {selectChat ?
+                {!group ?
                     <ReactSwipe
                         className="swipe"
                         swipeOptions={{ continuous: false }}
                         ref={el => (reactSwipeEl = el)}
                     >
                         <div>
-                            <ContactListRowMain selectChat={this.props.selectChat} chat={chat} silenced={this.state.silenced} />
+                            <ContactListRowMain group={this.props.group} chat={chat} silenced={this.state.silenced} />
                         </div>
                         <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
                             <ContactListRowSwipe />
@@ -46,7 +46,7 @@ export default class ContactListRow extends React.Component {
 
                     </ReactSwipe> :
 
-                    <ContactListRowMain selectChat={this.props.selectChat} chat={chat} silenced={this.state.silenced} />
+                    <ContactListRowMain group={this.props.group} chat={chat} silenced={this.state.silenced} />
 
                 }
 

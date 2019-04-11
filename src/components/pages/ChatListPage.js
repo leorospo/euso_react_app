@@ -12,11 +12,18 @@ export default class ChatListPage extends React.Component {
         super(props)
         this.state = {
             page: "chat",
+            select: false,
         }
     }
 
     componentWillUpdate = () => {
         this.props.setUsers()
+    }
+
+    choose() {
+        this.setState({
+            select: true,
+        })
     }
 
     render() {
@@ -32,12 +39,13 @@ export default class ChatListPage extends React.Component {
 
                     <ChatList userId={userId} users={this.props.users} />
 
-                    <Link to="/contacts">
+                    {!this.state.select ?
                         <Button
                             shape="round"
                             size="large"
                             optionalClass="btn-new-chat"
                             type="button"
+                            onClick={() => { this.choose() }}
                         >
                             <Icon
                                 encumbrance="medium"
@@ -45,8 +53,41 @@ export default class ChatListPage extends React.Component {
                                 color="tFF"
                                 icon="add"
                             />
-                        </Button>
-                    </Link>
+                        </Button> :
+                        <Link to="/contacts">
+                            <Button
+                                shape="round"
+                                size="large"
+                                optionalClass="btn-new-chat"
+                                type="button"
+                                onClick={() => this.props.selectContact()}
+                            >
+                                <Icon
+                                    encumbrance="medium"
+                                    size="large"
+                                    color="tFF"
+                                    icon="person"
+                                />
+                            </Button>
+
+                            <Button
+                                shape="round"
+                                size="large"
+                                optionalClass="btn-new-chat group-button"
+                                type="button"
+                                onClick={() => this.props.selectGroup()}
+                            >
+                                <Icon
+                                    encumbrance="medium"
+                                    size="large"
+                                    color="tFF"
+                                    icon="group"
+                                />
+                            </Button>
+                        </Link>
+                    }
+
+
 
                 </div>
                 <div className="cnt-section-right"></div>

@@ -17,10 +17,10 @@ export default class ChatListRowMain extends React.Component {
     }
 
     render() {
-        const { chat, silenced, selectChat } = this.props
+        const { chat, silenced, group } = this.props
  
         return (
-            <div className="chat-list-element-content">
+            <div className={`contact-list-element-content ${group || "group-list-element-content"}`}>
 
                 <div className="contact-list-element-content-text">
 
@@ -52,7 +52,7 @@ export default class ChatListRowMain extends React.Component {
                         </div>
                     }
                     <div className="contact-list-element-content-right-container">
-                        {!selectChat || <Checkbox onChange={() => this.updateContact()} />}
+                        {!group || <Checkbox onChange={() => this.updateContact()} />}
                     </div>
 
                 </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import Icon from '../elements/Icon';
-import './Header.css';
+import { Link } from 'react-router-dom';
 
-import propTypes from 'prop-types';
+import './Header.css';
 
 
 export default class ListHeader extends React.Component {
@@ -14,19 +14,19 @@ export default class ListHeader extends React.Component {
     }
 
     render() {
-        const {  } = this.props
+        const { } = this.props
 
         return (
             <div className="header content-sb">
-
+                <Link to="/">
                     <Icon
                         encumbrance="large"
                         size="large"
                         color="tFF"
-                        icon= "arrow_back_ios"
-                        onClick={() => alert("pippo")}
+                        icon="arrow_back_ios"
                     />
-              
+                </Link>
+
             </div>
         )
     }

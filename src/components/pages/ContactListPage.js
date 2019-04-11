@@ -10,7 +10,7 @@ export default class ChatListPage extends React.Component {
         }
     }
     render() {
-        const { } = this.props;
+        const {  } = this.props;
 
         return (
             <div className="cnt-global">
@@ -21,6 +21,7 @@ export default class ChatListPage extends React.Component {
                     />
 
                     <ContactList
+                        group={this.props.group}
                         selectChat={false}
                     />
 
