@@ -13,14 +13,13 @@ export default class ContactListRow extends React.Component {
         this.state = {
             favorited: props.chat.favorited,
             silenced: props.chat.silenced,
-            selectChat: false
         }
     }
 
     render() {
-
         const { chat, onClick, chatId } = this.props
         let reactSwipeEl;
+
         return (
 
 
@@ -32,30 +31,28 @@ export default class ContactListRow extends React.Component {
                     size='medium'
                 />
 
-                {
-                    !this.state.selectChat ?
-                        <ReactSwipe
-                            className="swipe"
-                            swipeOptions={{ continuous: false }}
-                            ref={el => (reactSwipeEl = el)}
-                        >
-                            <div>
-                                <ContactListRowMain chat={chat} silenced={this.state.silenced} />
-                            </div>
-                            <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
-                                <ContactListRowSwipe />
-                            </div>
+                {!this.props.group ?
+                    <ReactSwipe
+                        className="swipe"
+                        swipeOptions={{ continuous: false }}
+                        ref={el => (reactSwipeEl = el)}
+                    >
+                        <div>
+                            <ContactListRowMain group={this.props.group} chat={chat} silenced={this.state.silenced} />
+                        </div>
+                        <div onClick={e => { e.stopPropagation(); e.preventDefault() }}>
+                            <ContactListRowSwipe />
+                        </div>
 
-                        </ReactSwipe> :
+                    </ReactSwipe> :
 
-                        <ContactListRowMain chat={chat} silenced={this.state.silenced} />
+                    <ContactListRowMain group={this.props.group} chat={chat} silenced={this.state.silenced} />
 
                 }
 
                 <div className="contact-list-sep"></div>
 
             </div >
-
 
         );
     }

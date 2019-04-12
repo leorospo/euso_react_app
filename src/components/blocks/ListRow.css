@@ -1,5 +1,6 @@
 .chat-list-element, 
-.contact-list-element {
+.contact-list-element,
+.settings-list-element {
     position: relative;
     height: 80px;
     width: 100%;
@@ -10,9 +11,10 @@
 }
 
 .chat-list-element-content, 
-.contact-list-element-content {
+.contact-list-element-content,
+.settings-list-element-content {
     height: 100%;
-    width: calc(100% - 66px);
+    width: calc(100% - 44px);
     margin-left: 12px;
     
     display: flex;
@@ -21,7 +23,8 @@
     
 }
 
-.chat-list-element-content {
+.chat-list-element-content,
+.group-list-element-content {
     width: 100%;
 }
 
@@ -33,7 +36,8 @@
 }
 
 .chat-list-sep, 
-.contact-list-sep{
+.contact-list-sep,
+.settings-list-sep{
     position: absolute;
     width: calc(100% - 100px);
     bottom: 0px;
@@ -44,7 +48,8 @@
 }
 
 .chat-list-element-content-text,
-.contact-list-element-content-text  {
+.contact-list-element-content-text,
+.settings-list-element-content-text {
     position: relative;
     min-width: 148px;
     width: calc(100vw - 168px);
@@ -63,12 +68,12 @@
 }
 
 .chat-list-element-title-name,
-.contact-list-element-title-name{
-display: block;
-
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+.contact-list-element-title-name,
+.settings-list-element-title-name{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .chat-list-element-subtitle,

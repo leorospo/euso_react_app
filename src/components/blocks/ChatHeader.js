@@ -1,6 +1,7 @@
 import React from 'react';
 import Icon from '../elements/Icon';
 import ProfileImg from '../elements/ProfileImg';
+import { Link } from 'react-router-dom';
 
 import './Header.css';
 
@@ -29,13 +30,24 @@ export default class ChatHeader extends React.Component {
             <div className="header content-sb">
 
                 <div className="header-cnt">
-                    <Icon
-                        encumbrance="large"
-                        size="large"
-                        color="tFF"
-                        icon={this.state.searchingActive ? "close" : "arrow_back_ios"}
-                        onClick={this.state.searchingActive ? () => this.setSearch() : () => alert("pippo")}
-                    />
+                    {this.state.searchingActive ?
+                        <Icon
+                            encumbrance="large"
+                            size="large"
+                            color="tFF"
+                            icon="close"
+                            onClick={() => this.setSearch()}
+                        /> :
+                        <Link to="/">
+                            <Icon
+                                encumbrance="large"
+                                size="large"
+                                color="tFF"
+                                icon="arrow_back_ios"
+                            />
+                        </Link>
+                    }
+
                     {this.state.selectedMessages > 0 ?
                         <div className="sns-sp-616 tFF">{this.state.selectedMessages}</div> :
 

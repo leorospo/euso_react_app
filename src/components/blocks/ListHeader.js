@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from '../elements/Icon';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 import propTypes from 'prop-types';
@@ -31,34 +32,43 @@ export default class ListHeader extends React.Component {
 
         return (
             <div className="header content-sb">
-               
+                {this.state.searchingActive ?
                     <Icon
                         encumbrance="large"
                         size="large"
                         color="tFF"
-                        icon={this.state.searchingActive ? "close" : page === "contact" ? "arrow_back_ios" : "settings"}
-                        onClick={this.state.searchingActive ? () => this.setSearch(): () => alert("pippo")}
-                    />
-              
-                    {!this.state.searchingActive ?
+                        icon="close"
+                        onClick={() => this.setSearch()}
+                    /> :
+                    <Link to={page === "contact" ? "/" : "/settings"}>
                         <Icon
                             encumbrance="large"
                             size="large"
                             color="tFF"
-                            icon="search"
-                            onClick={() => this.setSearch()}
-                        /> :
-                        <input className="input-search sns-sp-320 bFF" />
-                    }
-               
+                            icon={page === "contact" ? "arrow_back_ios" : "settings"}
+                        />
+                    </Link>
+                }
+
+                {!this.state.searchingActive ?
                     <Icon
                         encumbrance="large"
                         size="large"
                         color="tFF"
-                        icon={!this.state.isFavoriteFilterActive ? "star_border" : "star"}
-                        onClick={() => this.setFavoriteFilter()}
-                    />
-            
+                        icon="search"
+                        onClick={() => this.setSearch()}
+                    /> :
+                    <input className="input-search sns-sp-320 bFF" />
+                }
+
+                <Icon
+                    encumbrance="large"
+                    size="large"
+                    color="tFF"
+                    icon={!this.state.isFavoriteFilterActive ? "star_border" : "star"}
+                    onClick={() => this.setFavoriteFilter()}
+                />
+
             </div>
         )
     }

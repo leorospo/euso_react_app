@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Button from '../elements/Button';
 import './Login.css';
 import help from '../../assets/img/help.svg';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { login } from '../../api'
 import Checkbox from '../elements/Checkbox';
 
@@ -204,7 +204,9 @@ export default class Login extends React.Component {
                         </form>
 
                         <div className="box_forgot">
-                            <div className="forgot sns-sp-616 tg6" onClick={() => alert('pippo')}>Forgot your password?</div>
+                            <Link to="/resetpwd">
+                                <div className="forgot sns-sp-616 tg6">Forgot your password?</div>
+                            </Link>
                         </div>
 
                     </div>

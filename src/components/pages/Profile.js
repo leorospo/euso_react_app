@@ -4,6 +4,7 @@ import Button from '../elements/Button';
 import Icon from '../elements/Icon';
 import ProfileMediaGrid from './../blocks/ProfileMediaGrid';
 import Header from './../blocks/Header';
+import { Link } from 'react-router-dom';
 
 
 import propTypes from 'prop-types';
@@ -32,7 +33,7 @@ export default class Profile extends React.Component {
             <div className="cnt-global">
                 <div className="cnt-section-left">
 
-               <Header />
+                    <Header />
 
                     <div className="cnt-full-profile g1">
                         <ProfileImg
@@ -62,6 +63,7 @@ export default class Profile extends React.Component {
                         >
                             CHAT
                         </Button>
+
 
                         <div className="sep-profile"></div>
 

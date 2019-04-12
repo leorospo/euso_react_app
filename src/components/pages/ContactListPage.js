@@ -6,20 +6,25 @@ export default class ChatListPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            page: "contact",
         }
     }
     render() {
-        const { } = this.props;
+        const {  } = this.props;
 
         return (
             <div className="cnt-global">
 
                 <div className="cnt-section-left">
                     <ListHeader
-                        page={"contact"}
+                        page={this.state.page}
                     />
 
-                    <ContactList users={this.props.users} userId={this.state.userId} />
+                    <ContactList
+                        group={this.props.group}
+                        users={this.props.users}
+                        userId={this.state.userId}
+                    />
 
                 </div>
                 <div className="cnt-section-right"></div>

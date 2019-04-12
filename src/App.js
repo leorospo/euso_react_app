@@ -5,16 +5,13 @@ import WksSelect from './components/pages/WksSelect';
 import Login from './components/pages/Login';
 import ChatPage from './components/pages/ChatPage';
 import ChatListPage from './components/pages/ChatListPage';
-import _404 from './components/pages/_404'
-
-import { getUsers } from './api'
-import './style.css';
 import ContactListPage from './components/pages/ContactListPage';
-
-
-// Da inserire nello switch del ROUTER
-//import Profile from './components/pages/Profile';
-//import ResetPassword from './components/pages/ResetPassword';
+import ResetPassword from './components/pages/ResetPassword';
+import Profile from './components/pages/Profile';
+import { getUsers } from './api'
+import Settings from './components/pages/Settings';
+import _404 from './components/pages/_404'
+import './style.css';
 
 
 class App extends Component {
@@ -31,6 +28,7 @@ class App extends Component {
             },
             userId: undefined,
             users: undefined,
+            group: false,
         }
     }
 
@@ -57,6 +55,18 @@ class App extends Component {
         }, cb)
     }
 
+    selectGroup = () => {
+        this.setState({
+            group: true,
+        })
+    }
+
+    selectContact = () => {
+        this.setState({
+            group: false,
+        })
+    }
+
     render() {
 
         if (!this.state.userId) {
@@ -72,6 +82,12 @@ class App extends Component {
                             setUserId={this.setUserId}
                         />
                     } />
+                    <Route path='/resetpwd' exact render={() =>
+                        <ResetPassword
+                            workspace={this.state.workspace}
+                            wksEmail=""
+                        />
+                    } />
                     <Route path='/' exact render={() => (
                         !this.state.workspace ? (
                             <Redirect to="/wks-select" />
@@ -79,7 +95,6 @@ class App extends Component {
                                 <Redirect to="/login" />
                             )
                     )
-
                     } />
                     <Route render={() => (<_404 />)} />
                 </Switch>
@@ -95,10 +110,14 @@ class App extends Component {
                         userId={this.state.userId}
                         users={this.state.users}
                         setUsers={this.setUsers}
+                        selectGroup={this.selectGroup}
+                        selectContact={this.selectContact}
                     />
                 } />
                 <Route path='/contacts' exact render={() =>
-                    <ContactListPage users={this.state.users}
+                    <ContactListPage
+                        users={this.state.users}
+                        group={this.state.group}
                     />
                 } />
                 <Route path='/wks-select' exact render={() =>
@@ -111,12 +130,16 @@ class App extends Component {
                         setUserId={this.setUserId}
                     />
                 } />
+                <Route path='/settings' exact render={() =>
+                    <Settings />
+                } />
                 <Route path='/chat/:id' exact render={props =>
                     <ChatPage
                         chatId={props.match.params.id}
                         userId={this.state.userId}
                     />
                 } />
+
 
             </Switch>
 
