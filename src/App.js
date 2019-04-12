@@ -14,12 +14,6 @@ import _404 from './components/pages/_404'
 import './style.css';
 
 
-
-// Da inserire nello switch del ROUTER
-//import Profile from './components/pages/Profile';
-//import ResetPassword from './components/pages/ResetPassword';
-
-
 class App extends Component {
     constructor(props) {
         super(props)
